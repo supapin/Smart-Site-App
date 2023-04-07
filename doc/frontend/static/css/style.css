@@ -1,0 +1,23 @@
+.logo-text a,.logo-icon{
+	color: #fff
+}
+.tablebg{
+	background: #fff;
+}
+.btndel{
+    border: none;
+}
+.btndel{
+    background: #ff7a70;
+}
+.btndel:hover{
+    background: #fb3d3d;
+}
+.btn-brown {
+    background: #c53737;
+    color: #fff;
+    border-color: #832f2f;
+}
+.table>tbody {
+    vertical-align: baseline;
+}

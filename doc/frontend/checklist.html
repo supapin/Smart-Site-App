@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--favicon-->
+  <link rel="icon" href="static/image/金硯科技工程資訊.ico" type="image/png" />
+  <!--plugins-->
+  <link href="static/css/simplebar.css" rel="stylesheet" />
+  <link href="static/css/select2.min.css" rel="stylesheet">
+  <link href="static/css/select2-bootstrap4.css" rel="stylesheet">
+  <link href="static/css/perfect-scrollbar.css" rel="stylesheet" />
+  <link href="static/css/metisMenu.min.css" rel="stylesheet" />
+  <!-- loader-->
+  <link href="static/css/pace.min.css" rel="stylesheet" />
+  <script src="static/js/pace.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="static/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+  <link href="static/css/css2.css" rel="stylesheet" />
+  <link href="static/css/app.css" rel="stylesheet" />
+  <link href="static/css/icons.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="static/css/all.css" rel="stylesheet" />
+  <!-- Datatables CSS-->
+  <link rel="stylesheet" href="static/css/jquery.dataTables.min.css">
+  <!-- Theme Style CSS -->
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/sp.css" media="screen and (max-width: 992px)">
+  <!-- daterangepicker -->
+  <link rel="stylesheet" href="static/css/daterangepicker.css" />
+  <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+  <title>檢查表列表</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar-wrapper" data-simplebar="true">
+      <div class="sidebar-header">
+        <div class="logo-icon"><i class="fas fa-hard-hat fa-lg"></i></div>
+        <div><h4 class="logo-text"><a href="index.html">智慧工地2.0</h4></a></div>
+        <div class="toggle-icon ms-auto"><i class="bx bx-arrow-to-left"></i></div>
+      </div>
+      <!--navigation-->
+      <ul class="metismenu" id="menu">
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="fas fa-folder-open ms-1 fa-sm"></i></div>
+            <div class="menu-title">專案管理</div>
+          </a>
+          <ul>
+            <li><a href="index.html"><i class="bx bx-right-arrow-alt"></i>專案列表</a></li>
+            <li><a href="checklist.html"><i class="bx bx-right-arrow-alt"></i>檢查表列表</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="fas fa-tasks ms-1"></i></i></div>
+            <div class="menu-title">代辦事項</div>
+          </a>
+          <ul>
+            <li><a href="road.html"><i class="bx bx-right-arrow-alt"></i>任務清單</a></li>
+            <li><a href="norm.html"><i class="bx bx-right-arrow-alt"></i>行事曆</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="fas fa-truck-pickup fa-sm"></i></div>
+            <div class="menu-title">設備日曆</div>
+          </a>
+          <ul>
+            <li><a href="file.html"><i class="bx bx-right-arrow-alt"></i>設備設定</a></li>
+            <li><a href="validation.html"><i class="bx bx-right-arrow-alt"></i>日曆檢視</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="fas fa-id-card-alt ms-1 fa-sm"></i></div>
+            <div class="menu-title">打卡系統</div>
+          </a>
+          <ul>
+            <li><a href="damage.html"><i class="bx bx-right-arrow-alt"></i>線上打卡</a></li>
+            <li><a href="record.html"><i class="bx bx-right-arrow-alt"></i>出勤紀錄</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="fa fa-user-cog ms-1 fa-sm"></i></div>
+            <div class="menu-title">系統設定</div>
+          </a>
+          <ul>
+            <li><a href="client.html"><i class="bx bx-right-arrow-alt"></i>任務種類</a></li>
+            <li><a href="permissions.html"><i class="bx bx-right-arrow-alt"></i>權限管理</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!--end navigation-->
+    </div>
+    <header>
+      <div class="topbar d-flex align-items-center">
+          <nav class="navbar navbar-expand d-flex justify-content-end">
+              <div class="mobile-toggle-menu"><i class="bx bx-menu"></i></div>
+              <div class="top-menu ms-auto">
+                  <ul class="navbar-nav align-items-center">
+                      <li class="nav-item dropdown dropdown-large">
+                          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="alert-count">7</span><i class="bx bx-bell"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-end">
+                              <a href="javascript:;">
+                                  <div class="msg-header">
+                                      <p class="msg-header-title">Notifications</p>
+                                      <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                  </div>
+                              </a>
+                              <div class="header-notifications-list">
+                                  <a class="dropdown-item" href="javascript:;">
+                                      <div class="d-flex align-items-center">
+                                          <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i></div>
+                                          <div class="flex-grow-1">
+                                              <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec ago</span></h6>
+                                              <p class="msg-info">5 new user registered</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                                  <a class="dropdown-item" href="javascript:;">
+                                      <div class="d-flex align-items-center">
+                                          <div class="notify bg-light-success text-success"><i class="bx bx-file"></i></div>
+                                          <div class="flex-grow-1">
+                                              <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min ago</span></h6>
+                                              <p class="msg-info">The pdf files generated</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              <a href="javascript:;">
+                                  <div class="text-center msg-footer">View All Notifications</div>
+                              </a>
+                          </div>
+                      </li>
+                      <li class="nav-item dropdown dropdown-large">
+                          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="alert-count">8</span><i class="bx bx-comment"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-end">
+                              <a href="javascript:;">
+                                  <div class="msg-header">
+                                      <p class="msg-header-title">Messages</p>
+                                      <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                  </div>
+                              </a>
+                              <div class="header-message-list">
+                                  <a class="dropdown-item" href="javascript:;">
+                                      <div class="d-flex align-items-center">
+                                          <div class="user-online">
+                                              <img src="static/picture/avatar-1.png" class="msg-avatar" alt="user avatar" />
+                                          </div>
+                                          <div class="flex-grow-1">
+                                              <h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec ago</span></h6>
+                                              <p class="msg-info">The standard chunk of lorem</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                                  <a class="dropdown-item" href="javascript:;">
+                                      <div class="d-flex align-items-center">
+                                          <div class="user-online">
+                                              <img src="static/picture/avatar-2.png" class="msg-avatar" alt="user avatar" />
+                                          </div>
+                                          <div class="flex-grow-1">
+                                              <h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14 sec ago</span></h6>
+                                              <p class="msg-info">Many desktop publishing packages</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              <a href="javascript:;">
+                                  <div class="text-center msg-footer">View All Messages</div>
+                              </a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="user-box dropdown">
+                  <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="static/picture/avatar-2.png" class="user-img" alt="user avatar" />
+                      <div class="user-info ps-3">
+                          <p class="user-name mb-0">使用者帳號名稱</p>
+                          <p class="designattion mb-0">權限或其他</p>
+                      </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-home-circle"></i><span>Dashboard</span></a></li>
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-dollar-circle"></i><span>Earnings</span></a></li>
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-download"></i><span>Downloads</span></a></li>
+                      <li><div class="dropdown-divider mb-0"></div></li>
+                      <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a></li>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+    </header>
+    <div class="page-wrapper">
+      <div class="page-content">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">檢查表列表</li>
+          </ol>
+        </nav>
+        <div class="row">
+          <div class="col-12 my-2 p-4 tablebg">
+            <a type="button" href="checkform.html" class="btn btn-primary Add_checkform btn-sm mb-3" title="新增檢查表">新增檢查表</a>
+            <table id="checkformTable" class="display nowrap checkformTable rounded-3" style="width: 100%;"></table>
+          </div>
+        </div>
+      </div>
+      <footer class="page-footer">
+        <p class="mb-0">Copyright &copy; 金硯科技工程資訊 2023. </p>
+      </footer>
+    </div>
+  </div>
+<!-- Bootstrap JS -->
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.responsive.min.js"></script>
+<script src="static/js/responsive.bootstrap4.min.js"></script>
+<script src="static/js/dataTables.rowReorder.min.js"></script>
+<script src="static/js/table.js"></script>
+<script src="static/js/simplebar.min.js"></script>
+<script src="static/js/metisMenu.min.js"></script>
+<script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
+<script src="static/js/index.js"></script>
+<!--app JS-->
+<script src="static/js/app.js"></script>
+<!-- daterangepicker JS -->
+<script src="static/js/moment.min.js"></script>
+<script src="static/js/daterangepicker.js"></script>
+<script>
+  $(function() {
+      $("input.dateRange").daterangepicker({
+          "alwaysShowCalendars": true,
+          opens: "right",
+          startView: 2, 
+          maxViewMode: 2,
+          minViewMode:2,
+          format: "yyyy",//选择日期后，文本框显示的日期格式
+          language: "zh-CN" //汉化 
+          // ranges: {
+          // "今天": [moment(), moment()],
+          // "過去 7 天": [moment().subtract(6, "days"), moment()],
+          // "本月": [moment().startOf("month"), moment().endOf("month")],
+          // "上個月": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+          // },
+          // locale: {
+          // format: "YYYY-MM-DD",
+          // separator: " ~ ",
+          // applyLabel: "確定",
+          // cancelLabel: "清除",
+          // fromLabel: "開始日期",
+          // toLabel: "結束日期",
+          // customRangeLabel: "自訂日期區間",
+          // daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
+          // monthNames: ["一月", "二月", "三月", "四月", "五月", "六月",
+          // "七月", "八月", "九月", "十月", "十一月", "十二月"
+          // ],
+          // firstDay: 1
+          // }
+          });
+          // $("input.dateRange").on("cancel.daterangepicker", function(ev, picker) {
+          // $(this).val("");
+          // });
+  });
+</script>
+</body>
+</html>
