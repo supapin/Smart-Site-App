@@ -31,7 +31,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>新增檢查表</title>
+    <title>110桃-挖(刨)除施工自主檢查表</title>
 </head>
 <body>
     <div class="wrapper">
@@ -206,7 +206,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="checklist.html">檢查表列表</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">新增檢查表</li>
+                        <li class="breadcrumb-item active" aria-current="page">編輯檢查表</li>
                     </ol>
                 </nav>
                 <div class="row">
@@ -215,7 +215,7 @@
                         <form action="" class="">
                             <div class="mb-3">
                                 <label for="checkformname" class="form-label">檢查表名稱</label>
-                                <input type="text" class="form-control" id="checkformname">
+                                <input type="text" class="form-control" value="110桃區-挖(刨)除施工自主檢查表" id="checkformname">
                             </div>
                             <div class="gridArea">
                                 <table id="myGrid" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
@@ -230,38 +230,19 @@
                                     </thead>
                                 </table>
                                 <!-- 項目編輯 -->
-                                <div class="modal fade" id="editform" aria-hidden="true" aria-labelledby="editform" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editform_title">編輯項目</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞項目</label>
-                                                        <select id="Destroy_type" name="Destroy_type" class="form-select" required>
-                                                            <option value="1">龜裂(1)</option>
-                                                            <option value="2">縱向及橫向裂縫(2)</option>
-                                                            <option value="3">塊狀裂縫(3)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputPassword1" class="form-label">破壞程度</label>
-                                                        <select id="Destroy_level" name="Destroy_level" class="form-select" required>
-                                                            <option value="1">輕(L)</option>
-                                                            <option value="2">中(M)</option>
-                                                            <option value="3">重(H)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞面積</label>
-                                                        <input type="number" id="Destroy_Scope" name="Destroy_Scope" class="form-control" min="1" max="10" placeholder="1~10" value="3">
-                                                    </div>
-                                                    <div class="input-images mb-3"></div>
-                                                    <button type="submit" class="btn btn-primary">保存</button>
-                                                </form>
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -270,7 +251,7 @@
                             <button class="my-3 btn btn-info text-white" data-id="Addrow" title="新增項目">新增項目</button>
                             <button class="btn btn-danger" data-id="del" title="刪除項目">刪除項目</button>
                             <div class="text-center">
-                                <button type="submit" class="mt-4 btn btn-success" title="保存送出">保存送出</button>
+                                <button type="submit" class="mt-4 btn btn-primary" title="保存送出">保存送出</button>
                             </div>
                         </form>
                     </div>

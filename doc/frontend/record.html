@@ -31,7 +31,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>檢查項目</title>
+    <title>檢查表紀錄</title>
 </head>
 <body>
     <div class="wrapper">
@@ -206,75 +206,14 @@
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">專案列表</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">市區道路預約養護工程(開口契約)</li>
+                        <li class="breadcrumb-item"><a href="checkitem.html">檢查項目</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">110桃-挖(刨)除施工自主檢查表</li>
                     </ol>
                 </nav>
                 <div class="row">
                     <div class="col-12 my-2 p-4 tablebg">
-                        <button type="button" class="btn btn-primary Add_checkitem btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#Add_checkitem" title="新增檢查項目">新增檢查項目</button>
-                        <!-- 新增檢查項目表 -->
-                        <div class="modal fade" id="Add_checkitem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Add_checkitem" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="Add_checkitem_title">新增檢查項目</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form name="checkitem_form" id="checkitem_form" class="checkitem_form row g-3" action="php/checkitem.php">
-                                            <div class="col-md-6">
-                                                <label class="form-label">檢查表名稱</label>
-                                                <input type="text" id="Company" name="Company" class="form-control" minlength="2" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label">檢查表</label>
-                                                <select class="form-select" id="Road_Name" required="required">
-                                                    <option value="1">110桃-挖(刨)除施工自主檢查表</option>
-                                                    <option value="2">110桃-瀝青混凝土鋪面施工自主檢查表</option>
-                                                    <option value="3">110桃-標線繪設施工自主檢查表</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 mt-4 mb-2 text-end">
-                                                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                                <button type="submit" class="btn btn-primary">新增</button>
-                                            </div>                                 
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <table id="checkitemTable" class="display nowrap checkitemTable rounded-3" style="width: 100%;"></table>
-                        <!-- 修改檢查項目表 -->
-                        <div class="modal fade" id="Edit_checkitem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Edit_checkitem" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="Edit_checkitem_title">修改檢查項目表</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form name="checkitem_form" id="checkitem_form" class="checkitem_form row g-3" action="php/checkitem.php">
-                                            <div class="col-md-6">
-                                                <label class="form-label">檢查表名稱</label>
-                                                <input type="text" id="Company" name="Company" class="form-control" value="110桃-挖(刨)除施工自主檢查表" minlength="2" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label">檢查表</label>
-                                                <select class="form-select" id="Road_Name" required="required">
-                                                    <option value="1">110桃-挖(刨)除施工自主檢查表</option>
-                                                    <option value="2">110桃-瀝青混凝土鋪面施工自主檢查表</option>
-                                                    <option value="3">110桃-標線繪設施工自主檢查表</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 mt-4 mb-2 text-end">
-                                                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                                <button type="submit" class="btn btn-primary">修改</button>
-                                            </div>                                 
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-primary Add_checkitem btn-sm mb-3" title="返回檢查項目">返回檢查項目</button>
+                        <table id="recordTable" class="display nowrap recordTable rounded-3" style="width: 100%;"></table>
                     </div>
                 </div>
             </div>

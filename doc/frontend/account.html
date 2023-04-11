@@ -31,7 +31,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>新增檢查表</title>
+    <title>帳號設定</title>
 </head>
 <body>
     <div class="wrapper">
@@ -205,74 +205,121 @@
             <div class="page-content">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="checklist.html">檢查表列表</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">新增檢查表</li>
+                        <li class="breadcrumb-item active" aria-current="page">帳號設定</li>
                     </ol>
                 </nav>
                 <div class="row">
                     <div class="col-12 my-2 p-4 tablebg">
-                        <!-- 調查表(行內編輯) -->
-                        <form action="" class="">
-                            <div class="mb-3">
-                                <label for="checkformname" class="form-label">檢查表名稱</label>
-                                <input type="text" class="form-control" id="checkformname">
-                            </div>
-                            <div class="gridArea">
-                                <table id="myGrid" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr style="background: darkslategrey;color: #fff;">
-                                            <th>檢查項目</th>
-                                            <th>設計圖說、規範之檢查標準(定量定性)</th>
-                                            <th>回覆</th>
-                                            <th>照片</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                <!-- 項目編輯 -->
-                                <div class="modal fade" id="editform" aria-hidden="true" aria-labelledby="editform" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editform_title">編輯項目</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn btn-primary Add_Account btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#Add_Account" title="新增帳號">新增帳號</button>
+                        <!-- 新增帳號 -->
+                        <div class="modal fade" id="Add_Account" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Add_Account" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Add_Account_title">新增帳號</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form name="Acc_form" id="Acc_form" class="Acc_form row g-3" action="php/Acc.php">
+                                            <div class="col-9">
+                                                <label class="form-label">用戶名稱</label>
+                                                <input type="text" id="User_Name" name="User_Name" class="form-control" minlength="2" required>
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞項目</label>
-                                                        <select id="Destroy_type" name="Destroy_type" class="form-select" required>
-                                                            <option value="1">龜裂(1)</option>
-                                                            <option value="2">縱向及橫向裂縫(2)</option>
-                                                            <option value="3">塊狀裂縫(3)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputPassword1" class="form-label">破壞程度</label>
-                                                        <select id="Destroy_level" name="Destroy_level" class="form-select" required>
-                                                            <option value="1">輕(L)</option>
-                                                            <option value="2">中(M)</option>
-                                                            <option value="3">重(H)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞面積</label>
-                                                        <input type="number" id="Destroy_Scope" name="Destroy_Scope" class="form-control" min="1" max="10" placeholder="1~10" value="3">
-                                                    </div>
-                                                    <div class="input-images mb-3"></div>
-                                                    <button type="submit" class="btn btn-primary">保存</button>
-                                                </form>
+                                            <div class="col-3">
+                                                <label class="form-label">性別</label>
+                                                <select id="User_Gender" name="User_Gender" class="form-select" required>
+                                                    <option value="1">男</option>
+                                                    <option value="2">女</option>
+                                                </select>
                                             </div>
-                                        </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">帳號</label>
+                                                <input type="text" id="User_Acc" name="User_Acc" class="form-control" minlength="2" placeholder="帳號含英數至少六字元" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" oninput="setCustomValidity('');" oninvalid="setCustomValidity('含英數至少六個字元');" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">密碼</label>
+                                                <input type="password" id="User_Password" name="User_Password" class="form-control" minlength="2" placeholder="密碼含英數至少六字元" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">權限群組</label>
+                                                <select id="Permission_Group" name="Permission_Group" class="form-select" required>
+                                                    <option value="1">權限1</option>
+                                                    <option value="2">權限2</option>
+                                                    <option value="3">權限3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">到期日</label>
+                                                <input type="date" id="Expiry_Date" name="Expiry_Date" class="form-control">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">電子信箱</label>
+                                                <input type="email" id="Email" name="Email" class="form-control" minlength="2" placeholder="example@kingyan.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                            </div>  
+                                            <div class="col-12 mt-4 mb-2 text-end">
+                                                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-primary">新增</button>
+                                            </div>   
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <button class="my-3 btn btn-info text-white" data-id="Addrow" title="新增項目">新增項目</button>
-                            <button class="btn btn-danger" data-id="del" title="刪除項目">刪除項目</button>
-                            <div class="text-center">
-                                <button type="submit" class="mt-4 btn btn-success" title="保存送出">保存送出</button>
+                        </div>
+                        <table id="accountTable" class="display nowrap accountTable rounded-3" style="width: 100%;"></table>
+                        <!-- 編輯帳號 -->
+                        <div class="modal fade" id="Edit_Account" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Edit_Account" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Edit_Account_title">編輯帳號</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form name="Edit_Account_form" id="Acc_form" class="Edit_Account_form row g-3" action="php/Acc.php">
+                                            <div class="col-9">
+                                                <label class="form-label">用戶名稱</label>
+                                                <input type="text" id="User_Name" name="User_Name" class="form-control" value="人員名稱1" minlength="2" required>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="form-label">性別</label>
+                                                <select id="User_Gender" name="User_Gender" class="form-select" required>
+                                                    <option value="1">男</option>
+                                                    <option value="2">女</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">帳號</label>
+                                                <input type="text" id="Edit_User_Acc" name="Edit_User_Acc" class="form-control" minlength="2" placeholder="Ueser1" aria-label="Ueser1" disabled readonly>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">密碼</label>
+                                                <input type="password" id="User_Password" name="User_Password" class="form-control" minlength="2" placeholder="密碼含英數至少六字元" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">權限群組</label>
+                                                <select id="Permission_Group" name="Permission_Group" class="form-select" required>
+                                                    <option value="1">一般人員</option>
+                                                    <option value="2">管理人員</option>
+                                                    <option value="3">最高權限</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">到期日</label>
+                                                <input type="date" id="Expiry_Date" name="Expiry_Date" class="form-control" value="2023-07-08" readonly>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">電子信箱</label>
+                                                <input type="email" id="Email" name="Email" class="form-control" minlength="2" placeholder="example@kingyan.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                            </div>  
+                                            <div class="col-12 mt-4 mb-2 text-end">
+                                                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-primary">新增</button>
+                                            </div>   
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,5 +347,41 @@
 <!-- daterangepicker JS -->
 <script src="static/js/moment.min.js"></script>
 <script src="static/js/daterangepicker.js"></script>
+<script>
+  $(function() {
+      $("input.dateRange").daterangepicker({
+          "alwaysShowCalendars": true,
+          opens: "right",
+          startView: 2, 
+          maxViewMode: 2,
+          minViewMode:2,
+          format: "yyyy",//选择日期后，文本框显示的日期格式
+          language: "zh-CN" //汉化 
+          // ranges: {
+          // "今天": [moment(), moment()],
+          // "過去 7 天": [moment().subtract(6, "days"), moment()],
+          // "本月": [moment().startOf("month"), moment().endOf("month")],
+          // "上個月": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+          // },
+          // locale: {
+          // format: "YYYY-MM-DD",
+          // separator: " ~ ",
+          // applyLabel: "確定",
+          // cancelLabel: "清除",
+          // fromLabel: "開始日期",
+          // toLabel: "結束日期",
+          // customRangeLabel: "自訂日期區間",
+          // daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
+          // monthNames: ["一月", "二月", "三月", "四月", "五月", "六月",
+          // "七月", "八月", "九月", "十月", "十一月", "十二月"
+          // ],
+          // firstDay: 1
+          // }
+          });
+          // $("input.dateRange").on("cancel.daterangepicker", function(ev, picker) {
+          // $(this).val("");
+          // });
+  });
+</script>
 </body>
 </html>

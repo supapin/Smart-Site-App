@@ -31,7 +31,9 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>新增檢查表</title>
+    <!-- image-uploader -->
+    <link rel="stylesheet" type="text/css" href="static/css/image-uploader.min.css">
+    <title>110桃-挖(刨)除施工自主檢查表</title>
 </head>
 <body>
     <div class="wrapper">
@@ -205,72 +207,164 @@
             <div class="page-content">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="checklist.html">檢查表列表</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">新增檢查表</li>
+                        <li class="breadcrumb-item"><a href="index.html">專案列表</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">市區道路預約養護工程(開口契約)</li>
+                        <li class="breadcrumb-item active" aria-current="page">新增紀錄</li>
                     </ol>
                 </nav>
                 <div class="row">
                     <div class="col-12 my-2 p-4 tablebg">
                         <!-- 調查表(行內編輯) -->
-                        <form action="" class="">
-                            <div class="mb-3">
+                        <form name="Add_Record_form" id="Acc_form" class="Add_Record_form row g-3" action="php/addrecord.php">
+                            <div class="col-12">
                                 <label for="checkformname" class="form-label">檢查表名稱</label>
-                                <input type="text" class="form-control" id="checkformname">
+                                <input type="text" class="form-control" value="110桃區-挖(刨)除施工自主檢查表" id="checkformname" readonly>
                             </div>
-                            <div class="gridArea">
-                                <table id="myGrid" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr style="background: darkslategrey;color: #fff;">
-                                            <th>檢查項目</th>
-                                            <th>設計圖說、規範之檢查標準(定量定性)</th>
-                                            <th>回覆</th>
-                                            <th>照片</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                <!-- 項目編輯 -->
-                                <div class="modal fade" id="editform" aria-hidden="true" aria-labelledby="editform" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editform_title">編輯項目</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞項目</label>
-                                                        <select id="Destroy_type" name="Destroy_type" class="form-select" required>
-                                                            <option value="1">龜裂(1)</option>
-                                                            <option value="2">縱向及橫向裂縫(2)</option>
-                                                            <option value="3">塊狀裂縫(3)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputPassword1" class="form-label">破壞程度</label>
-                                                        <select id="Destroy_level" name="Destroy_level" class="form-select" required>
-                                                            <option value="1">輕(L)</option>
-                                                            <option value="2">中(M)</option>
-                                                            <option value="3">重(H)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">破壞面積</label>
-                                                        <input type="number" id="Destroy_Scope" name="Destroy_Scope" class="form-control" min="1" max="10" placeholder="1~10" value="3">
-                                                    </div>
-                                                    <div class="input-images mb-3"></div>
-                                                    <button type="submit" class="btn btn-primary">保存</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-md-6 col-xxl-4">
+                                <label class="form-label">檢查位置</label>
+                                <input class="dateRange form-control fs-14" type="text"/>
+                            </div>
+                            <div class="col-md-6 col-xxl-4">
+                                <label class="form-label">檢查日期</label>
+                                <input type="date" id="Ddate" name="Ddate" class="form-control" value="2023-07-08">
+                            </div>
+                            <div class="col-md-6 col-xxl-4 d-flex flex-column">
+                                <label class="form-label">檢查時機</label>
+                                <div class="btn-group" id="Dtime" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btncheck1">施工前</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btncheck2">施工中檢查</label>
+                                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btncheck3">施工完成檢查</label>
                                 </div>
                             </div>
-                            <button class="my-3 btn btn-info text-white" data-id="Addrow" title="新增項目">新增項目</button>
-                            <button class="btn btn-danger" data-id="del" title="刪除項目">刪除項目</button>
-                            <div class="text-center">
-                                <button type="submit" class="mt-4 btn btn-success" title="保存送出">保存送出</button>
+                            <table id="record" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <th>檢查項目</th>
+                                        <th>設計圖說、規範之檢查標準(定量定性)</th>
+                                        <th>實際檢查情形(敘述檢查值)</th>
+                                        <th>檢查結果</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <td>既有路面設施:標線、標記</td>
+                                        <td>現況照片、紀錄</td>
+                                        <td>
+                                            <select id="Condition" name="Condition" class="form-select" required>
+                                                <option value="1">錄影存檔</option>
+                                                <option value="2">照片記錄</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select id="Condition" name="Condition" class="form-select" required>
+                                                <option value="1">○合格</option>
+                                                <option value="2">×有缺失</option>
+                                                <option value="3">∕無此項目</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary Add_Image" data-bs-toggle="modal" data-bs-target="#Add_Image" title="上傳照片"><i class="fas fa-images"></i></button>
+                                            <!-- 新增專案表 -->
+                                            <div class="modal fade" id="Add_Image" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Add_Image" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="Add_Image_title">新增照片</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form name="image_form" id="image_form" class="image_form row g-3" action="php/image.php">
+                                                                <div class="input-images"></div>
+                                                                <div class="col-12 mt-4 mb-2 text-end">
+                                                                    <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                                    <button type="submit" class="btn btn-primary">送出</button>
+                                                                </div>                                 
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>氣候雨天不得施工</td>
+                                        <td>下雨天不得施作</td>
+                                        <td>
+                                            <select id="Condition" name="Condition" class="form-select" required>
+                                                <option value="1">晴天無下雨</option>
+                                                <option value="2">晴天</option>
+                                                <option value="3">其他</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select id="Condition" name="Condition" class="form-select" required>
+                                                <option value="1">○合格</option>
+                                                <option value="2">×有缺失</option>
+                                                <option value="3">∕無此項目</option>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>交通安全措施</td>
+                                        <td>安全設施設置及交通指揮手、安衛人員應在場</td>
+                                        <td>
+                                            <input class="dateRange form-control fs-14" type="text"/>
+                                        </td>
+                                        <td>
+                                            <select id="Condition" name="Condition" class="form-select" required>
+                                                <option value="1">○合格</option>
+                                                <option value="2">×有缺失</option>
+                                                <option value="3">∕無此項目</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary Add_Image" data-bs-toggle="modal" data-bs-target="#Add_Image" title="上傳照片"><i class="fas fa-images"></i></button>
+                                            <!-- 新增專案表 -->
+                                            <div class="modal fade" id="Add_Image" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Add_Image" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="Add_Image_title">新增照片</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="input-images"></div>
+                                                            <div class="col-12 mt-4 mb-2 text-end">
+                                                                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                                <button type="submit" class="btn btn-primary">送出</button>
+                                                            </div>                                 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col">
+                                <h5 class="fw-bold">缺失複查</h5>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        已完成改善 （檢附改善前中後照片）
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        未完成改善，填具「缺失改善追蹤表」進行追蹤改善
+                                    </label>
+                                </div>
+                                <div class="col-md-6 col-xxl-4">
+                                    <label class="form-label">複查日期</label>
+                                    <input type="date" id="Ddate" name="Ddate" class="form-control" value="2023-07-08">
+                                </div>
+                            </div>
+                            <div class="text-end mt-3">
+                                <button type="submit" class="btn btn-primary" title="送出">送出</button>
                             </div>
                         </form>
                     </div>
@@ -295,10 +389,15 @@
 <script src="static/js/perfect-scrollbar.js"></script>
 <script src="static/js/select2.min.js"></script>
 <script src="static/js/index.js"></script>
+<script src="static/js/image-uploader.min.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
 <!-- daterangepicker JS -->
 <script src="static/js/moment.min.js"></script>
 <script src="static/js/daterangepicker.js"></script>
+<script>
+// 上傳
+$('.input-images').imageUploader();
+</script>
 </body>
 </html>
