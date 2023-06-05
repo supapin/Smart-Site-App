@@ -8,6 +8,7 @@
             "form":           ["管理功能","專案功能"],
             "schedule":       ["管理功能","專案功能"],
             "valuation":      ["管理功能","專案功能"],
+            "official":       ["管理功能","專案功能"],
             "check":          ["管理功能","專案功能"],
             "system":      ["管理功能","專案功能"]
         },
@@ -19,6 +20,7 @@
             "form":           ["管理功能","專案功能"],
             "schedule":       ["管理功能","專案功能"],
             "valuation":      ["管理功能","專案功能"],
+            "official":       ["管理功能","專案功能"],
             "check":          ["管理功能","專案功能"],
             "system":      "管理人員"
         },
@@ -30,6 +32,7 @@
             "form":      "專案功能",
             "schedule":      "專案功能",
             "valuation":      "專案功能",
+            "official":       "-",
             "check":      ["管理檢視","管理簽核"],
             "system":      "管理檢視"
         },
@@ -41,6 +44,7 @@
             "form":      "-",
             "schedule":      "-",
             "valuation":      ["管理功能","專案功能"],
+            "official":       "-",
             "check":      "管理檢視",
             "system":      "-"
         },
@@ -52,6 +56,7 @@
             "form":      "專案功能",
             "schedule":      "專案功能",
             "valuation":      ["專案檢視","專案編輯"],
+            "official":       "-",
             "check":      "專案檢視",
             "system":      "-"
         },
@@ -63,6 +68,7 @@
             "form":      "專案檢視",
             "schedule":      "專案檢視",
             "valuation":      "專案檢視",
+            "official":       "-",
             "check":      "專案檢視",
             "system":      "-"
         }

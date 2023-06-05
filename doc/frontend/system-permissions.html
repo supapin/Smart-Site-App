@@ -33,6 +33,10 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+  <!-- Treeselect -->
+  <link rel="stylesheet" href="static/dist/selectindex.css" />
+  <script type="module" src="static/dist/select.js"></script>
+  <script type="module" src="static/dist/select2.js"></script>
   <title>權限管理</title>
 </head>
 
@@ -495,6 +499,12 @@
                               <label class="form-label">權限名稱</label>
                               <input type="text" id="permissionsname" name="permissionsname" class="form-control" minlength="2" required>
                             </div>
+                            <div class="col-12 overflow-auto" style="height:400px;">
+                              <div>
+                                  <label class="form-label">權限設置</label>
+                                  <div class="treeselect-demo"></div>
+                              </div>
+                            </div>
                           </form>
                         </div>
                         <div class="modal-footer mt-4">
@@ -527,6 +537,12 @@
                         <div class="col-12">
                           <label class="form-label">權限名稱</label>
                           <input type="text" id="permissionsname" name="permissionsname" class="form-control" value="一般人員" minlength="2" required>
+                        </div>
+                        <div class="col-12 overflow-auto" style="height:400px;">
+                          <div>
+                              <label class="form-label">編輯權限</label>
+                              <div class="treeselect-demo2"></div>
+                          </div>
                         </div>
                       </form>
                     </div>
@@ -730,6 +746,7 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>

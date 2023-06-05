@@ -154,6 +154,7 @@ $(document).ready(function() {
                 { data:'form' ,title:"表單"},
                 { data:'schedule' ,title:"進度"},
                 { data:'valuation' ,title:"計價"},
+                { data:'official' ,title:"公文"},
                 { data:'check' ,title:"簽到"},
                 { data:'system' ,title:"系統"},
                 { data: null ,
