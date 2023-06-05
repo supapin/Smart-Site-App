@@ -1,17 +1,16 @@
-@media (max-width: 414px){
-    .gridArea{
-        overflow: auto;
+@media (max-width: 624px){
+    .addmanage{
+        margin: .8rem;
     }
 }
-@media (max-width: 499px){
-
-}
 @media (max-width: 576px){
-
-}
-@media (max-width: 779px){
-
-}
-@media (max-width: 1365px){
-
+    .manage{
+        margin: 0 1rem;
+    }
+    .addmanage{
+        margin: 0 1.5rem;
+    }
+    .border-left{
+        border: none;
+    }
 }

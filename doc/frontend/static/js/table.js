@@ -22,10 +22,10 @@
 // 設定列元素區塊(rowCallback)…等
 
 $(document).ready(function() {
-    // 專案列表
-    $('#projectTable').dataTable( {
+    // 後檯-廠商列表
+    $('#backstage_company').dataTable( {
         "ajax": {
-            "url": "static/json/project.json",
+            "url": "static/json/backstage_company.json",
             "type": "POST",
             "deferRender": true
         },
@@ -41,61 +41,27 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Number',title: "序號"},
-            { data: 'Year',title: "年度"},
-            { data: 'Company',title: "廠商" },
-            { data:'Project_Name' ,title:"專案名稱"},
+            { data: 'company',title: "廠商"},
+            { data: 'name',title: "簡稱" },
+            { data:  'acc',title: "帳號" },
+            { data:'opendate' ,title:"開通日"},
+            { data:'expirydate' ,title:"到期日"},
             { data: null ,
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<a href="checkitem.html" data-id="checkitem" class="btn btn-info btn-sm me-2 text-white" title="檢查項目">檢查項目</a>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
-                },"className": "all"
-            },
-        ],
-        "language": {url: "static/json/zh_Hant.json"},
-    });
-    
-    // 項目列表
-    $('#checkitemTable').dataTable( {
-        "ajax": {
-            "url": "static/json/checkitem.json",
-            "type": "POST",
-            "deferRender": true
-        },
-        "responsive": {
-            breakpoints: [
-            { name: 'desktop',  width: Infinity },
-            { name: 'tablet',  width: 1280 },
-            { name: 'tablet-l', width: 1024 },
-            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
-            { name: 'mobile-l', width: 480 },
-            { name: 'mobile-p', width: 320 }
-            ]
-        },
-        "lengthMenu": [10, 50, 100, "全部"],
-        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Number',title: "序號"},
-            { data: 'Checkitemname',title: "檢查表名稱" },
-            { data: null ,
-                title: "操作",
-                orderable: false,
-                "render": function (data, type, full, meta) {
-                    return data = '<a href="addrecord.html" data-id="addrecord" class="btn btn-info btn-sm me-2 text-white" title="檢查表"><i class="far fa-list-alt"></i>檢查表</a>'
-                    + '<a href="record.html" data-id="checkitem" class="btn btn-brown btn-sm me-2 text-white" title="查看紀錄"><i class="fas fa-history"></i>紀錄</a>'
-                    + '<a href="checkitem.html" data-id="checkitem" class="btn btn-success btn-sm me-2 text-white" data-bs-toggle="modal" data-bs-target="#Edit_checkitem" title="編輯">編輯</a>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
+                    return data = '<button type="button" data-id="edit_company" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_company" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
 
-    // 檢查表列表
-    $('#checkformTable').dataTable( {
+    // 後檯-帳號列表
+    $('#backstage_account').dataTable( {
         "ajax": {
-            "url": "static/json/checkform.json",
+            "url": "static/json/backstage_account.json",
             "type": "POST",
             "deferRender": true
         },
@@ -111,122 +77,105 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Number',title: "序號"},
-            { data: 'Year',title: "年度"},
-            { data:'Project_Name' ,title:"專案名稱"},
+            { data: 'acc',title: "帳號"},
+            { data: 'company',title: "廠商名稱" },
+            { data:'opendate' ,title:"開通日"},
+            { data:'expirydate' ,title:"到期日"},
             { data: null ,
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<a href="editcheckform.html" data-id="checkform" class="btn btn-success btn-sm me-2 text-white" title="編輯">編輯</a>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
+                    return data = '<button type="button" data-id="edit_account" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_account" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
 
-    // 檢查表(行內編輯)
-    function createCombox(data) {
-        var _html = '<select style="width:100%;">';
-        data.forEach(function (ele, index) {
-            _html += '<option>' + ele + '</option>';
-        });
-        _html += '</select>';
-        return _html;
-        
-    }
-    $(function () {
-        var editTableObj;
-        var comboData = {
-            "3": ["需要照片", "不需要照片"],
-        };
-        var setting = {
-            responsive: {
+    // 系統-人員列表
+    $('#system_user').dataTable( {
+        "ajax": {
+            "url": "static/json/system_user.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
             breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'name',title: "名稱" },
+            { data:  'acc',title: "帳號" },
+            { data:'permissions' ,title:"權限"},
+            { data:'expirydate' ,title:"到期日"},
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="edit_user" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_user" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                },"className": "all"
+            },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+        // 系統-權限列表
+        $('#system_permissions').dataTable( {
+            "ajax": {
+                "url": "static/json/system_permissions.json",
+                "type": "POST",
+                "deferRender": true
+            },
+            "responsive": {
+                breakpoints: [
                 { name: 'desktop',  width: Infinity },
                 { name: 'tablet',  width: 1280 },
                 { name: 'tablet-l', width: 1024 },
                 { name: 'tablet-p', width: 767 },//原本是768~1024不含768
                 { name: 'mobile-l', width: 480 },
                 { name: 'mobile-p', width: 320 }
-            ]
+                ]
             },
-            columns: [
-                { "data": "Testitems"},
-                { "data": "Roadstandard"},
-                { "data": "Answer"},
-                { "data":"ImageColumn"},
+            "lengthMenu": [10, 50, 100, "全部"],
+            "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+                { data:'name',title: "名稱" },
+                { data:'project',title: "專案" },
+                { data:'meeting' ,title:"會議"},
+                { data:'photo' ,title:"照片"},
+                { data:'form' ,title:"表單"},
+                { data:'schedule' ,title:"進度"},
+                { data:'valuation' ,title:"計價"},
+                { data:'check' ,title:"簽到"},
+                { data:'system' ,title:"系統"},
                 { data: null ,
                     title: "操作",
-                    render: function (data, type, full, meta) {
-                        return data = '<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">編輯全部</button>'
+                    orderable: false,
+                    "render": function (data, type, full, meta) {
+                        return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                        + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                     },"className": "all"
                 },
             ],
-            columnDefs: [{
-                "targets": [0, 1, 2],
-                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        $(cell).click(function () {
-                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
-                            var aInput = $(this).find(":input");
-                            aInput.focus().val(cellData);
-                        });
-                        $(cell).on("blur", ":input", function () {
-                            var text = $(this).val();
-                            $(cell).html(text);
-                            editTableObj.cell(cell).data(text)
-                        })
-                    }
-                },
-                {   "className": "ImageColumn",
-                    "targets": [3],
-                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        var aInput;
-                        $(cell).click(function () {
-                            $(this).html(createCombox(comboData[colIndex]));
-                            var aInput = $(this).find(":input");
-                            aInput.focus().val("");
-                        });
-                        $(cell).on("click", ":input", function (e) {
-                            e.stopPropagation();
-                        });
-                        $(cell).on("change", ":input", function () {
-                            $(this).blur();
-                        });
-                        $(cell).on("blur", ":input", function () {
-                            var text = $(this).find("option:selected").text();
-                            editTableObj.cell(cell).data(text)
-                        });
-                    }
-                },
-            ],
-            data: [{
-                "Testitems": "既有路面設施:標線、標記",
-                "Roadstandard": "現況照片、紀錄",
-                "Answer": "已錄影存檔,依照片記錄",
-                "ImageColumn": "需要照片",
-                null: null,
-            }],
-            ordering: false,
-            paging: false,
-            info: false,
-            searching: false,
-        };
-        editTableObj = $("#myGrid").DataTable(setting);
+            "language": {url: "static/json/zh_Hant.json"},
+        });
 
-        // var ts = document.getElementsByClassName('Destroy_group');
-        // var td = ts[1]
-        // console.log(td.innerHTML)
-    });
-    
-    // 權限管理列表
-    $('#permissionsTable').dataTable( {
+    // 用戶
+    $('#UserTable').dataTable( {
         "ajax": {
-            "url": "static/json/permissions.json",
+            "url": "static/json/user.json",
             "type": "POST",
             "deferRender": true
         },
+        "ordering": false,
         "responsive": {
             breakpoints: [
             { name: 'desktop',  width: Infinity },
@@ -239,31 +188,31 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Permissions_Name',title: "權限名稱"},
-            { data: 'Project',title: "專案管理"},
-            { data:'Tasklist' ,title:"代辦事項"},
-            { data:'Device' ,title:"設備日曆"},
-            { data:'Clock' ,title:"打卡系統"},
-            { data:'Sys' ,title:"系統設定"},
+            { data: 'Client_Id',title: "廠商ID"},
+            { data: 'Permission_Group',title: "權限群組"},
+            { data:'User_Name' ,title:"名稱"},
+            { data:'User_Acc' ,title:"設備名稱"},
+            { data:'User_Password' ,title:"密碼"},
+            { data: 'Email',title: "信箱"},
             { data: null ,
                 title: "操作",
-                orderable: false,
-                "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="Edit_Permissions" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_Permissions" title="編輯">編輯</button>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
+                render: function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="Edit_User" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_User" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
 
-    // 帳號設定列表
-    $('#accountTable').dataTable( {
+    // 裝置
+    $('#DeviceTable').dataTable( {
         "ajax": {
-            "url": "static/json/account.json",
+            "url": "static/json/device.json",
             "type": "POST",
             "deferRender": true
         },
+        "ordering": false,
         "responsive": {
             breakpoints: [
             { name: 'desktop',  width: Infinity },
@@ -276,56 +225,98 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'User_Name',title: "權限名稱"},
-            { data: 'User_Acc',title: "帳號"},
-            { data:'Permission_Group' ,title:"權限群組"},
-            { data:'Expiry_Date' ,title:"到期日"},
-            { data: null ,
-                title: "操作",
-                orderable: false,
-                "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="Edit_Account" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_Account" title="編輯">編輯</button>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
-                },"className": "all"
+            { data: 'Client_Id',title: "廠商ID"},
+            { data: 'Device_Sim_Id',title: "SimID"},
+            { data:'Device_Sn' ,title:"設備序號"},
+            { data:'Device_Name' ,title:"設備名稱"},
+            { data:'Device_Licenseplat' ,title:"設備車號"},
+            { data: 'Device_Capture_Mode',
+                title: "拍照模式",
+                render: function (data, type, row) {
+                    if (data == '1'){
+                        return '距離(米)';
+                    }
+                    else 
+                    {
+                        return '時間(秒)'
+                    }
+                }
             },
-        ],
-        "language": {url: "static/json/zh_Hant.json"},
-    });
-    
-    // 檢查表紀錄列
-    $('#recordTable').dataTable( {
-        "ajax": {
-            "url": "static/json/record.json",
-            "type": "POST",
-            "deferRender": true
-        },
-        "responsive": {
-            breakpoints: [
-            { name: 'desktop',  width: Infinity },
-            { name: 'tablet',  width: 1280 },
-            { name: 'tablet-l', width: 1024 },
-            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
-            { name: 'mobile-l', width: 480 },
-            { name: 'mobile-p', width: 320 }
-            ]
-        },
-        "lengthMenu": [10, 50, 100, "全部"],
-        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Number',title: "序號"},
-            { data: 'Date',title: "更新日期"},
-            { data:'Examine' ,title:"檢查位置"},
-            { data:'Dtime' ,title:"檢查時機"},
+            { data: 'Device_Capture_Interval',title: "拍照間隔"},
+            { data: 'Device_Stream_Url',
+                title: "串流網址",
+                    render: function (data, type, row) {
+                       return '<a href="" target="_blank">'+data+'</a>' // 這邊是加連結
+                    }
+            },
             { data: null ,
                 title: "操作",
-                orderable: false,
-                "render": function (data, type, full, meta) {
-                    return data = '<a href="#.html" data-id="edit_record" class="btn btn-success btn-sm me-2 text-white" title="編輯">編輯</a>'
-                    + '<a href="#" data-id="PDF" class="btn btn-danger btn-sm me-2 text-white" title="PDF"><i class="fas fa-file-pdf me-2"></i>匯出</a>'
-                    + '<a href="#" data-id="word" class="btn btn-primary btn-sm me-2 text-white" title="word"><i class="fas fa-file-word me-2"></i>匯出</a>'
-                    + '<button class="btndel btn-sm text-white" data-id="del" title="刪除">刪除</button>'
+                render: function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="Edit_Device" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_Device" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
 });
+
+// function tableset(url, tableID){
+//     $.ajax({
+//         url: url,
+//         type: 'POST',
+//         deferRender: true,
+//         data: { },
+//         success: function(data) {
+//         drawtable(
+//             tableID, data.Number, data.Clientname,
+//             data.Shortname, data.Acc,  data.Password,   data.City,
+//             data.Dis, data.Permission
+//             );
+//         },
+//         error : function() {
+//         alert('伺服器異常！')
+//         }
+//     });
+// }
+
+// function drawtable(tableID, Number, Clientname, Shortname, Acc, Password, City, Dis, Permission){
+//     var myTable =  $('#'+tableID).DataTable()
+//     var options = {
+//         responsive: {
+//                         breakpoints: [
+//                         { name: 'desktop',  width: Infinity },
+//                         { name: 'tablet',  width: 1280 },
+//                         { name: 'tablet-l', width: 1024 },
+//                         { name: 'tablet-p', width: 767 },
+//                         { name: 'mobile-l', width: 480 },
+//                         { name: 'mobile-p', width: 320 }
+//                         ]
+//                     },
+//         lengthMenu: [10, 50, 100, "全部"],
+//         columns: [
+//             { data: Number, title: "序號"},
+//             { data: Clientname, title: "客戶名稱" },
+//             { data: Shortname , title:"簡稱"},
+//             { data: Acc , title:"帳號"},
+//             { data: Password , title:"密碼"},
+//             { data:  City, title: "縣市" },
+//             { data:  Dis, title: "行政區"},
+//             { data:  Permission, title: "權限設定" ,orderable: false,},
+//             { data: null ,
+//                 title: "操作",
+//                 orderable: false,
+//                 "render": function (data, type, full, meta) {
+//                     return data = '<button class="btnedit btn-sm me-2" data-id="edit" data-bs-toggle="modal" data-bs-target="#Edit" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+//                     + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+//                 },"className": "operate"
+//             },
+//         ],
+//         "language": {url: "static/json/zh_Hant.json"},
+//     };
+//     $(document).ready(function () {
+//         $(myTable).options();
+//     });
+// }
+
+// tableset('static/json/client.json',  'clientTable')

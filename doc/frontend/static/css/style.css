@@ -1,51 +1,138 @@
-.logo-text a,.logo-icon{
-	color: #fff
+body{
+    font-family: monospace;
 }
-.tablebg{
-	background: #fff;
+.simplebar-wrapper i{
+color: #57e3e8;
 }
-.btnedit{
-    border: none;
+.logo-text ,.sidebar-wrapper .metismenu a{
+    color: #4c5258;
 }
-.btnedit{
-    background: #08C86B;
+.sidebar-wrapper{
+    background: #fff;
+}
+.sidebar-wrapper .metismenu a:hover{
+    background: #e9ecef;
+}
+.sidebar-wrapper .metismenu .mm-active>a{
+    background: inherit;
+}
+.breadcrumb-item i{
+    color: #57e3e8;
+}
+.manage a{
+    color: #1A332F;
+    background: #ECECEC;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.manage a i,.addmanage a i{
+    font-size: 1.5rem;
+}
+.manage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+.manage span{
+    margin-top: 5px;
+    font-weight: bold;
+}
+.manage-item:hover{
+    color: #fff;
+    background: #04CAE1;
+    transition: 300ms;
+}
+.border-left{
+    border-left: 1px solid #ECECEC;
+}
+.addmanage .addmanage-item,.addmanage{
+    color: #BBBBBB;
+}
+.addmanage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1.5rem;
+}
+.addmanage-item:hover{
+    color: #04CAE1;
+    transition: 300ms;
+}
+.selectstate{
+    margin: 1rem 0;
+}
+.selected{
+    background: #04CAE1;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.selected:hover{
     color: #fff;
 }
-.btnedit:hover{
-    background: #00ad59;
+.unselected{
+    background: #D8D8D8;
+    color: #A2A2A2;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: inline-block;
 }
-.btndel{
+.unselected:hover{
+    background: #04CAE1;
+    color: #fff;
+    transition: 300ms;
+}
+#backstage_account thead,#backstage_company thead,#system_user thead,#system_permissions thead{
+    background: #F6F6F6;
+}
+.edit,.del{
     border: none;
 }
-.btndel{
-    background: #ff7a70;
-}
-.btndel:hover{
-    background: #fb3d3d;
-}
-.btn-brown {
-    background: #c53737;
+.edit:hover,.del:hover{
+    background: #04CAE1;
     color: #fff;
-    border-color: #832f2f;
+    transition: 200ms;
 }
-.table>tbody {
-    vertical-align: baseline;
+.modal-header{
+    background: #04CAE1;
 }
-.permissions_list{background: #43cdd1;}
-.permissions_list li a{color: #fff;}
-.permissions_list .nav-link.active{
+.modal-title{
     color: #fff;
     font-weight: bold;
-    font-size: 1rem;
-    background: #33abad;
 }
-label.form-check-label {
-    font-size: 1rem;
-    margin-bottom: 5px;
+.form-label{
+    color: #1A332F;
 }
-/* #Image_Recognition_form>.input-images>.image-uploader{
-    border: 1px solid #919191;
-    border-style: dashed;
-    border-radius: 0.25rem;
-    background: #f8f9fa;
-} */
+.btn-04CAE1{
+    background: #04CAE1;
+    color: #fff;
+}
+.btn-04CAE1:hover{
+    background: #04a5b7;
+    color: #fff;
+}
+.btn-secondary{
+    background-color: #c5c5c5;
+    border:none
+}
+.dataTables_filter{
+    margin-bottom: 10px;
+}
+.modal-header.editmodal{
+    background: #b7c7c9;
+}
+.btn-83c7cf{
+    background: #83c7cf;
+    color: #fff;
+}
+.btn-83c7cf:hover{
+    background: #04a5b7;
+    color: #fff;
+}

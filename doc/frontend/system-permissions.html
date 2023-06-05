@@ -33,7 +33,7 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-  <title>鋪面檢測系統</title>
+  <title>權限管理</title>
 </head>
 
 <body>
@@ -102,13 +102,13 @@
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+          <a class="has-arrow" href="system-user.html">
             <div class="parent-icon"><i class="fa-solid fa-gear"></i></div>
             <div class="menu-title ms-3">系統管理</div>
           </a>
         </li>
         <li>
-          <a href="#.html">
+          <a href="backstage-company.html">
             <div class="parent-icon"><i class="fa-solid fa-gears"></i></div>
             <div class="menu-title">後臺管理</div>
           </a>
@@ -409,7 +409,7 @@
       <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-          <div class="breadcrumb-title pe-3">後檯管理</div>
+          <div class="breadcrumb-title pe-3">系統管理</div>
           <div class="ps-3">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb mb-0 p-0">
@@ -422,60 +422,123 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-10 d-flex">
+              <div class="col-12 col-sm-7 col-md-8 col-xl-8 col-xxl-9 d-flex justify-content-evenly justify-content-sm-start">
                 <div class="manage">
-                  <a href="javascript:;" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
-                  <span>廠商管理</span>
+                  <a href="system-user.html" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
+                  <span>人員管理</span>
                 </div>
                 <div class="manage">
-                  <a href="javascript:;" class="manage-item"><i class="fa-solid fa-user-lock"></i></a>
-                  <span>帳號管理</span>
-                </div>
-                <div class="manage">
-                  <a href="javascript:;" class="manage-item"><i class="fa-solid fa-clock-rotate-left"></i></a>
-                  <span>登入紀錄</span>
+                  <a href="system-permissions.html" class="manage-item"><i class="fa-solid fa-user-shield"></i></a>
+                  <span>權限管理</span>
                 </div>
               </div>
-              <div class="col-md-2 d-flex border-left align-items-center justify-content-center">
+              <div class="col-12 col-sm-5 col-md-4 col-xl-4 col-xxl-3 d-flex border-left align-items-center justify-content-center mt-3 mt-sm-0">
                 <div class="addmanage">
-                  <a href="javascript:;" class="addmanage-item"><i class="fa-solid fa-user-plus"></i></a>
-                  <span>新增廠商</span>
+                  <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i></a>
+                  <span>新增人員</span>
+                  <!-- 新增人員modal -->
+                  <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="adduserLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="adduserLabel">新增人員</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form name="add_user_form" id="add_user_form" class="row gy-3" method="post" action="">
+                            <div class="col-12">
+                              <label class="form-label">名稱</label>
+                              <input type="text" id="username" name="username" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">帳號</label>
+                              <input type="text" id="acc" name="acc" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">到期日</label>
+                              <input type="date" id="expirydate" name="expirydate" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                              <label class="form-label">權限</label>
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>權限名稱</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer mt-4">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-04CAE1">新增</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新增人員modal END-->
                 </div>
                 <div class="addmanage">
-                  <a href="javascript:;" class="addmanage-item"><i class="fa-solid fa-user-shield"></i></a>
-                  <span>新增帳號</span>
+                  <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#addpermissions"><i class="fa-solid fa-user-shield"></i></a>
+                  <span>新增權限</span>
+                  <!-- 新增權限modal -->
+                  <div class="modal fade" id="addpermissions" tabindex="-1" aria-labelledby="addpermissionsLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addpermissionsLabel">新增權限</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form name="add_permissions_form" id="add_permissions_form" class="row gy-3" method="post" action="">
+                            <div class="col-12">
+                              <label class="form-label">權限名稱</label>
+                              <input type="text" id="permissionsname" name="permissionsname" class="form-control" minlength="2" required>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer mt-4">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-04CAE1">新增</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新增權限modal END-->
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-body row gy-4">
-              <h5 class="fw-bold mb-3">帳號列表</h5>
-              <form name="select_acc_form" id="select_acc_form" class="row" method="post" action="">
-                <div class="col-12 col-md-6 mb-2 mb-md-0">
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>廠商名稱</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
-                  <div class="col-6">
-                    <input class="form-control" type="date"/>
+          <div class="card-body row gy-3">
+              <h5 class="fw-bold mb-0">權限列表</h5>
+              <table id="system_permissions" class="display nowrap mt-5" style="width: 100%;"></table>
+              <!-- 編輯權限modal -->
+              <div class="modal fade" id="edit_permissions" tabindex="-1" aria-labelledby="edit_permissionsLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header editmodal">
+                      <h5 class="modal-title" id="edit_permissionsLabel">編輯權限</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form name="edit_permissions_form" id="edit_permissions_form" class="row gy-3" method="post" action="">
+                        <div class="col-12">
+                          <label class="form-label">權限名稱</label>
+                          <input type="text" id="permissionsname" name="permissionsname" class="form-control" value="一般人員" minlength="2" required>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer mt-4">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-83c7cf">保存</button>
+                    </div>
                   </div>
-                  <span>至</span>
-                  <div class="col-5">
-                    <input class="form-control" type="date"/>
-                  </div>
                 </div>
-              </form>
-              <div class="selectstate">
-                <a href="#" class="unselected">全部</a>
-                <a href="#" class="unselected">已到期</a>
               </div>
-              <table id="Account_Management" class="display nowrap mt-5" style="width: 100%;"></table>
+              <!-- 編輯權限modall END-->
+
               <!-- <div class="position-relative">
                 <input type="text" class="form-control ps-5 radius-30" placeholder="Search Order">
                 <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
