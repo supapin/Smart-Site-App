@@ -1,28 +1,43 @@
 {
     "data": [
         {   
-            "acc": "Cqwsdf4985",
             "company": "金硯科技工程",
-            "opendate":       "2023-05-24",
-            "expirydate":      "2025-05-24"
+            "name": "xxxxx",
+            "acc": "Cqwsdf4985",
+            "permissions": "最高權限",
+            "superuser": "是"
         },
         {   
-            "acc": "Cqwsdf4985",
             "company": "金硯科技工程",
-            "opendate":       "2023-05-24",
-            "expirydate":      "2025-05-24"
+            "name": "xxxxx",
+            "acc": "dfha5464",
+            "permissions": "工地主任",
+            "superuser": "否"
+        },{   
+            "company": "金硯科技工程",
+            "name": "xxxxx",
+            "acc": "y7w1qa64g",
+            "permissions": "一般人員",
+            "superuser": "否"
+        },{   
+            "company": "金硯科技工程",
+            "name": "xxxxx",
+            "acc": "uo5qewt465",
+            "permissions": "主管單位",
+            "superuser": "否"
+        },{   
+            "company": "金硯科技工程",
+            "name": "xxxxx",
+            "acc": "bvcnx54",
+            "permissions": "施工人員",
+            "superuser": "否"
         },
         {   
-            "acc": "Cqwsdf4985",
             "company": "金硯科技工程",
-            "opendate":       "2023-05-24",
-            "expirydate":      "2025-05-24"
-        },
-        {   
-            "acc": "Cqwsdf4985",
-            "company": "金硯科技工程",
-            "opendate":       "2023-05-24",
-            "expirydate":      "2025-05-24"
+            "name": "xxxxx",
+            "acc": "qwet6546",
+            "permissions": "會計",
+            "superuser": "否"
         }
     ]
 }

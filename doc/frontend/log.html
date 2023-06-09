@@ -33,7 +33,7 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-  <title>鋪面檢測系統</title>
+  <title>登入紀錄</title>
 </head>
 
 <body>
@@ -90,7 +90,7 @@
           </a>
         </li>
         <li>
-<a class="has-arrow" href="official.html">
+          <a class="has-arrow" href="official.html">
             <div class="parent-icon"><i class="fa-solid fa-newspaper"></i></div>
             <div class="menu-title">公文管理</div>
           </a>
@@ -102,13 +102,13 @@
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+          <a class="has-arrow" href="system-user.html">
             <div class="parent-icon"><i class="fa-solid fa-gear"></i></div>
             <div class="menu-title ms-3">系統管理</div>
           </a>
         </li>
         <li>
-          <a href="#.html">
+          <a href="backstage-company.html">
             <div class="parent-icon"><i class="fa-solid fa-gears"></i></div>
             <div class="menu-title">後臺管理</div>
           </a>
@@ -422,13 +422,13 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-10 d-flex">
+              <div class="col-12 col-sm-7 col-md-8 col-xxl-9 d-flex justify-content-evenly justify-content-sm-start">
                 <div class="manage">
-                  <a href="javascript:;" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
+                  <a href="backstage-company.html" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
                   <span>廠商管理</span>
                 </div>
                 <div class="manage">
-                  <a href="javascript:;" class="manage-item"><i class="fa-solid fa-user-lock"></i></a>
+                  <a href="backstage-account.html" class="manage-item"><i class="fa-solid fa-user-lock"></i></a>
                   <span>帳號管理</span>
                 </div>
                 <div class="manage">
@@ -436,208 +436,174 @@
                   <span>登入紀錄</span>
                 </div>
               </div>
-              <div class="col-md-2 d-flex border-left align-items-center justify-content-center">
+              <div class="col-12 col-sm-5 col-md-4 col-xxl-3 d-flex border-left align-items-center justify-content-center mt-3 mt-sm-0">
                 <div class="addmanage">
-                  <a href="javascript:;" class="addmanage-item"><i class="fa-solid fa-user-plus"></i></a>
+                  <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#addcompany"><i class="fa-solid fa-user-plus"></i></a>
                   <span>新增廠商</span>
+                  <!-- 新增廠商modal -->
+                  <div class="modal fade" id="addcompany" tabindex="-1" aria-labelledby="addcompanyLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addcompanyLabel">新增廠商</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form name="add_company_form" id="add_company_form" class="row gy-3" method="post" action="">
+                            <div class="col-12">
+                              <label class="form-label">廠商名稱</label>
+                              <input type="text" id="companyname" name="companyname" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">簡稱</label>
+                              <input type="text" id="name" name="name" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">到期日</label>
+                              <input type="date" id="expirydate" name="expirydate" class="form-control" required>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer mt-4">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-04CAE1">新增</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新增廠商modal END-->
                 </div>
                 <div class="addmanage">
-                  <a href="javascript:;" class="addmanage-item"><i class="fa-solid fa-user-shield"></i></a>
+                  <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#addacc"><i class="fa-solid fa-user-shield"></i></a>
                   <span>新增帳號</span>
+                  <!-- 新增帳號modal -->
+                  <div class="modal fade" id="addacc" tabindex="-1" aria-labelledby="addaccLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addaccLabel">新增帳號</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form name="add_company_form" id="add_company_form" class="row gy-3" method="post" action="">
+                            <div class="col-6">
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">超級使用者</label>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <label class="form-label">名稱</label>
+                              <input type="text" id="username" name="username" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">帳號</label>
+                              <input type="text" id="acc" name="acc" class="form-control" minlength="2" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">密碼</label>
+                              <div class="input-group">
+                                <input type="text" id="user_password2" class="form-control" aria-describedby="automatic2" value="YsXASHQ54asW2" readonly>
+                                <button class="btn btn-outline-secondary" type="button" id="automatic2">自動產生</button>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <label for="exampleInputEmail1" class="form-label">電子信箱</label>
+                              <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">廠商名稱</label>
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>廠商名稱</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <div class="col-6">
+                              <label class="form-label">權限</label>
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>權限群組</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer mt-4">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-04CAE1">新增</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新增帳號modal END-->
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-body row gy-4">
-              <h5 class="fw-bold mb-3">帳號列表</h5>
-              <form name="select_acc_form" id="select_acc_form" class="row" method="post" action="">
-                <div class="col-12 col-md-6 mb-2 mb-md-0">
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>廠商名稱</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
-                  <div class="col-6">
-                    <input class="form-control" type="date"/>
+          <div class="card-body">
+              <h5 class="fw-bold">歷史紀錄</h5>
+              <table id="log" class="display nowrap mt-5" style="width: 100%;"></table>
+              <!-- 編輯帳號modal -->
+              <div class="modal fade" id="edit_account" tabindex="-1" aria-labelledby="edit_accountLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header editmodal">
+                      <h5 class="modal-title" id="edit_accountLabel">編輯帳號</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form name="edit_account_form" id="edit_account_form" class="row gy-3" method="post" action="">
+                        <div class="col-6">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">超級使用者</label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">名稱</label>
+                          <input type="text" id="username" name="username" class="form-control" minlength="2" required>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">帳號</label>
+                          <input type="text" id="acc" name="acc" class="form-control" value="Cqwsdf4985" readonly>
+                        </div>
+                        <div class="col-12">
+                          <label for="exampleInputEmail1" class="form-label">電子信箱</label>
+                          <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        </div>
+                        <div class="col-6">
+                          <label class="form-label">廠商名稱</label>
+                          <select class="form-select" aria-label="Default select example" disabled>
+                            <option selected>廠商名稱</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                        <div class="col-6">
+                          <label class="form-label">權限</label>
+                          <select class="form-select" aria-label="Default select example">
+                            <option selected>權限群組</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer mt-4">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-83c7cf">保存</button>
+                    </div>
                   </div>
-                  <span>至</span>
-                  <div class="col-5">
-                    <input class="form-control" type="date"/>
-                  </div>
                 </div>
-              </form>
-              <div class="selectstate">
-                <a href="#" class="unselected">全部</a>
-                <a href="#" class="unselected">已到期</a>
               </div>
-              <table id="Account_Management" class="display nowrap mt-5" style="width: 100%;"></table>
-              <!-- <div class="position-relative">
-                <input type="text" class="form-control ps-5 radius-30" placeholder="Search Order">
-                <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
-              </div> -->
-              <!-- <div class="ms-auto">
-                <a href="javascript:;" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add New Order</a>
-              </div> -->
-            <!-- <div class="table-responsive">
-              <table class="table mb-0">
-                <thead class="table-light">
-                  <tr>
-                    <th>Order#</th>
-                    <th>Company Name</th>
-                    <th>Status</th>
-                    <th>Total</th>
-                    <th>Date</th>
-                    <th>View Details</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000354</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>FulFilled</div></td>
-                    <td>$485.20</td>
-                    <td>June 10,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000986</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$650.30</td>
-                    <td>June 12,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000536</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$159.45</td><td>June 14,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000678</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$968.40</td>
-                    <td>June 16,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000457</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$689.50</td><td>June 18,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000685</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$478.60</td>
-                    <td>June 20,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000356</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$523.30</td>
-                    <td>June 21,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000875</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$960.20</td>
-                    <td>June 24,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000658</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$428.10</td>
-                    <td>June 25,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000689</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$876.60</td>
-                    <td>June 26,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> -->
+              <!-- 編輯帳號modall END-->
           </div>
         </div>
       </div>

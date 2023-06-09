@@ -70,19 +70,19 @@
           </a>
         </li>
         <li>
-          <a href="javascript:;" class="has-arrow">
+          <a href="photomanage.html" class="has-arrow">
             <div class="parent-icon"><i class="fa-regular fa-images"></i></div>
             <div class="menu-title">照片管理</div>
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+          <a class="has-arrow" href="form-manage.html">
             <div class="parent-icon"><i class="lni lni-remove-file"></i></div>
             <div class="menu-title">表單管理</div>
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+          <a class="has-arrow" href="schedule.html">
             <div class="parent-icon"><i class="fa-solid fa-chart-pie"></i></div>
             <div class="menu-title">進度管理</div>
           </a>
@@ -94,13 +94,13 @@
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+<a class="has-arrow" href="official.html">
             <div class="parent-icon"><i class="fa-solid fa-newspaper"></i></div>
             <div class="menu-title">公文管理</div>
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="javascript:;">
+          <a class="has-arrow" href="punch.html">
             <div class="parent-icon"><i class="fa-solid fa-user-check"></i></div>
             <div class="menu-title">簽到管理</div>
           </a>
@@ -426,7 +426,7 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-12 col-sm-7 col-md-8 col-xl-8 col-xxl-9 d-flex justify-content-evenly justify-content-sm-start">
+              <div class="col-12 col-sm-7 col-md-8 col-xxl-9 d-flex justify-content-evenly justify-content-sm-start">
                 <div class="manage">
                   <a href="system-user.html" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
                   <span>人員管理</span>
@@ -436,7 +436,7 @@
                   <span>權限管理</span>
                 </div>
               </div>
-              <div class="col-12 col-sm-5 col-md-4 col-xl-4 col-xxl-3 d-flex border-left align-items-center justify-content-center mt-3 mt-sm-0">
+              <div class="col-12 col-sm-5 col-md-4 col-xxl-3 d-flex border-left align-items-center justify-content-center mt-3 mt-sm-0">
                 <div class="addmanage">
                   <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i></a>
                   <span>新增人員</span>
@@ -459,8 +459,15 @@
                               <input type="text" id="acc" name="acc" class="form-control" minlength="2" required>
                             </div>
                             <div class="col-6">
-                              <label class="form-label">到期日</label>
-                              <input type="date" id="expirydate" name="expirydate" class="form-control" required>
+                              <label class="form-label">密碼</label>
+                              <div class="input-group">
+                                <input type="text" id="user_password2" class="form-control" aria-describedby="automatic2" value="YsXASHQ54asW2" readonly>
+                                <button class="btn btn-outline-secondary" type="button" id="automatic2">自動產生</button>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <label for="exampleInputEmail1" class="form-label">電子信箱</label>
+                              <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                             </div>
                             <div class="col-12">
                               <label class="form-label">權限</label>
@@ -554,169 +561,6 @@
                 </div>
               </div>
               <!-- 編輯權限modall END-->
-
-              <!-- <div class="position-relative">
-                <input type="text" class="form-control ps-5 radius-30" placeholder="Search Order">
-                <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
-              </div> -->
-              <!-- <div class="ms-auto">
-                <a href="javascript:;" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add New Order</a>
-              </div> -->
-            <!-- <div class="table-responsive">
-              <table class="table mb-0">
-                <thead class="table-light">
-                  <tr>
-                    <th>Order#</th>
-                    <th>Company Name</th>
-                    <th>Status</th>
-                    <th>Total</th>
-                    <th>Date</th>
-                    <th>View Details</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000354</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>FulFilled</div></td>
-                    <td>$485.20</td>
-                    <td>June 10,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000986</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$650.30</td>
-                    <td>June 12,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000536</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$159.45</td><td>June 14,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000678</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$968.40</td>
-                    <td>June 16,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000457</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$689.50</td><td>June 18,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000685</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Confirmed</div></td>
-                    <td>$478.60</td>
-                    <td>June 20,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000356</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$523.30</td>
-                    <td>June 21,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000875</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$960.20</td>
-                    <td>June 24,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000658</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>FulFilled</div></td>
-                    <td>$428.10</td>
-                    <td>June 25,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div><input class="form-check-input me-3" type="checkbox" value="" aria-label="..."></div>
-                        <div class="ms-2"><h6 class="mb-0 font-14">#OS-000689</h6></div>
-                      </div>
-                    </td>
-                    <td>Gaspur Antunes</td>
-                    <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>Partially shipped</div></td>
-                    <td>$876.60</td>
-                    <td>June 26,2020</td>
-                    <td><button type="button" class="btn btn-primary btn-sm radius-30 px-4">View Details</button></td>
-                    <td><div class="d-flex order-actions"><a href="javascript:;" class=""><i class='bx bxs-edit'></i></a><a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a></div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> -->
           </div>
         </div>
       </div>

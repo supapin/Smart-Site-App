@@ -89,16 +89,20 @@ color: #57e3e8;
     color: #fff;
     transition: 300ms;
 }
-#backstage_account thead,#backstage_company thead,#system_user thead,#system_permissions thead{
+#backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
+#punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead{
     background: #F6F6F6;
 }
-.edit,.del{
+.edit,.del,.userhistory,.unselected,.amend,.view,.download{
     border: none;
 }
-.edit:hover,.del:hover{
+.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover{
     background: #04CAE1;
     color: #fff;
     transition: 200ms;
+}
+.unselected:focus{
+    outline: none;
 }
 .modal-header{
     background: #04CAE1;
@@ -135,4 +139,110 @@ color: #57e3e8;
 .btn-83c7cf:hover{
     background: #04a5b7;
     color: #fff;
+}
+.userhistory{
+    border-radius: 50rem;
+}
+.checkboxdet{
+    background: #D8D8D8;
+    color: #A2A2A2;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: inline-block;
+}
+.checkboxdet:hover {
+    background: #c12a00;
+    color: #fff;
+    transition: 300ms;
+}
+.fa-file-pdf{
+    color: red;
+}
+.fa-file-csv{
+    color: green;
+}
+.fa-file-word{
+    color: #0083cf;
+}
+.btn-outline-00B9BF{
+    background: #D8D8D8;
+    color: #A2A2A2;
+    border: none;
+}
+.btn-outline-00B9BF:hover{
+    background-color: #00c8cf;
+    border: none;
+    color: #fff;
+}
+.btn-check:checked+.btn-outline-00B9BF{
+    background-color: #00B9BF;
+    border-color: #00B9BF;
+    color: #fff;
+}
+.projectveiw{
+    min-height: 800px;
+}
+.project{
+    overflow: auto;
+    max-height: 750px;
+}
+.project a{
+    color: #000;
+}
+.project li:hover{
+    background: #f1f1f1;
+}
+.B9BF{
+    background: #00B9BF;
+    min-width: 30px;
+}
+.gray{
+    color: #A2A2A2;
+}
+.addbtn{
+    font-weight: bold;
+    border-radius: 50rem;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+}
+.fa-circle-plus{
+    color: #00B9BF;
+}
+.addbtn:hover{
+    background: #d9dfe0;
+}
+.formtitle{
+    font-weight: bold;
+}
+.show-n{
+    box-shadow: none;
+}
+.photo{
+    width: 40px;
+    opacity: .85;
+}
+.font-gary{
+    color: #b9b9b9;
+}
+.crecle-bg{
+    display: inline-block;
+    padding: 2.7rem 3rem;
+}
+.crecle-bg i{
+    color: #57E3E8;
+    font-size: 2rem;
+}
+.btn-outline-57E3E8{
+    border-color: #57E3E8;
+    color: #57E3E8;
+}
+.btn-outline-57E3E8:hover{
+    background: #57E3E8;
+    color: #fff;
+}
+.text-overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
 }

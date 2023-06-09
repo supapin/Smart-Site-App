@@ -43,7 +43,6 @@ $(document).ready(function() {
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
             { data: 'company',title: "廠商"},
             { data: 'name',title: "簡稱" },
-            { data:  'acc',title: "帳號" },
             { data:'opendate' ,title:"開通日"},
             { data:'expirydate' ,title:"到期日"},
             { data: null ,
@@ -77,10 +76,11 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'company',title: "廠商名稱"},
+            { data: 'name',title: "名稱"},
             { data: 'acc',title: "帳號"},
-            { data: 'company',title: "廠商名稱" },
-            { data:'opendate' ,title:"開通日"},
-            { data:'expirydate' ,title:"到期日"},
+            { data: 'permissions',title: "權限群組"},
+            {data: 'superuser',title: "超級使用者"},
             { data: null ,
                 title: "操作",
                 orderable: false,
@@ -89,6 +89,33 @@ $(document).ready(function() {
                     + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 登入紀錄
+    $('#log').dataTable( {
+        "ajax": {
+            "url": "static/json/log.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'acc',title: "帳號"},
+            { data: 'time',title: "時間"},
+            { data: 'ip',title: "IP"},
+            { data: 'state',title: "狀態"}
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
@@ -114,8 +141,8 @@ $(document).ready(function() {
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
             { data: 'name',title: "名稱" },
             { data:  'acc',title: "帳號" },
+            { data:  'email',title: "電子信箱" },
             { data:'permissions' ,title:"權限"},
-            { data:'expirydate' ,title:"到期日"},
             { data: null ,
                 title: "操作",
                 orderable: false,
@@ -128,55 +155,13 @@ $(document).ready(function() {
         "language": {url: "static/json/zh_Hant.json"},
     });
 
-        // 系統-權限列表
-        $('#system_permissions').dataTable( {
-            "ajax": {
-                "url": "static/json/system_permissions.json",
-                "type": "POST",
-                "deferRender": true
-            },
-            "responsive": {
-                breakpoints: [
-                { name: 'desktop',  width: Infinity },
-                { name: 'tablet',  width: 1280 },
-                { name: 'tablet-l', width: 1024 },
-                { name: 'tablet-p', width: 767 },//原本是768~1024不含768
-                { name: 'mobile-l', width: 480 },
-                { name: 'mobile-p', width: 320 }
-                ]
-            },
-            "lengthMenu": [10, 50, 100, "全部"],
-            "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-                { data:'name',title: "名稱" },
-                { data:'project',title: "專案" },
-                { data:'meeting' ,title:"會議"},
-                { data:'photo' ,title:"照片"},
-                { data:'form' ,title:"表單"},
-                { data:'schedule' ,title:"進度"},
-                { data:'valuation' ,title:"計價"},
-                { data:'official' ,title:"公文"},
-                { data:'check' ,title:"簽到"},
-                { data:'system' ,title:"系統"},
-                { data: null ,
-                    title: "操作",
-                    orderable: false,
-                    "render": function (data, type, full, meta) {
-                        return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
-                        + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
-                    },"className": "all"
-                },
-            ],
-            "language": {url: "static/json/zh_Hant.json"},
-        });
-
-    // 用戶
-    $('#UserTable').dataTable( {
+    // 系統-權限列表
+    $('#system_permissions').dataTable( {
         "ajax": {
-            "url": "static/json/user.json",
+            "url": "static/json/system_permissions.json",
             "type": "POST",
             "deferRender": true
         },
-        "ordering": false,
         "responsive": {
             breakpoints: [
             { name: 'desktop',  width: Infinity },
@@ -189,31 +174,35 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Client_Id',title: "廠商ID"},
-            { data: 'Permission_Group',title: "權限群組"},
-            { data:'User_Name' ,title:"名稱"},
-            { data:'User_Acc' ,title:"設備名稱"},
-            { data:'User_Password' ,title:"密碼"},
-            { data: 'Email',title: "信箱"},
+            { data:'name',title: "名稱" },
+            { data:'project',title: "專案" },
+            { data:'meeting' ,title:"會議"},
+            { data:'photo' ,title:"照片"},
+            { data:'form' ,title:"表單"},
+            { data:'schedule' ,title:"進度"},
+            { data:'valuation' ,title:"計價"},
+            { data:'official' ,title:"公文"},
+            { data:'check' ,title:"簽到"},
+            { data:'system' ,title:"系統"},
             { data: null ,
                 title: "操作",
-                render: function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="Edit_User" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_User" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
-                    + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
 
-    // 裝置
-    $('#DeviceTable').dataTable( {
+    // 簽到-人員列表
+    $('#punch_history').dataTable( {
         "ajax": {
-            "url": "static/json/device.json",
+            "url": "static/json/punch_history.json",
             "type": "POST",
             "deferRender": true
         },
-        "ordering": false,
         "responsive": {
             breakpoints: [
             { name: 'desktop',  width: Infinity },
@@ -226,98 +215,601 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data: 'Client_Id',title: "廠商ID"},
-            { data: 'Device_Sim_Id',title: "SimID"},
-            { data:'Device_Sn' ,title:"設備序號"},
-            { data:'Device_Name' ,title:"設備名稱"},
-            { data:'Device_Licenseplat' ,title:"設備車號"},
-            { data: 'Device_Capture_Mode',
-                title: "拍照模式",
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'username',title: "名稱" },
+            { data:'useracc',title: "帳號" },
+            { data:'department' ,title:"負責崗位"},
+            { data: null
+                ,title:"簽到記錄",
                 render: function (data, type, row) {
-                    if (data == '1'){
-                        return '距離(米)';
-                    }
-                    else 
-                    {
-                        return '時間(秒)'
-                    }
+                    return '<button type="button" data-id="userhistory" class="btn-sm me-2 userhistory" data-bs-toggle="modal" data-bs-target="#userhistory" title="簽到記錄"><i class="fa-solid fa-user-clock me-2"></i>簽到記錄</button>'
                 }
             },
-            { data: 'Device_Capture_Interval',title: "拍照間隔"},
-            { data: 'Device_Stream_Url',
-                title: "串流網址",
-                    render: function (data, type, row) {
-                       return '<a href="" target="_blank">'+data+'</a>' // 這邊是加連結
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+        "drawCallback": function( settings ) {
+            //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall").prop("checked", true);
+            } else {
+                $("#checkall").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
                     }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+            if ($(this).is(":checked") == false) {
+                $('#checkall').prop("checked", false);
+            }
+        }
+
+    // 人員記錄
+    $('#punchrecordtable').dataTable( {
+        "ajax": {
+            "url": "static/json/punchrecordtable.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall2' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'date',title: "日期" },
+            { data:'punchin',title: "上班" },
+            { data:'punchout' ,title:"下班"},
+            { data:'leave', title: "假單"},
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="amend btn-sm me-2" data-id="amend" title="補卡"><i class="fa-solid fa-stopwatch"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+        "drawCallback": function( settings ) {
+        //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall2").prop("checked", true);
+            } else {
+                $("#checkall2").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall2").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+            if ($(this).is(":checked") == false) {
+                $('#checkall2').prop("checked", false);
+            }
+        }
+
+    // 簽到紀錄
+    $('#userpunch_history').dataTable( {
+        "ajax": {
+            "url": "static/json/userpunch_history.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data:'date',title: "日期" },
+            { data:'punchin',title: "上班" },
+            { data:'punchout',title:"下班"},
+            { data: 'leave', title:"假單"}
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    
+    // 公文列表
+    $('#officialdocument').dataTable( {
+        "ajax": {
+            "url": "static/json/officialdocument.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall2' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'number',title: "字號" },
+            { data:'recipient',title: "受文者" },
+            { data:'subject',title:"主旨"},
+            { data: 'date', title:"日期"},
+            { data: null ,
+                title: "查看詳情",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                },"className": "all"
             },
             { data: null ,
                 title: "操作",
-                render: function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="Edit_Device" class="btnedit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#Edit_Device" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
-                    + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+            "drawCallback": function( settings ) {
+            //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall2").prop("checked", true);
+            } else {
+                $("#checkall2").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall2").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+        if ($(this).is(":checked") == false) {
+            $('#checkall').prop("checked", false);
+        }
+    }
+
+        // 公文列表
+    $('#formtable').dataTable( {
+        "ajax": {
+            "url": "static/json/formtable.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall2' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'formname',title: "表單名稱" },
+            { data:'formtype',title: "類型",
+                "render": function (data, type, full, meta) {
+                    if (data == '日誌表'){
+                        return data = '<span class="p-1 bg-light-info text-info border-0">日誌表</span>';
+                            
+                    }
+                    if (data == '檢查表'){
+                        return data = '<span class="p-1 bg-light-success text-success border-0">檢查表</span>';
+                            
+                    }
+                    else{
+                        return data = '<span class="p-1 bg-light-warning text-warning border-0">其他</span>';
+                    }   
+                },
+            },
+            { data:'date',title:"日期"},
+            { data: null ,
+                title: "查看詳情",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+            "drawCallback": function( settings ) {
+            //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall2").prop("checked", true);
+            } else {
+                $("#checkall2").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall2").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+        if ($(this).is(":checked") == false) {
+            $('#checkall').prop("checked", false);
+        }
+    }
+
+    // 照片管理
+    $('#phototable').dataTable( {
+        "ajax": {
+            "url": "static/json/phototable.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data:'project',title: "專案" },
+            { data:'photoname',
+                title: "照片",
+                render: function (data, type, row) {
+                    return '<a href="static/image/DJI_0085.jpg" class="photourl" target="_blank"><img src="static/image/DJI_0085.jpg" alt="" class="photo"></img> '+'</a>' // 這邊是加連結
+                    
+                }
+            },
+            { data:'update',title: "上傳日期" },
+            { data: null ,
+                title: "歸檔",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="歸檔"><i class="fa-solid fa-file-import me-2"></i>歸檔</button>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
+    
+    // 會議列表
+    $('#meeting').dataTable( {
+        "ajax": {
+            "url": "static/json/meeting.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall2' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'subject',title: "主旨" },
+            { data:'state',
+                title: "狀態",
+                "render": function (data, type, full, meta) {
+                    if (data == '結束'){
+                        return data = '<span class="p-1 bg-light border-0">結束</span>';
+                            
+                    }
+                    if (data == '待確認'){
+                        return data = '<span class="p-1 bg-light-info text-info border-0">待確認</span>';
+                            
+                    }
+                    if (data == '進行中'){
+                        return data = '<span class="p-1 bg-light-success text-success border-0">進行中</span>';
+                            
+                    }
+                    else{
+                        return data = '<span class="p-1 bg-light-warning text-warning border-0">未決事項</span>';
+                    }   
+                },
+            },
+            { data:'date',title:"日期"},
+            { data: null ,
+                title: "查看詳情",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+            "drawCallback": function( settings ) {
+            //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall2").prop("checked", true);
+            } else {
+                $("#checkall2").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall2").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+        if ($(this).is(":checked") == false) {
+            $('#checkall').prop("checked", false);
+        }
+    }
 });
-
-// function tableset(url, tableID){
-//     $.ajax({
-//         url: url,
-//         type: 'POST',
-//         deferRender: true,
-//         data: { },
-//         success: function(data) {
-//         drawtable(
-//             tableID, data.Number, data.Clientname,
-//             data.Shortname, data.Acc,  data.Password,   data.City,
-//             data.Dis, data.Permission
-//             );
-//         },
-//         error : function() {
-//         alert('伺服器異常！')
-//         }
-//     });
-// }
-
-// function drawtable(tableID, Number, Clientname, Shortname, Acc, Password, City, Dis, Permission){
-//     var myTable =  $('#'+tableID).DataTable()
-//     var options = {
-//         responsive: {
-//                         breakpoints: [
-//                         { name: 'desktop',  width: Infinity },
-//                         { name: 'tablet',  width: 1280 },
-//                         { name: 'tablet-l', width: 1024 },
-//                         { name: 'tablet-p', width: 767 },
-//                         { name: 'mobile-l', width: 480 },
-//                         { name: 'mobile-p', width: 320 }
-//                         ]
-//                     },
-//         lengthMenu: [10, 50, 100, "全部"],
-//         columns: [
-//             { data: Number, title: "序號"},
-//             { data: Clientname, title: "客戶名稱" },
-//             { data: Shortname , title:"簡稱"},
-//             { data: Acc , title:"帳號"},
-//             { data: Password , title:"密碼"},
-//             { data:  City, title: "縣市" },
-//             { data:  Dis, title: "行政區"},
-//             { data:  Permission, title: "權限設定" ,orderable: false,},
-//             { data: null ,
-//                 title: "操作",
-//                 orderable: false,
-//                 "render": function (data, type, full, meta) {
-//                     return data = '<button class="btnedit btn-sm me-2" data-id="edit" data-bs-toggle="modal" data-bs-target="#Edit" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
-//                     + '<button class="btndel btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
-//                 },"className": "operate"
-//             },
-//         ],
-//         "language": {url: "static/json/zh_Hant.json"},
-//     };
-//     $(document).ready(function () {
-//         $(myTable).options();
-//     });
-// }
-
-// tableset('static/json/client.json',  'clientTable')

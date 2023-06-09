@@ -1,0 +1,18 @@
+{
+    "data": [
+        {   
+            "username": "User1",
+            "useracc":  "fdhsa654",
+            "department":       "施工人員"
+        },
+        {   
+            "username": "User2",
+            "useracc":  "ghje9879",
+            "department":       "工地主任"
+        },{   
+            "username": "User3",
+            "useracc":  "ticb166",
+            "department":       "施工人員"
+        }
+    ]
+}
