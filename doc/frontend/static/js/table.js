@@ -450,18 +450,17 @@ $(document).ready(function() {
             { data:'subject',title:"主旨"},
             { data: 'date', title:"日期"},
             { data: null ,
-                title: "查看詳情",
+                title: "檢視編輯",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                    return data = '<a class="view btn-sm" href="editofficial.html" role="button" data-id="view_details" title="檢視編輯"><i class="fa-solid fa-eye me-2"></i>檢視編輯</a>'
                 },"className": "all"
             },
             { data: null ,
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
-                    + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    return data = '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                     + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
                 },"className": "all"
             },
@@ -526,7 +525,112 @@ $(document).ready(function() {
         }
     }
 
-        // 公文列表
+    // 所有公文列表
+    $('#allofficialdocument').dataTable( {
+        "ajax": {
+            "url": "static/json/allofficialdocument.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: null,  //表頭第一列, checkbox 
+                title: "<input type='checkbox' id='checkall2' value=''/>",
+                width: "35px",
+                orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
+            },
+            { data:'number',title: "字號" },
+            { data:'recipient',title: "受文者" },
+            { data:'subject',title:"主旨"},
+            { data: 'date', title:"日期"},
+            { data: 'project', title:"專案"},
+            { data: null ,
+                title: "檢視編輯",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<a class="view btn-sm" href="editofficial.html" role="button" data-id="view_details" title="檢視編輯"><i class="fa-solid fa-eye me-2"></i>檢視編輯</a>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                    + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
+                },"className": "all"
+            },
+        ],
+        columnDefs: [{
+            targets: 0,
+            render: function (data, type, row, meta) {
+            //每一行第一列都是複選框, 要有name屬性 方便查找
+            //並且要加一個onclick 事件, 保證單選的時候也檢查表頭複選框狀態.
+                return '<input type="checkbox" name="checklist" οnclick="checkCheck()" value="' + row.id + '" />'
+            }
+        }],
+        "sInfoEmpty": "暫無數據",
+            "drawCallback": function( settings ) {
+            //此為加載完表格的回調函數, 可判斷一些加載完的表格之後的判斷狀態.
+        },
+        "fnDrawCallback": function () {
+            //判斷換頁時表頭複選框的狀態
+
+            //去表格中tr的總數 表頭和所有行的數量
+            var trs = document.getElementById("example1").getElementsByTagName("tr");
+            var ifChe = 0;
+            $("input[name='checklist']").each(function () { 
+            //取所有name 為checklist的input並計算選取的
+                if (this.checked) {
+                    ifChe++;
+                }
+            });
+            //比較計算 總數去表頭 和計算的是否一至 如一直表頭複選框保值選中, 否則不選中
+            if (ifChe == (trs.length - 1)) {
+                $("#checkall2").prop("checked", true);
+            } else {
+                $("#checkall2").prop("checked", false);
+            }
+        },
+        "initComplete": function( settings, json ) {
+            //表格完成時回調函數
+            	//全選邏輯放在此處
+                $("#checkall2").click(function () {
+                    if (this.checked) {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        $(this).attr('checked', 'checked');
+                        $("input[name='checklist']").each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+        },
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+    /**
+     * 檢查表頭是否check
+     * 點擊每一行的時候
+     */
+    function checkCheck() {
+        if ($(this).is(":checked") == false) {
+            $('#checkall').prop("checked", false);
+        }
+    }
+
+    // 表單列表
     $('#formtable').dataTable( {
         "ajax": {
             "url": "static/json/formtable.json",
@@ -812,4 +916,355 @@ $(document).ready(function() {
             $('#checkall').prop("checked", false);
         }
     }
+
+    // 新增公文(行內編輯)
+    function createCombox(data) {
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var setting = {
+            columns: [
+                { "data": "item"},
+                { "data": "content"}
+            ],
+            columnDefs: [
+                { "width": "10%", "targets": 0 },
+                {
+                "targets": [1],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+            ],
+            data: [{
+                "item": "一、",
+                "content": "配合捷運綠線工程，台水公司12日至14日辦理桃園區介壽路管線臨遷等3工程",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#myGrid").DataTable(setting);
+
+    });
+
+    // 新增表單(工作日誌)
+    function createCombox(data) {
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var setting = {
+            columns: [
+                { "data": "project"},
+                { "data": "unit"},
+                { "data": "contract_quantity"},
+                { "data": "finish_count"},
+                { "data": "total_count"},
+                { "data": "remark"}
+            ],
+            columnDefs: [
+                { "width": "10%", "targets": 0 },
+                {
+                "targets": [0,1,2,3,4,5],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+            ],
+            data: [{
+                "project": "xxxxxxx",
+                "unit": "",
+                "contract_quantity": "",
+                "finish_count":"",
+                "total_count":"",
+                "remark":"",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#newform").DataTable(setting);
+
+    });
+
+    // 新增表單(工作日誌-特定施工項目)
+    function createCombox(data) {
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var setting = {
+            columns: [
+                { "data": "project"},
+                { "data": "unit"},
+                { "data": "contract_quantity"},
+                { "data": "finish_count"},
+                { "data": "total_count"},
+                { "data": "remark"}
+            ],
+            columnDefs: [
+                { "width": "10%", "targets": 0 },
+                {
+                "targets": [0,1,2,3,4,5],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+            ],
+            data: [{
+                "project": "xxxxxxx",
+                "unit": "",
+                "contract_quantity": "",
+                "finish_count":"",
+                "total_count":"",
+                "remark":"",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#specificform").DataTable(setting);
+
+    });
+
+    // 新增表單(工作日誌-材料管理)
+    function createCombox(data) {
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var setting = {
+            columns: [
+                { "data": "material"},
+                { "data": "unit"},
+                { "data": "contract_quantity"},
+                { "data": "use_count"},
+                { "data": "total_count"},
+                { "data": "remark"}
+            ],
+            columnDefs: [
+                { "width": "10%", "targets": 0 },
+                {
+                "targets": [0,1,2,3,4,5],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+            ],
+            data: [{
+                "material": "xxxxxxx",
+                "unit": "",
+                "contract_quantity": "",
+                "use_count":"",
+                "total_count":"",
+                "remark":"",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#material").DataTable(setting);
+
+    });
+
+    // 新增表單(工作日誌-人員機具管理)
+    function createCombox(data) {
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var setting = {
+            columns: [
+                { "data": "category"},
+                { "data": "daynumber"},
+                { "data": "totalnumber"},
+                { "data": "machinename"},
+                { "data": "use_count"},
+                { "data": "total_count"}
+            ],
+            columnDefs: [
+                { "width": "10%", "targets": 0 },
+                {
+                "targets": [0,1,2,3,4,5],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+            ],
+            data: [{
+                "category": "xxxxxxx",
+                "daynumber": "",
+                "totalnumber": "",
+                "machinename":"",
+                "use_count":"",
+                "total_count":"",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#Personnel").DataTable(setting);
+
+    });
+
+    // 新增表單(檢查表)
+    function createCombox(data) {
+        var _html = '<select style="width:100%;">';
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        _html += '</select>';
+        return _html;
+        
+    }
+    $(function () {
+        var editTableObj;
+        var comboData = {
+            "3": ["需要照片", "不需要照片"],
+        };
+        var setting = {
+            responsive: {
+            breakpoints: [
+                { name: 'desktop',  width: Infinity },
+                { name: 'tablet',  width: 1280 },
+                { name: 'tablet-l', width: 1024 },
+                { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+                { name: 'mobile-l', width: 480 },
+                { name: 'mobile-p', width: 320 }
+            ]
+            },
+            columns: [
+                { "data": "Testitems"},
+                { "data": "Roadstandard"},
+                { "data": "Answer"},
+                { "data":"ImageColumn"}
+            ],
+            columnDefs: [{
+                "targets": [0, 1, 2],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" style="width: 100%;height: 35px;font-size:1rem"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+                {   "className": "ImageColumn",
+                    "targets": [3],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        var aInput;
+                        $(cell).click(function () {
+                            $(this).html(createCombox(comboData[colIndex]));
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val("");
+                        });
+                        $(cell).on("click", ":input", function (e) {
+                            e.stopPropagation();
+                        });
+                        $(cell).on("change", ":input", function () {
+                            $(this).blur();
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).find("option:selected").text();
+                            editTableObj.cell(cell).data(text)
+                        });
+                    }
+                },
+            ],
+            data: [{
+                "Testitems": "既有路面設施:標線、標記",
+                "Roadstandard": "現況照片、紀錄",
+                "Answer": "已錄影存檔,依照片記錄",
+                "ImageColumn": "需要照片",
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#checkporject").DataTable(setting);
+    });
+
 });

@@ -419,9 +419,9 @@
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="javascript:window.location.href='allofficial.html'; return false;">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="javascript:window.location.href='allofficial.html'; return false;" checked>
                             <label class="btn btn-outline-00B9BF" for="btnradio1">檢視所有</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="javascript:window.location.href='official.html'; return false;">
                             <label class="btn btn-outline-00B9BF" for="btnradio2">專案檢視</label>
                         </div>
                     </div>
@@ -430,19 +430,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12 col-lg-3 border-end">
-                                <h5 class="fw-bold">專案檢視</h5>
-                                <ul class="list-group project">
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">14</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">2</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">8</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">10</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">22</span></li></a>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-lg-9">
-                                <h6 class="fw-bold gray mt-3 mt-lg-0">公文列表</h6>
-                                <hr class="border border-secondary border-2">
+                            <div class="col-12">
+                                <h5 class="fw-bold">所有公文</h5>
                                 <a href="newofficial.html" title="添加公文">
                                     <button type="button" class="addbtn btn"><i class="fa-solid fa-circle-plus"></i>添加公文</button>
                                 </a>
@@ -462,7 +451,7 @@
                                     <a href="#" class="checkboxdet">刪除選項</a>
                                 </div>
                                 <!-- 公文列表 -->
-                                <table id="officialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
+                                <table id="allofficialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
                             </div>
                         </div>
                     </div>

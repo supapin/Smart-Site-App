@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>公文管理</title>
+    <title>新增公文</title>
 </head>
 
 <body>
@@ -409,60 +409,107 @@
             <div class="page-content">
                 <!--breadcrumb-->
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">公文管理</div>
+                    <div class="breadcrumb-title pe-3"><a href="official.html" class="brtitle">公文管理</a></div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="javascript:;"><i class="fa-solid fa-house"></i></a></li>
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">新增公文</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="javascript:window.location.href='allofficial.html'; return false;">
-                            <label class="btn btn-outline-00B9BF" for="btnradio1">檢視所有</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-                            <label class="btn btn-outline-00B9BF" for="btnradio2">專案檢視</label>
-                        </div>
-                    </div>
                 </div>
-                <!--end breadcrumb-->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12 col-lg-3 border-end">
-                                <h5 class="fw-bold">專案檢視</h5>
-                                <ul class="list-group project">
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">14</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">2</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">8</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">10</span></li></a>
-                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">22</span></li></a>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-lg-9">
-                                <h6 class="fw-bold gray mt-3 mt-lg-0">公文列表</h6>
-                                <hr class="border border-secondary border-2">
-                                <a href="newofficial.html" title="添加公文">
-                                    <button type="button" class="addbtn btn"><i class="fa-solid fa-circle-plus"></i>添加公文</button>
-                                </a>
-                                <form name="select_filedate_form" id="select_filedate_form" class="mt-3" method="post" action="">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="fw-bold">新增公文</h5>
+                                    <p>字號：<span class="number">xxxxxxxxxxx</span></p>
+                                </div>
+                                <hr class="mt-0">
+                                <form name="addofficial_form" id="addofficial_form" class="row g-3" method="post" action="">
                                     <div class="col-12">
-                                        <input class="form-control" type="date">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>專案名稱</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">收文公司</label>
+                                        <input type="text" id="company" name="company" class="form-control" minlength="2" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">聯絡人</label>
+                                        <input type="text" id="contact" name="contact" class="form-control" minlength="2" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">聯絡電話</label>
+                                        <input type="text" id="contactnumber" name="contactnumber" class="form-control" minlength="2" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">聯絡信箱</label>
+                                        <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">主旨</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" minlength="2" required>
+                                    </div>
+                                    <h6 class="fw-bold mb-0">說明</h6>
+                                    <div class="gridArea">
+                                        <table id="myGrid" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr style="background: darkslategrey;color: #fff;">
+                                                    <th>項次</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a href="#" class="unselected">新增內容</a>
+                                        <a href="#" class="checkboxdet">刪除內容</a>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">時間</label>
+                                        <input class="form-control" type="datetime-local" value="2023-06-12T19:30">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">速別</label>
+                                        <input type="text" id="degree" name="degree" class="form-control" value="普通件">
+                                    </div>
+                                    <div class="col-6 mt-28">
+                                        <div class="input-group mb-3">
+                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">正本</button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">正本</a></li>
+                                                <li><a class="dropdown-item" href="#">副本</a></li>
+                                            </ul>
+                                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0">
+                                        <label class="form-label">印章</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>印章名稱</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="my-5 text-end">
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="export dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
+                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="submit" onclick='document.forms["addofficial_form"].submit(); return false;'>送出</a>
                                     </div>
                                 </form>
-                                <div class="selectstate">
-                                    <div class="btn-group" role="group">
-                                        <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
-                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
-                                        </ul>
-                                    </div>
-                                    <a href="#" class="checkboxdet">刪除選項</a>
-                                </div>
-                                <!-- 公文列表 -->
-                                <table id="officialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
                             </div>
                         </div>
                     </div>

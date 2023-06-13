@@ -93,7 +93,7 @@ color: #57e3e8;
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead{
     background: #F6F6F6;
 }
-.edit,.del,.userhistory,.unselected,.amend,.view,.download{
+.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export{
     border: none;
 }
 .edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover{
@@ -245,4 +245,106 @@ color: #57e3e8;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal;
+}
+.brtitle{
+    color: #6c757d;
+}
+.gridArea{
+    overflow: auto;
+    /* max-width: 1100px; */
+}
+.mt-28{margin-top: 2.8rem;}
+.export{
+    background: #047ee1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+.export:hover{
+    color: #fff;
+    background: #0365b6;
+}
+.export:focus{
+    outline: none;
+}
+.submit{
+    background: #04CAE1;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 12px 20px;
+}
+.submit:hover{
+    color: #fff;
+    background: #04b5c9;
+}
+a.view{
+    background: #f0f0f0;
+    color: #000;
+    display: inline-block;
+}
+.addproject:hover{
+    background:#8294a6;
+}
+.addspecific:hover{
+    background: #ac9176;
+}
+.addmaterial:hover{
+    background: #7da1a1;
+}
+.addpersonnel:hover{
+    background: #c5bc9e;
+}
+.technical{
+    padding: 5px;
+    border-radius: .25rem;
+}
+.chekselect{
+    flex-direction: row;
+    flex-wrap: wrap
+}
+.chekselect .form-check{
+    font-size: 1rem;
+    padding-left: 2.5em;
+}
+.form-check-input:checked {
+    background-color: #04cae1;
+    border-color: #04cae1;
+}
+.safety{
+    padding: 1rem;
+}
+.safety li{
+    list-style: none;
+    background: #f8f9fa;
+}
+.safety li:first-child{
+    padding: 1.5rem 2rem .5rem;
+}
+.safety ol li{
+    list-style: inherit;
+}
+.safety ol li:first-child{
+    padding: 0;
+}
+.safety li:last-child{
+    padding: 0 2rem;
+}
+.safety ol li:last-child{
+    padding: 0;
+}
+.safetyother{
+    background: #f8f9fa;
+    padding: 0rem 2rem 2rem;
+}
+.remark{
+    padding: 0 1rem;
+}
+#constructionlog2_form{
+    display: none;
+}
+.logform{
+    display: none;
 }

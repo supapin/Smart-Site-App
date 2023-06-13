@@ -18,7 +18,7 @@ $(function() {
 		}), $(".back-to-top").on("click", function() {
 			return $("html, body").animate({
 				scrollTop: 0
-			}, 600), !1
+			}, 0), !1
 		})
 	}), $(function() {
 		for (var e = window.location, o = $(".metismenu li a").filter(function() {
