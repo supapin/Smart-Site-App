@@ -345,6 +345,13 @@ a.view{
 #constructionlog2_form{
     display: none;
 }
-.logform{
+.checkform{
     display: none;
+}
+.loginlogo{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.logingform{
+    padding: 6rem 1.5rem;
 }

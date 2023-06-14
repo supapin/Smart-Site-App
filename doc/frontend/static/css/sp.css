@@ -25,6 +25,9 @@
     #constructionlog_form h6{
         font-size: 14px;
     }
+    .logingform{
+        padding: 0.8rem 1.5rem;
+    }
 }
 @media (max-width: 497px){
     .manage a{

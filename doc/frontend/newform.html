@@ -425,8 +425,8 @@
                             <div class="col-12">
                                 <h5 class="fw-bold">新增表單</h5>
                                 <hr class="mt-0">
-                                <div class="col-12 mb-3">
-                                    <select class="form-select" aria-label="Default select example">
+                                <div class="col-12 mb-3 controlform">
+                                    <select id="formtype" class="form-select" aria-label="Default select example">
                                         <option value="1" selected>日誌表</option>
                                         <option value="2">檢查表</option>
                                         <option value="3">其他</option>
@@ -439,6 +439,7 @@
                                             <label class="form-label">日誌表名稱</label>
                                             <input type="text" class="form-control">
                                         </div>
+                                        <!-- 
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">本日天氣</label>
                                             <div class="input-group">
@@ -507,7 +508,7 @@
                                                 <input type="text" class="form-control">
                                                 <span class="input-group-text">％</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <h6 class="fw-bold mb-0">一、依施工計劃書執行按圖施工概況（含約定之重要施工項目及完成數量等）：</h6>
                                         <div class="gridArea">
                                             <table id="newform" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
@@ -555,12 +556,12 @@
                                                     </tr>
                                                 </thead>
                                             </table>
-                                            <div class="mt-3">
+                                            <div class="my-3">
                                                 <a href="#" class="unselected addmaterial" title="新增材料">新增材料</a>
                                                 <a href="#" class="checkboxdet delmaterial" title="刪除材料">刪除材料</a>
                                             </div>
                                         </div>
-                                        <hr class="border border-3 border-secondary my-4">
+                                        <hr class="border my-4">
                                         <div class="my-3 d-flex justify-content-end">
                                             <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="取消">取消</button>
                                             <button type="button" class="btn btn-04CAE1 nextpage" title="下一頁">下一頁</button>
@@ -586,7 +587,7 @@
                                                 <a href="#" class="checkboxdet" title="刪除">刪除</a>
                                             </div>
                                         </div>
-                                        <h6 class="fw-bold">四、本日施工項目是否有須依「營造業專業工程特定施工項目應置之技術士種類、比率或人數標準表」規定應設置技術士之專業工程：</h6>
+                                        <!-- <h6 class="fw-bold">四、本日施工項目是否有須依「營造業專業工程特定施工項目應置之技術士種類、比率或人數標準表」規定應設置技術士之專業工程：</h6>
                                         <div class="d-flex chekselect">
                                             <div class="d-flex">
                                                 <div class="form-check">
@@ -666,7 +667,8 @@
                                                 <li>本工程依營造業法第30條規定須置工地主任者，由工地主任簽章；依上開規定免置工地主任者，則由營造業法第32條第2項所定之人員簽章。廠商非屬營造業者，由工地負責人簽章</li>
                                                 <li>契約工期如有修正，應填修正後之契約工期，含展延工期及不計工期天數；如有依契約變更設計。</li>
                                             </ol>
-                                        </div>
+                                        </div> -->
+                                        <hr class="border my-4">
                                         <div class="my-3 d-flex justify-content-end">
                                             <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="取消">取消</button>
                                             <button type="button" class="btn unselected me-2 previouspage" title="上一頁">上一頁</button>
@@ -697,6 +699,11 @@
                                                 <a href="#" class="unselected addproject" title="新增項目">新增項目</a>
                                                 <a href="#" class="checkboxdet" title="刪除項目">刪除項目</a>
                                             </div>
+                                        </div>
+                                        <hr class="border my-4">
+                                        <div class="my-3 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="取消">取消</button>
+                                            <a href="#" class="submit">保存</a>
                                         </div>
                                     </form>
                                 </div>
@@ -756,5 +763,20 @@
         $('#constructionlog2_form').hide();
         $('#constructionlog_form').show();
     })
+
+    $("#formtype").val(1) // 假設初次進入畫面預設選: 日誌表 
+    $("#formtype").on("change", function(){ // 切換鰾單類型時
+        var smart = this.value;
+        if (smart == 1) {
+            $(".checkform").hide();
+            $(".logform").show();
+         // 類推
+        } else if (this.value == 2) {
+            $(".logform").hide();
+            $(".checkform").show();
+        } else {
+         // code...
+        }
+    });
 </script>
 </html>
