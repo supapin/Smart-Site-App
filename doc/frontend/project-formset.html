@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>首頁</title>
+    <title>表單設置</title>
 </head>
 
 <body>
@@ -47,70 +47,65 @@
                 <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i></div>
             </div>
             <!--navigation-->
+                        <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
                     <a href="index.html" class="has-arrow">
                         <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
-                        <div class="menu-title">首頁</div>
+                        <div class="menu-title">回首頁</div>
                     </a>
                 </li>
                 <li>
-                    <a href="project.html" class="has-arrow">
-                        <div class="parent-icon"><i class="lni lni-folder"></i></div>
-                        <div class="menu-title">專案管理</div>
+                    <a href="project-dashboard.html" class="has-arrow">
+                        <div class="parent-icon"><i class="fa-solid fa-gauge-high ms-1"></i></div>
+                        <div class="menu-title">儀錶板</div>
                     </a>
                 <li>
-                    <a href="meeting.html">
-                        <div class="parent-icon"><i class="lni lni-clipboard"></i></div>
-                        <div class="menu-title">會議管理</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="photomanage.html" class="has-arrow">
-                        <div class="parent-icon"><i class="fa-regular fa-images"></i></div>
-                        <div class="menu-title">照片管理</div>
+                    <a href="project-meeting.html">
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-file-invoice ms-1"></i></div>
+                        <div class="menu-title">會議紀錄</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="form-manage.html">
-                        <div class="parent-icon"><i class="lni lni-remove-file"></i></div>
-                        <div class="menu-title">表單管理</div>
+                    <a href="project-photos.html" class="has-arrow">
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-image"></i></div>
+                        <div class="menu-title">施工照片</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="schedule.html">
-                        <div class="parent-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                        <div class="menu-title">進度管理</div>
+                    <a class="has-arrow" href="project-formset.html">
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-paste ms-1"></i></div>
+                        <div class="menu-title">表單設置</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="valuation.html">
-                        <div class="parent-icon"><i class="fa-solid fa-file-invoice-dollar ms-1 me-1"></i></div>
-                        <div class="menu-title">計價管理</div>
+                    <a class="has-arrow" href="project-schedule.html">
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-clock"></i></div>
+                        <div class="menu-title">施工進度</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="official.html">
-                        <div class="parent-icon"><i class="fa-solid fa-newspaper"></i></div>
-                        <div class="menu-title">公文管理</div>
+                    <a class="has-arrow" href="project-valuation.html">
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-file-invoice-dollar ms-1"></i></div>
+                        <div class="menu-title">估驗計價</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="punch.html">
-                        <div class="parent-icon"><i class="fa-solid fa-user-check"></i></div>
-                        <div class="menu-title">簽到管理</div>
+                    <a class="has-arrow" href="project-official.html">
+                        <div class="parent-icon mx-2"><i class="fa-solid fa-file-lines"></i></div>
+                        <div class="menu-title">公文列表</div>
                     </a>
                 </li>
                 <li>
-                    <a class="has-arrow" href="system-user.html">
-                        <div class="parent-icon"><i class="fa-solid fa-gear"></i></div>
-                        <div class="menu-title ms-3">系統管理</div>
+                    <a class="has-arrow" href="project-personnel.html">
+                        <div class="parent-icon"><i class="fa-solid fa-users-gear ms-1"></i></div>
+                        <div class="menu-title">專案人員</div>
                     </a>
                 </li>
                 <li>
-                    <a href="backstage-company.html">
-                        <div class="parent-icon"><i class="fa-solid fa-gears"></i></div>
-                        <div class="menu-title">後臺管理</div>
+                    <a class="has-arrow" href="contract.html">
+                        <div class="parent-icon ms-2"><i class="fa-solid fa-file-signature"></i></div>
+                        <div class="menu-title">契約設定</div>
                     </a>
                 </li>
             </ul>
@@ -408,8 +403,8 @@
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
-                <!-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">會議管理</div>
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">表單設置</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
@@ -418,15 +413,290 @@
                         </nav>
                     </div>
                     <div class="ms-auto">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                            <label class="btn btn-outline-00B9BF" for="btnradio1">進行中</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-                            <label class="btn btn-outline-00B9BF" for="btnradio2">已完成</label>
+                        <select id="projectname" class="form-select" aria-label="Default select example">
+                            <option selected>「桃園市政府⼯務局管轄道路路平專案改善預約式⼯程」(第⼀⼯區) </option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+                <!--end breadcrumb-->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="addbtn btn" data-bs-toggle="modal" data-bs-target="#add_project_form"><i class="fa-solid fa-circle-plus"></i>新增表單</button>
+                                    <!-- 新增表單modal -->
+                                    <div class="modal fade" id="add_project_form" tabindex="-1" aria-labelledby="add_project_formLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">新增表單</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form name="add_project_form" class="row gy-3" method="post" action="">
+                                                        <div class="col-6">
+                                                            <label class="form-label">表單類型</label>
+                                                            <select class="form-select" aria-label="Default select example">
+                                                                <option value="1">日誌表</option>
+                                                                <option value="2">檢查表</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label class="form-label">表單</label>
+                                                            <select class="form-select" aria-label="Default select example">
+                                                                <option value="1">xxxxxxxxxxxx</option>
+                                                                <option value="2">xxxxxxxxxxxxxxxxx</option>
+                                                                <option value="3">xxxxxxxxxxxx</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="form-label">表單命名</label>
+                                                            <input type="text" class="form-control" minlength="2" required>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer mt-4">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                    <button type="button" class="btn btn-04CAE1">新增</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 新增表單modal END-->
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check loglistradio" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                        <label class="btn btn-outline-00B9BF" for="btnradio1">日誌</label>
+                                        <input type="radio" class="btn-check checklistradio" name="btnradio" id="btnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-00B9BF" for="btnradio2">檢查表</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex my-4">
+                                    <div class="col-10 fm-search">
+                                        <div class="mb-0">
+                                            <div class="input-group input-group-lg">
+                                                <span class="input-group-text input-group-text bg-transparent">
+                                                    <i class="bx bx bx-search"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Search the files">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 d-flex justify-content-end">
+                                        <button type="button" class="btn listaction" title="列表顯示"><i class="fas fa-list"></i></button>
+                                    </div>
+                                </div>
+                                <!-- 表單資料夾顯示 -->
+                                <div class="project-showfolder">
+                                    <div class="logfloderlist">
+                                        <h5 class="fw-bold">日誌表</h5>
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 mt-3">
+                                            <a href="project-logrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-挖(刨)除日誌表</h6>
+                                                        <small>15 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-logrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-瀝⻘混擬⼟鋪⾯日誌表</h6>
+                                                        <small>345 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-logrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-標線繪設日誌表</h6>
+                                                        <small>143 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-logrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-挖(刨)除日誌表</h6>
+                                                        <small>15 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="checkfloderlist">
+                                        <h5 class="fw-bold">檢查表</h5>
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 mt-3">
+                                            <a href="project-checkrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-挖(刨)除施⼯⾃主檢查表</h6>
+                                                        <small>15 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-checkrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-瀝⻘混擬⼟鋪⾯施⼯⾃主檢查表</h6>
+                                                        <small>345 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-checkrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-標線繪設施⼯⾃主檢查表</h6>
+                                                        <small>143 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="project-checkrecord.html" class="col">
+                                                <div class="card shadow-none border radius-15">
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                                            <div class="font-30 radius-10 bg-04CAE1"><i class="fa-solid fa-file"></i></div>
+                                                            <div class="user-plus">+</div>
+                                                        </div>
+                                                        <h6 class="mb-0 text-overflow-ellipsis">110桃區-挖(刨)除施⼯⾃主檢查表</h6>
+                                                        <small>15 files</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 表單資料夾顯示 END -->
+                                <!-- 表單列表顯示 -->
+                                <div class="project-showlist">
+                                    <!-- 檢查表列表 -->
+                                    <div class="checktablelist">
+                                        <h5 class="fw-bold">檢查表</h5>
+                                        <table id="project-checklist" class="display nowrap" style="width: 100%;"></table>
+                                        <!-- 編輯檢查表modal -->
+                                        <div class="modal fade" id="edit_project_form" tabindex="-1" aria-labelledby="edit_project_formLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header btn-489b6c">
+                                                        <h5 class="modal-title">編輯檢查表</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form name="edit_project_form" class="row gy-3" method="post" action="">
+                                                            <div class="col-6">
+                                                                <label class="form-label">表單類型</label>
+                                                                <select class="form-select" aria-label="Default select example" disabled>
+                                                                    <option value="1">日誌表</option>
+                                                                    <option value="2" selected>檢查表</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label class="form-label">表單</label>
+                                                                <select class="form-select" aria-label="Default select example" disabled>
+                                                                    <option value="1">xxxxxxxxxxxx</option>
+                                                                    <option value="2">xxxxxxxxxxxxxxxxx</option>
+                                                                    <option value="3">xxxxxxxxxxxx</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label class="form-label">檢查表命名</label>
+                                                                <input type="text" class="form-control" value="xxxxxxxxxx" minlength="2" required>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer mt-4">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn btn-489b6c">保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 新增表單modal END-->
+                                    </div>
+                                    <!-- 檢查表列表  END--->
+                                    <!-- 日誌表列表 -->
+                                    <div class="logtablelist">
+                                        <h5 class="fw-bold">日誌表</h5>
+                                        <table id="project-loglist" class="display nowrap" style="width: 100%;"></table>
+                                        <!-- 編輯日誌表modal -->
+                                        <div class="modal fade" id="edit_project_logform" tabindex="-1" aria-labelledby="edit_project_logformLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header btn-489b6c">
+                                                        <h5 class="modal-title">編輯日誌表</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form name="edit_project_logform" class="row gy-3" method="post" action="">
+                                                            <div class="col-6">
+                                                                <label class="form-label">表單類型</label>
+                                                                <select class="form-select" aria-label="Default select example" disabled>
+                                                                    <option value="1" selected>日誌表</option>
+                                                                    <option value="2">檢查表</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label class="form-label">表單</label>
+                                                                <select class="form-select" aria-label="Default select example" disabled>
+                                                                    <option value="1">xxxxxxxxxxxx</option>
+                                                                    <option value="2">xxxxxxxxxxxxxxxxx</option>
+                                                                    <option value="3">xxxxxxxxxxxx</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label class="form-label">日誌表命名</label>
+                                                                <input type="text" class="form-control" value="xxxxxxxxxx" minlength="2" required>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer mt-4">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                        <button type="button" class="btn btn-489b6c">保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 編輯日誌表modal END-->
+                                    </div>
+                                    <!-- 日誌表列表  END-->
+                                </div>
+                                <!-- 表單列表顯示 END -->
+                            </div>
                         </div>
                     </div>
-                </div> -->
-                <!--end breadcrumb-->
+                </div>
             </div>
         </div>
         <!--end page wrapper -->
@@ -457,4 +727,32 @@
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>
+<script>
+    $(".loglistradio").click(function(){
+        $('.checktablelist').hide();
+        $('.checkfloderlist').hide();
+        $('.logtablelist').show();
+        $('.logfloderlist').show();
+    })
+    $(".checklistradio").click(function(){
+        $('.logtablelist').hide();
+        $('.logfloderlist').hide();
+        $('.checktablelist').show();
+        $('.checkfloderlist').show();
+    })
+
+    var test = 1 
+    $(document).on('click','.listaction',function(e){
+        if (test == 1) {
+            $('.project-showfolder').hide();
+            $('.project-showlist').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('.project-showlist').hide();
+            $('.project-showfolder').show();
+            test = 1
+        }
+    })
+</script>
 </html>

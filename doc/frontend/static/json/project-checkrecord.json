@@ -1,0 +1,38 @@
+{
+    "data": [
+        {   
+            "adddate": "2023-06-22",
+            "location": "派⼯單119國際路⼆段(中⼭路⾄國強⼀街)",
+            "user":     "xxxxxxxxx",
+            "detection":     "1",
+            "update":     "2023-06-22"
+        },
+        {   
+            "adddate": "2023-06-22",
+            "location": "派⼯單120⼤興⻄路三段(國際路⾄永安路)",
+            "user":     "xxxxxxxxx",
+            "detection":     "1",
+            "update":     "2023-06-22"
+        },        {   
+            "adddate": "2023-06-22",
+            "location": "派⼯單119國際路⼆段(中⼭路⾄國強⼀街)",
+            "user":     "xxxxxxxxx",
+            "detection":     "2",
+            "update":     "2023-06-22"
+        },
+        {   
+            "adddate": "2023-06-22",
+            "location": "中福街",
+            "user":     "xxxxxxxxx",
+            "detection":     "1",
+            "update":     "2023-06-22"
+        },    
+        {   
+            "adddate": "2023-06-22",
+            "location": "中正路1115巷",
+            "user":     "xxxxxxxxx",
+            "detection":     "1",
+            "update":     "2023-06-22"
+        }
+    ]
+}

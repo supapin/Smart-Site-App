@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>首頁</title>
+    <title>新增專案</title>
 </head>
 
 <body>
@@ -408,25 +408,53 @@
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
-                <!-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">會議管理</div>
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3"><a href="project.html" class="brtitle">專案管理</a></div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
                                 <li class="breadcrumb-item"><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">新增專案</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                            <label class="btn btn-outline-00B9BF" for="btnradio1">進行中</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-                            <label class="btn btn-outline-00B9BF" for="btnradio2">已完成</label>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="fw-bold">新增專案</h5>
+                                <hr class="mt-0">
+                                <form method="post" class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label">專案名稱</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label">專案類型</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">總預算</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">工期</label>
+                                        <input class="dateRange form-control fs-14" type="text"/>
+                                    </div>
+                                </form>
+                                <div class="my-3 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="取消">取消</button>
+                                    <a href="#" class="submit">保存</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> -->
-                <!--end breadcrumb-->
+                </div>
             </div>
         </div>
         <!--end page wrapper -->
@@ -454,6 +482,54 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
+<script src='static/js/tinymce.min.js'></script>
+<!-- daterangepicker JS -->
+<script src="static/js/moment.min.js"></script>
+<script src="static/js/daterangepicker.js"></script>
+<script>
+    tinyMCE.init({
+        selector: "#mytextarea",
+        language: "zh-Hant"
+    });
+
+    $('.multiple-select').select2({
+			theme: 'bootstrap4',
+			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+			placeholder: $(this).data('placeholder'),
+			allowClear: Boolean($(this).data('allow-clear')),
+    });
+    $(function() {
+        $("input.dateRange").daterangepicker({
+            "alwaysShowCalendars": true,
+            opens: "right",
+            startDate: "2023-05-01",
+            ranges: {
+            "今天": [moment(), moment()],
+            "過去 7 天": [moment().subtract(6, "days"), moment()],
+            "本月": [moment().startOf("month"), moment().endOf("month")],
+            "上個月": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+            },
+            locale: {
+            format: "YYYY-MM-DD",
+            separator: " ~ ",
+            applyLabel: "確定",
+            cancelLabel: "清除",
+            fromLabel: "開始日期",
+            toLabel: "結束日期",
+            customRangeLabel: "自訂日期區間",
+            daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
+            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月",
+            "七月", "八月", "九月", "十月", "十一月", "十二月"
+            ],
+            firstDay: 1
+            }
+            });
+            $("input.dateRange").on("cancel.daterangepicker", function(ev, picker) {
+            $(this).val("");
+            });
+    });
+</script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>

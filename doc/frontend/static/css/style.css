@@ -90,18 +90,40 @@ color: #57e3e8;
     transition: 300ms;
 }
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
-#punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead{
+#punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
+#project-meetingfile thead{
     background: #F6F6F6;
 }
-.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export{
+#project-meeting thead,#project-checklist thead,#project-official thead,#project-personnel thead,#project-loglist thead,#project-logrecord thead,
+#project-checkrecord thead,#project-photos thead{
+    background: #00B9BF;
+    color: #fff;
+}
+#signature thead{
+    background: #AE876A;
+    color: #fff;
+}
+#project-meeting tbody,#project-checklist tbody,#signature tbody,#project-official tbody,#project-personnel tbody,#project-loglist tbody,#project-logrecord tbody,
+#project-checkrecord tbody{
+    background: #F8F8F8;
+}
+#project-meeting th,#project-meeting td,#project-checklist th,#project-checklist td,#signature th,#signature td,#project-official th,#project-official td,
+#project-personnel th,#project-personnel td,#project-loglist th,#project-loglist td,#project-logrecord th,#project-logrecord td,#project-checkrecord th,
+#project-checkrecord td,#project-photos th,#project-photos td{
+    border-right: 5px solid #fff;
+}
+.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel{
     border: none;
 }
-.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover{
+.eye,.download{
+    min-width: 30px;
+}
+.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover,.eye:hover{
     background: #04CAE1;
     color: #fff;
     transition: 200ms;
 }
-.unselected:focus{
+.unselected:focus,.projectdel:focus,.projectdownload:focus,.projectedit:focus,.projecteye:focus,.projectformhistory:focus,.addprojectbtn:focus{
     outline: none;
 }
 .modal-header{
@@ -205,7 +227,7 @@ color: #57e3e8;
     border-radius: 50rem;
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 }
-.fa-circle-plus{
+.fa-circle-plus,.fa-solid.fa-circle-check.me-1{
     color: #00B9BF;
 }
 .addbtn:hover{
@@ -342,7 +364,7 @@ a.view{
 .remark{
     padding: 0 1rem;
 }
-#constructionlog2_form{
+#constructionlog2_form,#addcheckrecord2_form{
     display: none;
 }
 .checkform{
@@ -354,4 +376,160 @@ a.view{
 }
 .logingform{
     padding: 6rem 1.5rem;
+}
+.tox .tox-promotion{
+    display: none;
+}
+.listaction {
+    background: #f8f9fa;
+}
+.nu-tag {
+    background: #f7f7ff;
+    color: #999;
+    margin-top: 1.3rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.projecttitle {
+    font-weight: bold;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.construction-period {
+    margin-top: 0.5rem;
+}
+.bg-04CAE1{
+    background: #04CAE1;
+    color: #fff;
+}
+.finishproject{
+    display: none;
+}
+.projectfolder a,.logfloderlist a,.checkfloderlist a{
+    color: #000;
+}
+.projectedit,.projecteye,.projectdownload,.projectformhistory,.projectdel{
+    border-radius: 3rem;
+    color: #fff;
+}
+.projectedit{
+    background: #59AF7E;
+}
+.projectedit:hover{
+    background: #489b6c;
+}
+.projecteye,.projectdel{
+    background: #6C6C6C;
+}
+.projecteye:hover,.projectdel:hover{
+    background: #5a5a5a;
+}
+.projectdownload{
+    background: #E97500;
+}
+.projectdownload:hover{
+    background: #d46b01;
+}
+.projectformhistory{
+    background: #00B9BF;
+}
+.projectformhistory:hover,.addprojectbtn:hover{
+    background: #01a3a8;
+    color: #fff;
+}
+#project-checklist_length.dataTables_length,#project-loglist_length.dataTables_length{
+    display: none;
+}
+#project-logrecord_length.dataTables_length,#project-checkrecord_length.dataTables_length{
+    margin-bottom: 15px;
+}
+.addsignature{
+    font-weight: bold;
+    border-radius: .25rem;
+    background: #AE876A;
+    color: #fff;
+}
+.addsignature:hover{
+    background: #856750;
+    color: #fff;
+}
+.modal-header.editsignature,.btn-856750{
+    background: #856750; 
+    color: #fff;
+}
+.btn-856750:hover{
+    background: #9b785e;
+    color: #fff;
+}
+.btn-489b6c{
+    background: #59AF7E;
+    color: #fff;
+}
+button.btn-489b6c:hover{
+    background: #489b6c;
+    color: #fff;
+}
+.project-showlist{
+    display: none;
+}
+.checkfloderlist,.checktablelist{
+    display: none;
+}
+.fa-solid.fa-file{
+    font-size: 22px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+}
+.addprojectbtn{
+    display: flex;
+    background: #00b9bf;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.fa-solid.fa-plus{
+    font-size: 1.2rem;
+    color: #fff;
+}
+.btn-outline-00b9bf {
+    color: #00b9bf;
+    border-color: #00b9bf;
+}
+.btn-outline-00b9bf:hover {
+    background: #00b9bf ;
+    color: #fff;
+}
+.btn-check:checked+.btn-outline-00b9bf{
+    color: #fff;
+    background: #00b9bf;
+    border-color: #00b9bf;
+}
+.meetingcontact a{
+    background: #f8f9fa;
+    padding: 1rem;
+    color: #000;
+}
+.meetingcontact a:hover{
+    background: #00b9bf ;
+    color: #fff;
+    cursor: pointer;
+    transition: 300ms;
+    font-weight: bold;
+}
+#meetingconclusion textarea{
+    min-height: 150px;
+}
+.meetingfile,.meetingconclusion{
+    display: none;
+}
+.editmeeting{
+    background: #F6F6F6;
+    color: #000;
 }

@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>首頁</title>
+    <title>計價管理</title>
 </head>
 
 <body>
@@ -408,8 +408,8 @@
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
-                <!-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">會議管理</div>
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">計價管理</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
@@ -417,16 +417,21 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
+                    <!-- <div class="ms-auto">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                             <label class="btn btn-outline-00B9BF" for="btnradio1">進行中</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="javascript:window.location.href='finishproject.html'; return false;">
                             <label class="btn btn-outline-00B9BF" for="btnradio2">已完成</label>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
+                </div>
                 <!--end breadcrumb-->
+                <div class="card">
+                    <div class="card-body" style="height: 800px;">
+                        
+                    </div>
+                </div>
             </div>
         </div>
         <!--end page wrapper -->
@@ -457,4 +462,20 @@
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>
+
+<script>
+    var test = 1 
+    $(document).on('click','.listaction',function(e){
+        if (test == 1) {
+            $('.projectfolder').hide();
+            $('.finishproject').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('.finishproject').hide();
+            $('.projectfolder').show();
+            test = 1
+        }
+    })
+</script>
 </html>

@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>首頁</title>
+    <title>專案管理</title>
 </head>
 
 <body>
@@ -408,8 +408,8 @@
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
-                <!-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">會議管理</div>
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">專案管理</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
@@ -419,14 +419,143 @@
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                             <label class="btn btn-outline-00B9BF" for="btnradio1">進行中</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="javascript:window.location.href='finishproject.html'; return false;">
                             <label class="btn btn-outline-00B9BF" for="btnradio2">已完成</label>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!--end breadcrumb-->
+                <h5 class="statetitle mb-3 fw-bold">進行中</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="col-10 fm-search">
+                                <div class="mb-0">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text input-group-text bg-transparent">
+                                            <i class="bx bx bx-search"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Search the files">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 d-flex justify-content-end">
+                                <button type="button" class="btn listaction" title="列表顯示"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                        <a href="newproject.html" class="mb-2" title="新增專案">
+                            <button type="button" class="addbtn btn mb-3"><i class="fa-solid fa-circle-plus"></i>新增專案</button>
+                        </a>
+                        <!-- 資料檢視專案 -->
+                        <div class="row flex-nowrap overflow-auto projectfolder">
+                            <a href="project-dashboard.html" class="col-12 col-lg-4">
+                                <div class="card shadow-none border radius-15">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fm-icon-box radius-15 bg-04CAE1">
+                                                <i class="fas fa-folder"></i>
+                                            </div>
+                                            <div class="ms-auto font-24">
+                                                <i class='bx bx-dots-horizontal-rounded'></i>
+                                            </div>
+                                        </div>
+                                        <p class="nu-tag"><span class="project-number">42C00</span>一般專案</p>
+                                        <h5 class="projecttitle mb-0">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)</h5>
+                                        <p class="construction-period"><mark> 111/05/05 - 111/05-10</mark></p>
+                                        <p class="mb-1 mt-4">
+                                            <span>576,123 NT</span>
+                                            <span class="float-end">5,000,000 NT</span>
+                                        </p>
+                                        <div class="progress" style="height: 7px;">
+                                            <div class="progress-bar bg-04CAE1" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="project-dashboard.html" class="col-12 col-lg-4">
+                                <div class="card shadow-none border radius-15">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fm-icon-box radius-15 bg-04CAE1">
+                                                <i class="fas fa-folder"></i>
+                                            </div>
+                                            <div class="ms-auto font-24">
+                                                <i class='bx bx-dots-horizontal-rounded'></i>
+                                            </div>
+                                        </div>
+                                        <p class="nu-tag"><span class="project-number">20C01</span>一般專案</p>
+                                        <h5 class="projecttitle mb-0">「桃園市政府工務局轄管道路坑洞機動養護工程預約式契約」-第五工區</h5>
+                                        <p class="construction-period"><mark>111/05/05 - 111/06/10</mark></p>
+                                        <div class="schedule">
+                                            <p class="mb-1 mt-4">
+                                                <span>576,123 NT</span>
+                                                <span class="float-end">680,500 NT</span>
+                                            </p>
+                                            <div class="progress" style="height: 7px;">
+                                                <div class="progress-bar bg-04CAE1" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="project-dashboard.html" class="col-12 col-lg-4">
+                                <div class="card shadow-none border radius-15">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fm-icon-box radius-15 bg-04CAE1">
+                                                <i class="fas fa-folder"></i>
+                                            </div>
+                                            <div class="ms-auto font-24">
+                                                <i class='bx bx-dots-horizontal-rounded'></i>
+                                            </div>
+                                        </div>
+                                        <p class="nu-tag"><span class="project-number">31A02</span>一般專案</p>
+                                        <h5 class="projecttitle mb-0">市區道路預約養護工程(開口契約)</h5>
+                                        <p class="construction-period"><mark>111/08/07 - 111/12/20</mark></p>
+                                        <p class="mb-1 mt-4">
+                                            <span>576,123 NT</span>
+                                            <span class="float-end">8,778,000 NT</span>
+                                        </p>
+                                        <div class="progress" style="height: 7px;">
+                                            <div class="progress-bar bg-04CAE1" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="project-dashboard.html" class="col-12 col-lg-4">
+                                <div class="card shadow-none border radius-15">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fm-icon-box radius-15 bg-04CAE1">
+                                                <i class="fas fa-folder"></i>
+                                            </div>
+                                            <div class="ms-auto font-24">
+                                                <i class='bx bx-dots-horizontal-rounded'></i>
+                                            </div>
+                                        </div>
+                                        <p class="nu-tag"><span class="project-number">42C00</span>一般專案</p>
+                                        <h5 class="projecttitle mb-0">桃園市桃園區中華路段鋪面工程</h5>
+                                        <p class="construction-period"><mark> 111/05/05 - 111/05-10</mark></p>
+                                        <p class="mb-1 mt-4">
+                                            <span>576,123 NT</span>
+                                            <span class="float-end">5,000,000 NT</span>
+                                        </p>
+                                        <div class="progress" style="height: 7px;">
+                                            <div class="progress-bar bg-04CAE1" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 資料檢視專案 END-->
+                        <!-- 專案列表 -->
+                        <div class="finishproject">
+                            <table id="finishproject" class="display nowrap mt-5" style="width: 100%;"></table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--end page wrapper -->
@@ -457,4 +586,20 @@
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>
+
+<script>
+    var test = 1 
+    $(document).on('click','.listaction',function(e){
+        if (test == 1) {
+            $('.projectfolder').hide();
+            $('.finishproject').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('.finishproject').hide();
+            $('.projectfolder').show();
+            test = 1
+        }
+    })
+</script>
 </html>
