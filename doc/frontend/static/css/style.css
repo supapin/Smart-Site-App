@@ -89,10 +89,21 @@ color: #57e3e8;
     color: #fff;
     transition: 300ms;
 }
+.table>tbody {
+    vertical-align: baseline;
+}
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
-#project-meetingfile thead{
+#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead{
     background: #F6F6F6;
+}
+#expiring_tasks thead{
+    background: #b33333;
+    color: #fff;
+}
+#project-listtable thead{
+    background: #0e5aa0;
+    color: #fff;
 }
 #project-meeting thead,#project-checklist thead,#project-official thead,#project-personnel thead,#project-loglist thead,#project-logrecord thead,
 #project-checkrecord thead,#project-photos thead{
@@ -112,22 +123,33 @@ color: #57e3e8;
 #project-checkrecord td,#project-photos th,#project-photos td{
     border-right: 5px solid #fff;
 }
-.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel{
+.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel,.participantview,.helmet-safety{
     border: none;
+}
+.participantview{
+    background: #ac823c;
+    color: #fff;
 }
 .eye,.download{
     min-width: 30px;
 }
-.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover,.eye:hover{
+.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover,.eye:hover,.helmet-safety:hover{
     background: #04CAE1;
     color: #fff;
     transition: 200ms;
+}
+.participantview:hover{
+    background: #83632b;
+    color: #fff;
 }
 .unselected:focus,.projectdel:focus,.projectdownload:focus,.projectedit:focus,.projecteye:focus,.projectformhistory:focus,.addprojectbtn:focus{
     outline: none;
 }
 .modal-header{
     background: #04CAE1;
+}
+#participant .modal-header,#edittaskall .modal-header{
+    background: #0e5aa0;
 }
 .modal-title{
     color: #fff;
@@ -532,4 +554,43 @@ button.btn-489b6c:hover{
 .editmeeting{
     background: #F6F6F6;
     color: #000;
+}
+.details i{
+    padding: 10px;
+    border-radius: 0.25rem;
+}
+.details .fa-solid.fa-check{
+    background: #acf2a8;
+    color: #17a00e;
+}
+.details .fa-solid.fa-pencil{
+    background: #FFF2EC;
+    color: #FC804C;
+}
+.details .fa-solid.fa-plus{
+    font-size: inherit;
+    background: #D8F4F7;
+    color: #5AADB5;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+.details .fa-solid.fa-calendar-day{
+    background: #F2F2F2;
+    padding: 10px 11px;
+}
+.details h5{
+    color: #6c757d;
+    font-weight: bold;
+}
+.analysis-item{
+    border: 1px solid #dee2e6;
+    border-radius: .5rem;
+    padding: 20px;
+}
+.smalltext{
+    font-size: 10px;
+}
+.nav-pills-success.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #00b9bf;
 }

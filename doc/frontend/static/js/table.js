@@ -1824,4 +1824,234 @@ $(document).ready(function() {
         "language": {url: "static/json/zh_Hant.json"},
     });
 
+    // 進度管理-項目列表
+    function createCombox(data) {
+        var _html = '<select style="width:100%;">';
+        data.forEach(function (ele, index) {
+            _html += '<option>' + ele + '</option>';
+        });
+        _html += '</select>';
+        return _html;
+        
+    }
+    function image(data, type, row){
+        url = "http"
+        if (data.includes(url)){return '<a href="https://www.google.com/" data-id="editimage" data-bs-toggle="modal" data-bs-target="#editimage" title="照片">'}
+        else if(data.includes('')){return '<button class="btn p-0" data-id="editimage" data-bs-toggle="modal" data-bs-target="#editimage" title="照片"><img src="static/image/8.jpg" alt="" class="damageimage"></img></button>'}
+        
+    }
+    $(function () {
+        var editTableObj;
+        var comboData = {
+            "2": ["代辦", "施工中","完工","暫停"],
+        };
+        var setting = {
+            responsive: {
+            breakpoints: [
+                { name: 'desktop',  width: Infinity },
+                { name: 'tablet',  width: 1280 },
+                { name: 'tablet-l', width: 1024 },
+                { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+                { name: 'mobile-l', width: 480 },
+                { name: 'mobile-p', width: 320 }
+            ]
+            },
+            columns: [
+                { "data": "task"},
+                { "data": "expdate" },
+                { "data": "state" },
+                { data: null ,
+                    title: "操作",
+                    render: function (data, type, full, meta) {
+                        return data = '<button class="helmet-safety btn-sm me-2" data-bs-toggle="modal" data-bs-target="#participant" title="參與者"><i class="fa-solid fa-helmet-safety"></i></button>'
+                        + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash m-0"></i></button>'
+                        + '<button class="edit btn-sm" data-id="edittaskall" data-bs-toggle="modal" data-bs-target="#edittaskall" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    },"className": "all"
+                },
+            ],
+            columnDefs: [
+                {
+                    "className": ["task","expdate"],
+                    "targets": [0,1],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).click(function () {
+                            $(this).html('<input type="text" size="16" style="width: 100%"/>');
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val(cellData);
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).val();
+                            $(cell).html(text);
+                            editTableObj.cell(cell).data(text)
+                        })
+                    }
+                },
+                {   "className": "state",
+                    "targets": [2],
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        var aInput;
+                        $(cell).click(function () {
+                            $(this).html(createCombox(comboData[colIndex]));
+                            var aInput = $(this).find(":input");
+                            aInput.focus().val("");
+                        });
+                        $(cell).on("click", ":input", function (e) {
+                            e.stopPropagation();
+                        });
+                        $(cell).on("change", ":input", function () {
+                            $(this).blur();
+                        });
+                        $(cell).on("blur", ":input", function () {
+                            var text = $(this).find("option:selected").text();
+                            editTableObj.cell(cell).data(text)
+                        });
+                    }
+                },
+                {
+                    "className": "null",
+                    "targets": [3],
+                    
+                },
+            ],
+            data: [{
+                "task": "既有路⾯設施:標線、標記",
+                "expdate": "111/05-10",
+                "state": "待辦",
+                "participant": "",
+                null: null,
+            }],
+            ordering: false,
+            paging: false,
+            info: false,
+            searching: false,
+        };
+        editTableObj = $("#project-listtable").DataTable(setting);
+
+        // var ts = document.getElementsByClassName('Destroy_group');
+        // var td = ts[1]
+        // console.log(td.innerHTML)
+    });
+
+    // 進度管理-已完成
+    $('#success_task').dataTable( {
+        "ajax": {
+            "url": "static/json/success_task.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'creationdate',title: "建立日期" },
+            { data: 'task',title: "項目名稱"},
+            { data: 'completiondate',title: "完成日期" },
+            // { data: null ,
+            //     title: "操作",
+            //     orderable: false,
+            //     "render": function (data, type, full, meta) {
+            //         return data = '<button class="projecteye eye btn-sm me-2" data-id="view_completion_task" title="檢視" data-bs-toggle="modal" data-bs-target="#view_completion_task"><i class="fa-solid fa-eye"></i></button>'
+            //     },"className": "all"
+            // },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 進度管理-未完成
+    $('#undone_task').dataTable( {
+        "ajax": {
+            "url": "static/json/undone_task.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'creationdate',title: "建立日期" },
+            { data: 'task',title: "項目名稱"},
+            { data: 'expdate',title: "截止日期"},
+            { data: 'describe',title: "說明" },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="edit btn-sm" data-id="editdescribe" data-bs-toggle="modal" data-bs-target="#editdescribe" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                },"className": "all"
+            },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 進度管理-最近新增
+    $('#recent_tasks').dataTable( {
+        "ajax": {
+            "url": "static/json/recent_tasks.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'creationdate',title: "建立日期" },
+            { data: 'task',title: "項目名稱"},
+            { data: 'participant',title: "參與者"},
+            { data: 'expdate',title: "截止日期"}
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 進度管理-即將截止
+    $('#expiring_tasks').dataTable( {
+        "ajax": {
+            "url": "static/json/expiring_tasks.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'creationdate',title: "建立日期" },
+            { data: 'task',title: "項目名稱"},
+            { data: 'participant',title: "參與者"},
+            { data: "state",title: "狀態"},
+            { data: 'expdate',title: "截止日期"}
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
 });
