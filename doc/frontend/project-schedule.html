@@ -33,6 +33,9 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+    <!-- fullcalendar -->
+    <link rel="stylesheet" href="static/css/fullcalendar.css" />
+    <link rel="stylesheet" href="static/css/findex.css" />
     <title>施工進度</title>
 </head>
 
@@ -56,7 +59,7 @@
                 </li>
                 <li>
                     <a href="project-dashboard.html" class="has-arrow">
-                        <div class="parent-icon"><i class="fa-solid fa-gauge-high ms-1"></i></div>
+                        <div class="parent-icon mx-1"><i class="fa-solid fa-chart-bar"></i></div>
                         <div class="menu-title">儀錶板</div>
                     </a>
                 <li>
@@ -413,17 +416,19 @@
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                             <label class="btn btn-outline-00B9BF" for="btnradio1">行事曆</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
                             <label class="btn btn-outline-00B9BF" for="btnradio2">時間軸</label>
                         </div>
                     </div>
                 </div>
                 <!--end breadcrumb-->
                 <div class="card">
-                    <div class="card-body" style="background-image: url(static/image/專案管理\ –\ 施工進度1.png);background-size: 100%;height: 1421px; background-repeat: no-repeat;">
-
+                    <div class="card-body">
+                        <div class="main">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -444,6 +449,7 @@
 <!-- Bootstrap JS -->
 <script src="static/js/bootstrap.bundle.min.js"></script>
 <!--plugins-->
+<script src="static/js/echarts.min.js"></script>
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/jquery.dataTables.min.js"></script>
 <script src="static/js/dataTables.responsive.min.js"></script>
@@ -453,6 +459,13 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
+<script src='static/js/tinymce.min.js'></script>
+<!-- daterangepicker JS -->
+<script src="static/js/moment.min.js"></script>
+<script src="static/js/daterangepicker.js"></script>
+<script src="static/js/fullcalendar.min.js"></script>
+<script src="static/js/findex.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>

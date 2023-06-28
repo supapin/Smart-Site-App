@@ -478,6 +478,16 @@ a.view{
     background: #856750;
     color: #fff;
 }
+.headnumber{
+    font-weight: bold;
+    border-radius: .25rem;
+    background: #b7cfd5;
+    color: #fff;
+}
+.headnumber:hover{
+    background: #7fb8c7;
+    color: #fff;
+}
 .modal-header.editsignature,.btn-856750{
     background: #856750; 
     color: #fff;
@@ -497,7 +507,7 @@ button.btn-489b6c:hover{
 .project-showlist{
     display: none;
 }
-.checkfloderlist,.checktablelist{
+.checkfloderlist,.checktablelist,#successtable,#undonetable{
     display: none;
 }
 .fa-solid.fa-file{
@@ -593,4 +603,11 @@ button.btn-489b6c:hover{
 .nav-pills-success.nav-pills .nav-link.active {
     color: #fff;
     background-color: #00b9bf;
+}
+.chartborder{
+    border: 1px solid #e9ecef;
+    border-radius: 1rem;
+    padding: 20px;
+    margin-top: 1rem!important;
+    margin-bottom: 1rem!important;
 }

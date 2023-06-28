@@ -427,6 +427,28 @@
                     </div>
                 </div> -->
                 <!--end breadcrumb-->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-cols-1 row-cols-xl-2">
+                            <!-- 進度 -->
+                            <div class="col">
+                                <div id="progress_rate" class="chartborder" style="width:100%;height:650px;"></div>
+                            </div>
+                            <!-- 專案天數 -->
+                            <div class="col">
+                                <div id="project_duration" class="chartborder" style="width:100%;height:650px;"></div>
+                            </div>
+                            <!-- 計價 -->
+                            <div class="col">
+                                <div id="case_amount" class="chartborder" style="width:100%;height:650px;"></div>
+                            </div>
+                            <!-- 出勤率 -->
+                            <div class="col">
+                                <div id="attendance" class="chartborder" style="width:100%;height:650px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--end page wrapper -->
@@ -445,6 +467,7 @@
 <!-- Bootstrap JS -->
 <script src="static/js/bootstrap.bundle.min.js"></script>
 <!--plugins-->
+<script src="static/js/echarts.min.js"></script>
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/jquery.dataTables.min.js"></script>
 <script src="static/js/dataTables.responsive.min.js"></script>
@@ -454,6 +477,799 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
+<script>
+    // 進度
+    var progress_rate = echarts.init(document.getElementById( 'progress_rate' ));
+    var echartData = [{
+            value: 78,
+            name: ' 專案名稱1 '
+        }, {
+            value: 15,
+            name: ' 專案名稱2 '
+        }, {
+            value: 97,
+            name: '專案名稱3'
+        }, {
+            value: 54,
+            name: '專案名稱4'
+        }, {
+            value: 31,
+            name: '專案名稱5'
+        },{
+            value: 107,
+            name: '專案名稱6'
+        }]
+        var rich = {
+            yellow: {
+                color: "#ffc72b",
+                fontSize: 20, 
+                padding: [-150, 4, -75, 0],
+                align: 'center'
+            },
+            total: {
+                color: "#ffc72b",
+                fontSize: 40,
+                align: 'center'
+            },
+            white: {
+                color: "#fff",
+                align: 'center',
+                fontSize: 16,
+                padding: [15, 0]
+            },
+            blue: {
+                color: '#49dff0',
+                fontSize: 16,
+                padding: [-60, 4, -30, 5],
+                align: 'center'
+            },
+            hr: {
+                borderColor: '#0b5263',
+                width: '100%',
+                borderWidth: 1,
+                height: 60
+            }
+        }
+        option = {
+            backgroundColor: '#040c33',
+            title: {
+                text:'總項目數',
+                left:'center',
+                top:'53%',
+                padding:[24,0],
+                textStyle:{
+                    color:'#fff',
+                    fontSize:18,
+                    align:'center'
+                }
+            },
+            legend: {
+                selectedMode:false,
+                formatter: function(name) {
+                    var total = 0; //總和
+                    var averagePercent; //綜合率
+                    echartData.forEach(function(value, index, array) {
+                        total += value.value;
+                    });
+                    return '{total|' + total + '}';
+                },
+                data: [echartData[0].name],
+                // itemGap: 50,
+                left: 'center',
+                top: 'center',
+                icon: 'none',
+                align:'center',
+                textStyle: {
+                    color: "#fff",
+                    fontSize: 16,
+                    rich: rich
+                },
+            },
+            series: [{
+                name: '總項目數量',
+                type: 'pie',
+                radius: ['42%', '55%'],
+                hoverAnimation: false,
+                color: ['#c487ee', '#deb140', '#49dff0', '#034079', '#6f81da', '#00ffb4'],
+                label: {
+                    normal: {
+                        formatter: function(params, ticket, callback) {
+                            var total = 0; //項目總數
+                            var percent = 0; //項目占比
+                            echartData.forEach(function(value, index, array) {
+                                total += value.value;
+                            });
+                            percent = ((params.value / total) * 100).toFixed(1);
+                            return '{white|' + params.name + '}\n{hr|}\n{yellow|' + params.value + '}\n{blue|' + percent + '%}';
+                        },
+                        rich: rich
+                    },
+                },
+                labelLine: {
+                    normal: {
+                        length: 55,
+                        length2: 20,
+                        lineStyle: {
+                            color: '#0b5263'
+                        }
+                    }
+                },
+                data: echartData
+            }]
+        };
+    // 使用指定配置項和數據顯示圖表。
+    progress_rate.setOption( option );
+    window.addEventListener("resize",function(){
+        progress_rate.resize();
+    });
+
+    // 專案天數達成率
+    var project_duration = echarts.init(document.getElementById( 'project_duration' ));
+    areaData = [
+        {
+            name: '專案1',
+            max: 1000,
+            value: 350,
+        },
+        {
+            name: '專案2',
+            max: 1000,
+            value: 90,
+        },
+        {
+            name: '專案3',
+            max: 1000,
+            value: 180,
+        },
+        {
+            name: '專案4',
+            max: 1000,
+            value: 278,
+        },
+        {
+            name: '專案5',
+            max: 1000,
+            value: 487,
+        },
+        {
+            name: '專案6',
+            max: 1000,
+            value: 333,
+        },
+    ];
+    data = [];
+    areaData.forEach((item) => {
+        data.push(item.value);
+    });
+    let maxNum = Math.max(...data); //获取数组中最大的值
+    // 向上取整十，整百，整千，整万的方法
+    function ceilNumber(number) {
+        let bite = 0;
+        if (number < 10) {
+            return 10;
+        }
+        while (number >= 10) {
+            number /= 10;
+            bite += 1;
+        }
+        return Math.ceil(number) * Math.pow(10, bite);
+    }
+    let allMax = ceilNumber(maxNum); //将最大的值进行向上取整
+    areaData.forEach((item) => {
+        item.max = allMax;
+    });
+    data1 = [0, 0, 0, 0, 0, 0];
+    data2 = [0, 0, 0, 0, 0, 0];
+    data3 = [0, 0, 0, 0, 0, 0];
+    data4 = [0, 0, 0, 0, 0, 0];
+    data5 = [0, 0, 0, 0, 0, 0];
+    data6 = [0, 0, 0, 0, 0, 0];
+    data1[0] = data[0];
+    data2[1] = data[1];
+    data3[2] = data[2];
+    data4[3] = data[3];
+    data5[4] = data[4];
+    data6[5] = data[5];
+    option = {
+        backgroundColor: '#092A4E',
+        title: [{
+            text:'專案執行天數',
+            left:'3%',
+            top:'3%',
+            textStyle:{
+                fontSize: 16,
+                color:'#fff',
+                fontWeight: 'bold',
+            },
+        }],
+        color: ['#2E64FF', '#F0D418', '#FF9B42', '#FF6B6B', '#8E42FF', '#00e4ff'],
+        legend: {
+            trigger: 'item',
+            orient: 'vertical',
+            top: '40px',
+            right: '60px',
+            textStyle: {
+                color: '#fff',
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+                return params.name + ': ' + params.value + '天';
+            },
+        },
+        radar: {
+            zlevel: 11,
+            shape: 'circle',
+            scale: true,
+            indicator: areaData,
+            center: ['50%', '50%'],
+            radius: '40%',
+            nameGap: '0',
+            startAngle: 90,
+            name: {
+                show: false,
+                color: 'red',
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: 'rgba(32,126,255, .5)',
+                },
+            },
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(32,126,255, .5)',
+                },
+            },
+            splitArea: {
+                areaStyle: {
+                    color: 'rgba(32,126,255, 0.1)',
+                },
+            },
+        },
+        polar: {
+            radius: '40%',
+        },
+        angleAxis: {
+            zlevel: 0,
+            min: 0,
+            max: 360,
+            axisLabel: {
+                show: false,
+            },
+            splitLine: {
+                show: false,
+            },
+        },
+        radiusAxis: {
+            zlevel: 0,
+            min: 0,
+            max: allMax,
+            axisLabel: {
+                textStyle: {
+                    color: 'rgba(29,208,240,.5)',
+                },
+            },
+            splitLine: {
+                show: false,
+            },
+        },
+        series: [
+            {
+                type: 'radar',
+                symbolSize: 12,
+                symbol: 'circle',
+                tooltip: {
+                    trigger: 'none',
+                },
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                if (params.value !== 0) {
+                                    return params.value + '天';
+                                } else {
+                                    return '';
+                                }
+                            },
+                            color: '#ffffff',
+                            fontSize: 12,
+                            distance: 0,
+                        },
+                    },
+                },
+                areaStyle: {
+                    normal: {
+                        color: {
+                            type: 'radial',
+                            x: 0.5,
+                            y: 0.5,
+                            r: 0.5,
+                            colorStops: [
+                                {
+                                    offset: 0,
+                                    color: 'rgba(32,126,255, 0.5)', // 0% 处的颜色
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(32,126,255, 0.1)', // 100% 处的颜色
+                                },
+                            ],
+                            global: false, // 缺省为 false
+                        },
+                    },
+                },
+                data: [
+                    {
+                        value: data,
+                    },
+                    {
+                        value: data1,
+                        itemStyle: {
+                            color: '#2e64ff',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: data2,
+                        itemStyle: {
+                            color: '#f0d418',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: data3,
+                        itemStyle: {
+                            color: '#ff9b42',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: data4,
+                        itemStyle: {
+                            color: '#ff6b6b',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: data5,
+                        itemStyle: {
+                            color: '#8e42ff',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: data6,
+                        itemStyle: {
+                            color: '#00e4ff',
+                        },
+                        lineStyle: {
+                            color: 'transparent', //设置折线的颜色
+                        },
+                    },
+                    {
+                        value: [0, 0, 0, 0, 0, 0],
+                        symbolSize: 13,
+                        itemStyle: {
+                            color: 'rgba(40, 97, 132)',
+                        },
+                    },
+                ],
+                zlevel: 20,
+                z: 4,
+            },
+            {
+                type: 'pie',
+                startAngle: 90,
+                clockwise: false, //逆时针
+                data: areaData.map((item) => {
+                    return {
+                        name: item.name,
+                        value: item.value,
+                    };
+                }),
+                radius: ['45%', '60%'],
+                zlevel: -1,
+                label: {
+                    normal: {
+                        formatter: '{d}%',
+                        position: 'top',
+                        fontSize: '24',
+                        color: '#fff',
+                    },
+                },
+            },
+        ],
+    };
+    // 使用指定配置項和數據顯示圖表。
+    project_duration.setOption( option );
+    window.addEventListener("resize",function(){
+        project_duration.resize();
+    });
+    
+    // 案件金額
+    var case_amount = echarts.init(document.getElementById( 'case_amount' ));
+	var xData = function() {
+		var data = [];
+		for (var i = 2019; i < 2047; i++) {
+			data.push(i + "年");
+		}
+		return data;
+	}();
+    var option = {
+		backgroundColor: "#1A1835",
+        title: [{
+            text:'年度計價金額',
+            left:'3%',
+            top:'3%',
+            textStyle:{
+                fontSize: 16,
+                color:'#fff',
+                fontWeight: 'bold',
+            },
+        }],
+		tooltip: {
+			trigger: "axis",
+			axisPointer: {
+				type: "shadow",
+				textStyle: {
+					color: "#fff"
+				}
+			},
+		},
+		grid: {
+			borderWidth: 0,
+			top: 80,
+			left:100,
+			right:70,
+			bottom: 120,
+			textStyle: {
+				color: "#fff"
+			}
+		},
+		calculable: true,
+		xAxis: [{
+			type: "category",
+			axisLine: {
+				lineStyle: {
+					color: "rgba(204,187,225,0.5)",
+				}
+			},
+			splitLine: {
+				show: false
+			},
+			axisTick: {
+				show: false
+			},
+			data: xData,
+		}],
+		yAxis: [{
+			type: "value",
+			splitLine: {
+				show: false
+			},
+			axisLine: {
+				lineStyle: {
+					color: "rgba(204,187,225,0.5)",
+				}
+			},
+		}],
+		dataZoom: [{
+			show: true,
+			height: 30,
+			xAxisIndex: [0],
+			bottom: 60,
+			start: 10,
+			end: 80,
+			handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+			handleSize: '110%',
+			handleStyle: {
+				color: "#5B3AAE",
+			},
+			textStyle:{
+				color:"rgba(204,187,225,0.5)",
+			},
+			fillerColor:"rgba(67,55,160,0.4)",
+			borderColor: "rgba(204,187,225,0.5)",
+		}, {
+			type: "inside",
+			show: true,
+			height: 15,
+			start: 1,
+			end: 35
+		}],
+		series: [{
+			name: "預算金額",
+			type: "line",
+			symbolSize: 10,
+			symbol: 'circle',
+			itemStyle: {
+				color: "#6f7de3",
+			},
+			markPoint: {
+				label: {
+					normal: {
+						textStyle: {
+							color: '#fff'
+						}
+					}
+				},
+				data: [{
+					type: 'max',
+					name: '最大值',
+				}, {
+					type: 'min',
+					name: '最小值'
+				}]
+			},
+			data: [
+				509, 917, 2455, 2610, 2719, 3033, 3044, 3085, 2708, 2809, 2117,2000,1455,1210,719,
+				733,944,2285,2208,3372,3936,3693,2962,2810,3519,2455,2610,2719,2484,2078
+			],
+		}, {
+			name: "實收金額",
+			type: "line",
+			symbolSize: 10,
+			symbol: 'circle',
+			itemStyle: {
+				color: "#c257F6",
+			},
+			markPoint: {
+				label: {
+					normal: {
+						textStyle: {
+							color: '#fff'
+						}
+					}
+				},
+				data: [{
+					type: 'max',
+					name: '最大值',
+				}, {
+					type: 'min',
+					name: '最小值'
+				}]
+			},
+			data: [
+				2136,3693,2962,3810,3519,3484,3915,3823,3455,4310,4019,3433,3544,3885,4208,3372,
+				3484,3915,3748,3675,4009,4433,3544,3285,4208,3372,3484,3915,3823,4265,4298
+			]
+		}, ]
+	}
+	// 使用指定配置項和數據顯示圖表。
+    case_amount.setOption( option );
+    window.addEventListener("resize",function(){
+        case_amount.resize();
+    });
+	
+    // 出勤率
+    var attendance = echarts.init(document.getElementById( 'attendance' ));
+    var data = {
+        title: [ '專案A', '專案B', '專案C', '專案D'],
+        currentNum: [22,446,796,461],
+        dueNum: [21,439,761,437],
+        actualNum: [19,420,724,413],
+        attRate: [95.2,95.2,95.1,95.8],
+        targetRate: [95.1,95.1,95.1,95.1],
+    };
+    function getTableLine(num) {
+        var list = [];
+        var bottom = 150;
+        var height = 30;
+        for (var i = 0; i < num; i++) {
+            list.push({
+                type: 'line',
+                bottom: bottom - i * height,
+                left:15,
+                style: {
+                    fill: '#333',
+                    stroke:'#736a8b',
+                },
+                shape: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 740,
+                    y2: 0
+                }
+            
+            });
+        }
+        return list;
+    }
+    var lineList = getTableLine(5);
+
+    option = {
+        backgroundColor: "#212529",
+        title: [
+            {
+                text:'各專案出勤狀況',
+                left:'3%',
+                top:'3%',
+                textStyle:{
+                    fontSize: 16,
+                    color:'#fff',
+                    fontWeight: 'bold',
+                },
+            },
+            {
+                text:'(不含共用):',
+                left:'19%',
+                top:'3%',
+                textStyle:{
+                    fontSize: 16,
+                    color:'#fff',
+                    fontWeight: 'lighter',
+                },
+            },
+            {
+            text: '  \n專案\n現有人數\n應到人數\n實到人数\n出勤率',
+            bottom:25,
+            left: 32,
+            textStyle: {
+                lineHeight: 30,
+                fontSize: 14,
+                color:'#57e3e8',
+                fontWeight: 'normal',
+                formatter: function(value) {
+                    return '{table|' + value + '}';
+                },
+                rich: {
+                    table: {
+                        align: 'center'
+                    }
+                }
+            }
+        }],
+        legend: {
+            data: ['實際', '目標'],
+            orient : 'horizontal',
+            itemHeight : 13,
+                x: 'right',
+                padding:[25,20,25,20],
+                textStyle:{
+                    fontSize:14,
+                    fontFamily:'',
+                    color: '#fff'
+                }
+        },
+        grid: {
+            bottom: 190,
+            left: 120,
+            right: 20,
+            top:'12%',
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: true,
+            data: data.title,
+            axisLine:{
+                lineStyle:{
+                    color:'#736a8b', // 更改坐标轴颜色
+                }
+            },
+            axisTick: {
+               length:160, // 直線長度
+            },
+            axisLabel: {
+                interval:0,
+                textStyle:{
+                    color:'#fff',
+                },
+                formatter: function(value, index) {
+                    var indexNum = 0;
+                    for(var i = 0; i < data.title.length; i++){
+                        if(value == data.title[i]){
+                            indexNum = i;
+                        }
+                    }
+                    return '{table|' + value +
+                        '}\n{table|' + data.currentNum[indexNum] +
+                        '}\n{table|' + data.dueNum[indexNum] +
+                        '}\n{table|' + data.actualNum[indexNum] +
+                        '}\n{table|' + data.attRate[indexNum] + '%}';
+                },
+                rich: {
+                    table: {
+                        lineHeight: 30,
+                        align: 'center',
+                        fontSize: 14, // table里文字字体大小
+                    }
+                }
+            }
+        }],
+        yAxis: [{
+            type: 'value',
+            scale : true,
+            maxInterval: 5, // 自动计算的坐标轴最小间隔大小。
+            silent: false, // 坐标轴是否是静态无法交互
+            max: 100,
+            min:70,
+            axisLine: {
+                show: true ,
+                lineStyle: { // 刻度线的样式设置。
+                    color: '#736a8b', // 刻度线的颜色
+                    width: 1 ,
+                    type: 'solid' , 
+                } , 
+            },
+            axisTick: {
+                show: true ,
+                inside: true , // 坐标轴刻度是否朝内，默认朝外。
+                lineStyle: { // 刻度线的样式设置。
+                    color: '#736a8b', // 刻度线的颜色
+                    width: 1 ,
+                    type: 'solid' , 
+                } , 
+            },
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                formatter: '{value} %',
+                color: '#736a8b',
+                fontWeight: 'bold' ,
+                fontSize: 14 ,
+            }
+        },],
+        series: [{
+            name: '實際',
+            type: 'bar',
+            barWidth:36,
+            itemStyle:{
+                normal:{
+                    color:'#57e3e8'
+                },
+            },
+            label: {
+                show: true,
+                position: 'top',
+                formatter: '{c} %',
+                textStyle: {  //数值样式
+                    color: '#fff',
+                    fontSize: 14,
+                }
+            },
+            yAxisIndex: 0,
+            data: data.attRate
+        }, 
+        {
+            name: '目標',
+            type: 'line',
+            symbol:'none',
+            itemStyle:{
+                normal:{
+                    color:'#fdad3c'
+                },
+            },
+            label: {
+                show: false,
+                position: 'top',
+                formatter: '{c} %'
+            },
+            yAxisIndex: 0,
+            data: data.targetRate
+        }],
+        graphic: lineList
+    };
+    // 使用指定配置項和數據顯示圖表。
+    attendance.setOption( option );
+    window.addEventListener("resize",function(){
+        attendance.resize();
+    });
+</script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
 </body>

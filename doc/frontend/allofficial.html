@@ -436,9 +436,38 @@
                                     <a href="newofficial.html" title="添加公文">
                                         <button type="button" class="addbtn btn"><i class="fa-solid fa-circle-plus"></i>添加公文</button>
                                     </a>
-                                    <a href="project-signature.html" title="印章管理">
-                                        <button type="button" class="btn addsignature">印章管理</button>
-                                    </a>
+                                    <div class="">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#headnumber" title="字號">
+                                            <button type="button" class="btn headnumber">字號</button>
+                                        </a>
+                                        <!-- 字號modal -->
+                                        <div class="modal fade" id="headnumber" tabindex="-1" aria-labelledby="headnumberLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header editmodal">
+                                                        <h5 class="modal-title" id="headnumberLabel">編輯字號</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form name="headnumber_form" id="headnumber_form" class="row gy-3" method="post" action="">
+                                                            <div class="col-12">
+                                                                <label class="form-label">字號名稱</label>
+                                                                <input type="text" class="form-control" value="xxxxxx" minlength="2" required>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                                        <button type="button" class="btn btn-83c7cf">保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 字號modal END-->
+                                        <a href="project-signature.html" title="印章管理">
+                                            <button type="button" class="btn addsignature">印章管理</button>
+                                        </a>
+                                    </div>
                                 </div>
                                 <form name="select_filedate_form" id="select_filedate_form" class="mt-3" method="post" action="">
                                     <div class="col-12">

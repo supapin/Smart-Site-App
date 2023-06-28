@@ -1,0 +1,10 @@
+{
+    "xAxisData": [88, 70, 25, 68],
+    "yAxisData": ["專案1", "專案2", "專案3", "專案4"],
+    "xAxisData2": 
+        [{"value":50.5, "url":"project-dashboard.html"},
+        {"value":50, "url":"project-dashboard.html"},
+        {"value":50, "url":"project-dashboard.html"},
+        {"value":50, "url":"project-dashboard.html"}
+        ]
+}
