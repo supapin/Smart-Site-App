@@ -392,13 +392,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -472,6 +472,67 @@
                                         <a href="#" class="unselected">新增內容</a>
                                         <a href="#" class="checkboxdet">刪除內容</a>
                                     </div>
+                                    <div class="">
+                                        <div class="col-12 d-flex">
+                                            <div class="input-group mb-3">
+                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">正本</button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">正本</a></li>
+                                                    <li><a class="dropdown-item" href="#">副本</a></li>
+                                                </ul>
+                                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                            </div>
+                                            <div class="ms-2">
+                                                <button type="button" class="btn btn-outline-00B9BF"><i class="fa-solid fa-plus m-0"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-flex border">
+                                                <div class="col-6 border-end">
+                                                    <label class="form-label" style="display: block;background: #eee;font-size: 12px;padding: 5px 10px;">正本</label>
+                                                    <div class="col-12 my-3 tag_group">
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="form-label" style="display: block;background: #eee;font-size: 12px;padding: 5px 10px;">副本</label>
+                                                    <div class="col-12 my-3 tag_group">
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                        <div class="chip chip-lg fs-12 fw-bold">
+                                                            <span>xxxx</span>
+                                                            <span class="closebtn" onclick="this.parentElement.style.display='none'">×</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <label class="form-label">時間</label>
                                         <input class="form-control" type="datetime-local" value="2023-06-12T19:30">
@@ -480,17 +541,7 @@
                                         <label class="form-label">速別</label>
                                         <input type="text" id="degree" name="degree" class="form-control" value="普通件">
                                     </div>
-                                    <div class="col-6 mt-28">
-                                        <div class="input-group mb-3">
-                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">正本</button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">正本</a></li>
-                                                <li><a class="dropdown-item" href="#">副本</a></li>
-                                            </ul>
-                                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-0">
+                                    <div class="col-6">
                                         <label class="form-label">印章</label>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected>印章名稱</option>

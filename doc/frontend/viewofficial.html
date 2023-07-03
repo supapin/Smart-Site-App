@@ -424,7 +424,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="fw-bold">編輯公文</h5>
+                                    <h5 class="fw-bold">公文檢視</h5>
                                     <p>字號：<span class="number">AC11166712</span></p>
                                 </div>
                                 <hr class="mt-0">
@@ -438,54 +438,41 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
+                                        <label class="form-label">發文機關</label>
+                                        <input type="text" id="poster" name="poster" class="form-control" value="xxxxxx" minlength="2" required readonly>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">發文地址</label>
+                                        <input type="text" id="posteradress" name="posteraddress" class="form-control" value="xxxxxxxxxxxxxxx" minlength="2" required readonly>
+                                    </div>
+                                    <div class="col-6">
                                         <label class="form-label">收文公司</label>
-                                        <input type="text" id="company" name="company" class="form-control" value="xxxxxx" minlength="2" required>
+                                        <input type="text" id="company" name="company" class="form-control" value="xxxxxx" minlength="2" required readonly>
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">聯絡人</label>
-                                        <input type="text" id="contact" name="contact" class="form-control" value="xxxxxx" minlength="2" required>
+                                        <input type="text" id="contact" name="contact" class="form-control" value="xxxxxx" minlength="2" required readonly>
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">聯絡電話</label>
-                                        <input type="text" id="contactnumber" name="contactnumber" class="form-control" value="xxxxxxxxxxx" minlength="2" required>
+                                        <input type="text" id="contactnumber" name="contactnumber" class="form-control" value="xxxxxxxxxxx" minlength="2" required readonly>
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">聯絡信箱</label>
-                                        <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="xxxxx@kingyan.com.tw" required>
+                                        <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="xxxxx@kingyan.com.tw" required readonly>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">主旨</label>
-                                        <input type="text" id="subject" name="subject" class="form-control" value="xxxxxxxxxxxxxxxxxx" minlength="2" required>
+                                        <input type="text" id="subject" name="subject" class="form-control" value="xxxxxxxxxxxxxxxxxx" minlength="2" required readonly>
                                     </div>
                                     <h6 class="fw-bold mb-0">說明</h6>
-                                    <div class="gridArea">
-                                        <table id="myGrid" class="bg-light nowrap table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr style="background: darkslategrey;color: #fff;">
-                                                    <th>項次</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <div class="mt-3">
-                                        <a href="#" class="unselected">新增內容</a>
-                                        <a href="#" class="checkboxdet">刪除內容</a>
+                                    <div class="editcontact">
+                                        <textarea id="mytextarea" name="mytextarea" readonly>一、xxxxxxxxxxx
+                                            <br>二、xxxxxxxxxxxxxxxxxx
+                                            <br>三、xxxxxxxxxxxxxxxxxxxxxxxxxxx
+                                        </textarea>
                                     </div>
                                     <div class="">
-                                        <div class="col-12 d-flex">
-                                            <div class="input-group mb-3">
-                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">正本</button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">正本</a></li>
-                                                    <li><a class="dropdown-item" href="#">副本</a></li>
-                                                </ul>
-                                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                            </div>
-                                            <div class="ms-2">
-                                                <button type="button" class="btn btn-outline-00B9BF"><i class="fa-solid fa-plus m-0"></i></button>
-                                            </div>
-                                        </div>
                                         <div class="col-12">
                                             <div class="d-flex border">
                                                 <div class="col-6 border-end">
@@ -533,36 +520,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <label class="form-label">時間</label>
-                                        <input class="form-control" type="datetime-local" value="2023-06-12T19:30">
+                                        <input class="form-control" type="datetime-local" value="2023-06-12T19:30" readonly>
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">速別</label>
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" aria-label="Default select example" disabled>
                                             <option value="1">普通件</option>
                                             <option value="2">速件</option>
                                             <option value="3">最速件</option>
                                         </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">印章</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>印章名稱</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="my-5 text-end">
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="export dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
-                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" class="submit" onclick='document.forms["addofficial_form"].submit(); return false;'>修改</a>
                                     </div>
                                 </form>
                             </div>
@@ -596,7 +564,18 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src='static/js/tinymce.min.js'></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<script>
+    tinyMCE.init({
+        readonly : true,
+        selector: "#mytextarea",
+        menubar: false,
+        statusbar: false,
+        toolbar: false,
+        language: "zh-Hant",
+    });
+</script>
 </body>
 </html>

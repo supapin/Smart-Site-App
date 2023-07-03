@@ -92,43 +92,43 @@ $(function(){
 //          }
 //		},
 		events: [
-        	{
-		  		"title": "可以直接加跳轉連結",
-		  		"start": "2020-05-13T09:00:00",
-		  		"end": "2020-05-13T14:00:00",
-		  		"duration": "03:00",
+			{
+				"title": "可以直接加跳轉連結",
+				"start": "2020-05-13T09:00:00",
+				"end": "2020-05-13T14:00:00",
+				"duration": "03:00",
 				"url": "https://kingyaninfo.com.tw/",
 				"className": "green"
 			},{
-		  		"title": "標題123",
-		  		"start": "2020-05-13T12:00:00",
-		  		"end": "2020-05-14T13:00:00",
-		  		"duration": "05:00",
-		  		"className": "yellow"
-		  },{
-			    "title": "標題456",
-			    "start": "2020-05-16T10:30:00",
-			    "end": "2020-05-16T12:30:00",
+				"title": "標題123",
+				"start": "2020-05-13T12:00:00",
+				"end": "2020-05-14T13:00:00",
+				"duration": "05:00",
+				"className": "yellow"
+			},{
+				"title": "標題456",
+				"start": "2020-05-16T10:30:00",
+				"end": "2020-05-16T12:30:00",
 				"className": "red"
 			},{
-			    "title": "標題789",
-			    "start": "2020-05-16T12:00:00",
-			    "end": "2020-05-16T14:00:00",
+				"title": "標題789",
+				"start": "2020-05-16T12:00:00",
+				"end": "2020-05-16T14:00:00",
 				"className": "red"
 			},{
-			    "title": "標題233333333",
-			    "start": "2020-05-16T14:30:00",
-			    "end": "2020-05-16T16:00:00",
+				"title": "標題233333333",
+				"start": "2020-05-16T14:30:00",
+				"end": "2020-05-16T16:00:00",
 				"className": "red"
 			},{
-			    "title": "標題45645655",
-			    "start": "2020-05-16T17:30:00",
-			    "end": "2020-05-16T20:00:00",
+				"title": "標題45645655",
+				"start": "2020-05-16T17:30:00",
+				"end": "2020-05-16T20:00:00",
 				"className": "red"
 			},{
-			    "title": "標題1234567890",
-			    "start": "2020-05-16T20:00:00",
-			    "end": "2020-05-16T23:00:00",
+				"title": "標題1234567890",
+				"start": "2020-05-16T20:00:00",
+				"end": "2020-05-16T23:00:00",
 				"className": "red"
 			},{
 				"start": "2020-05-06",
@@ -137,7 +137,7 @@ $(function(){
 				"rendering": "background",
 				"color": "#cccccc"
 			},
-      	],
+],
       	dayClick: function(date, allDay, jsEvent, view) {						//空白的日期区点击
 //        	alert($.fullCalendar.formatDate(date, "YYYY-MM-DD"));
 //      	console.log('Clicked on: ' + date.format());

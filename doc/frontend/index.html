@@ -392,13 +392,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -501,45 +501,46 @@
             name: '專案名稱6'
         }]
         var rich = {
-            yellow: {
-                color: "#ffc72b",
+            bluecount: {
+                color: "#5cabd4",
                 fontSize: 20, 
                 padding: [-150, 4, -75, 0],
                 align: 'center'
             },
             total: {
-                color: "#ffc72b",
+                color: "#5cabd4",
                 fontSize: 40,
                 align: 'center'
             },
-            white: {
-                color: "#fff",
+            graytitle: {
+                color: "#aaa",
                 align: 'center',
                 fontSize: 16,
                 padding: [15, 0]
             },
-            blue: {
-                color: '#49dff0',
+            percentage: {
+                color: '#62664c',
                 fontSize: 16,
                 padding: [-60, 4, -30, 5],
                 align: 'center'
             },
             hr: {
-                borderColor: '#0b5263',
+                // backgroundColor:"#c1ddf5",
+                borderColor: '#5cabd4',
                 width: '100%',
                 borderWidth: 1,
                 height: 60
             }
         }
         option = {
-            backgroundColor: '#040c33',
+            // backgroundColor: '#FCFCFC',
             title: {
                 text:'總項目數',
                 left:'center',
                 top:'53%',
                 padding:[24,0],
                 textStyle:{
-                    color:'#fff',
+                    color:'#62664c',
                     fontSize:18,
                     align:'center'
                 }
@@ -561,7 +562,7 @@
                 icon: 'none',
                 align:'center',
                 textStyle: {
-                    color: "#fff",
+                    color: "#000",
                     fontSize: 16,
                     rich: rich
                 },
@@ -571,7 +572,7 @@
                 type: 'pie',
                 radius: ['42%', '55%'],
                 hoverAnimation: false,
-                color: ['#c487ee', '#deb140', '#49dff0', '#034079', '#6f81da', '#00ffb4'],
+                color: ['#c3ddf7', '#ecfbfb', '#d9f6ce', '#fefeed', '#f5c7e0', '#ffebff'],
                 label: {
                     normal: {
                         formatter: function(params, ticket, callback) {
@@ -581,7 +582,7 @@
                                 total += value.value;
                             });
                             percent = ((params.value / total) * 100).toFixed(1);
-                            return '{white|' + params.name + '}\n{hr|}\n{yellow|' + params.value + '}\n{blue|' + percent + '%}';
+                            return '{graytitle|' + params.name + '}\n{hr|}\n{bluecount|' + params.value + '}\n{percentage|' + percent + '%}';
                         },
                         rich: rich
                     },
@@ -591,7 +592,7 @@
                         length: 55,
                         length2: 20,
                         lineStyle: {
-                            color: '#0b5263'
+                            color: '#5cabd4'
                         }
                     }
                 },
@@ -672,14 +673,14 @@
     data5[4] = data[4];
     data6[5] = data[5];
     option = {
-        backgroundColor: '#092A4E',
+        // backgroundColor: '#092A4E',
         title: [{
             text:'專案執行天數',
             left:'3%',
             top:'3%',
             textStyle:{
                 fontSize: 16,
-                color:'#fff',
+                color:'#000',
                 fontWeight: 'bold',
             },
         }],
@@ -690,7 +691,7 @@
             top: '40px',
             right: '60px',
             textStyle: {
-                color: '#fff',
+                color: '#000',
             },
         },
         tooltip: {
@@ -775,7 +776,7 @@
                                     return '';
                                 }
                             },
-                            color: '#ffffff',
+                            color: '#000',
                             fontSize: 12,
                             distance: 0,
                         },
@@ -888,7 +889,7 @@
                         formatter: '{d}%',
                         position: 'top',
                         fontSize: '24',
-                        color: '#fff',
+                        color: '#3d4465',
                     },
                 },
             },
@@ -910,14 +911,14 @@
 		return data;
 	}();
     var option = {
-		backgroundColor: "#1A1835",
+		// backgroundColor: "#1A1835",
         title: [{
             text:'年度計價金額',
             left:'3%',
             top:'3%',
             textStyle:{
                 fontSize: 16,
-                color:'#fff',
+                color:'#000',
                 fontWeight: 'bold',
             },
         }],
@@ -945,7 +946,7 @@
 			type: "category",
 			axisLine: {
 				lineStyle: {
-					color: "rgba(204,187,225,0.5)",
+					color: "#aaa",
 				}
 			},
 			splitLine: {
@@ -959,11 +960,11 @@
 		yAxis: [{
 			type: "value",
 			splitLine: {
-				show: false
+				// show: false
 			},
 			axisLine: {
 				lineStyle: {
-					color: "rgba(204,187,225,0.5)",
+					color: "#aaa",
 				}
 			},
 		}],
@@ -1081,7 +1082,7 @@
                 shape: {
                     x1: 0,
                     y1: 0,
-                    x2: 740,
+                    x2: 0,
                     y2: 0
                 }
             
@@ -1115,7 +1116,7 @@
                 },
             },
             {
-            text: '  \n專案\n現有人數\n應到人數\n實到人数\n出勤率',
+            text: '  \n專案名稱\n現有人數\n應到人數\n實到人数\n出勤率',
             bottom:25,
             left: 32,
             textStyle: {

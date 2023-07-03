@@ -33,7 +33,7 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>公文管理</title>
+    <title>公文管理-所有公文</title>
 </head>
 
 <body>
@@ -392,13 +392,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -431,7 +431,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="fw-bold">所有公文</h5>
+                                <div class="d-flex align-items-center">
+                                    <h5 class="allofficialtitle fw-bold m-0">受文列表</h5>
+                                    <h5 class="receivetitle fw-bold m-0">收文列表</h5>
+                                    <button id="changeofficelist" type="button" class="ms-2 receive unselected text-light" title="切換列表"><i class="fa-solid fa-right-left"></i></button>
+                                </div>
+                                <hr class="border border-secondary border-2">
                                 <div class="d-flex justify-content-between align-items-end">
                                     <a href="newofficial.html" title="添加公文">
                                         <button type="button" class="addbtn btn"><i class="fa-solid fa-circle-plus"></i>添加公文</button>
@@ -474,18 +479,29 @@
                                         <input class="form-control" type="date">
                                     </div>
                                 </form>
-                                <div class="selectstate">
-                                    <div class="btn-group" role="group">
-                                        <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
-                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
-                                        </ul>
+                                <div class="selectstate d-flex justify-content-between">
+                                    <div>
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
+                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="checkboxdet">刪除選項</a>
                                     </div>
-                                    <a href="#" class="checkboxdet">刪除選項</a>
+                                    <div>
+                                        <button type="button" class="unselected">匯入</button>
+                                    </div>
                                 </div>
-                                <!-- 公文列表 -->
-                                <table id="allofficialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
+                                <!-- 發文列表 -->
+                                <div id="allofficial">
+                                    <table id="allofficialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
+                                <!-- 收文列表 -->
+                                <div id="receive">
+                                    <table id="receiveofficial" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -519,5 +535,24 @@
 <script src="static/js/perfect-scrollbar.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<script>
+    var test = 1 
+    $(document).on('click','#changeofficelist',function(e){
+        if (test == 1) {
+            $('#allofficial').hide();
+            $('.allofficialtitle').hide();
+            $('#receive').show();
+            $('.receivetitle').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('#receive').hide();
+            $('.receivetitle').hide();
+            $('#allofficial').show();
+            $('.allofficialtitle').show()
+            test = 1
+        }
+    })
+</script>
 </body>
 </html>

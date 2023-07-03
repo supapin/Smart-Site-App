@@ -392,13 +392,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -442,7 +442,12 @@
                             </div>
                             <div class="col-12 col-lg-9">
                                 <div class="d-flex justify-content-between align-items-end">
-                                    <h6 class="fw-bold gray mt-3 mt-lg-0">公文列表</h6>
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="allofficialtitle fw-bold m-0">受文列表</h5>
+                                        <h5 class="receivetitle fw-bold m-0">收文列表</h5>
+                                        <button id="changeofficelist" type="button" class="ms-2 receive unselected text-light" title="切換列表"><i class="fa-solid fa-right-left"></i></button>
+                                    </div>
+                                    <!-- <h6 class="fw-bold gray mt-3 mt-lg-0">公文列表</h6> -->
                                     <div class="">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#headnumber" title="字號">
                                             <button type="button" class="btn headnumber">字號</button>
@@ -485,18 +490,29 @@
                                         <input class="form-control" type="date">
                                     </div>
                                 </form>
-                                <div class="selectstate">
-                                    <div class="btn-group" role="group">
-                                        <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
-                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
-                                        </ul>
+                                <div class="selectstate d-flex justify-content-between">
+                                    <div>
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
+                                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-word me-2"></i></i>WORD</a></li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="checkboxdet">刪除選項</a>
                                     </div>
-                                    <a href="#" class="checkboxdet">刪除選項</a>
+                                    <div>
+                                        <button type="button" class="unselected">匯入</button>
+                                    </div>
                                 </div>
-                                <!-- 公文列表 -->
-                                <table id="officialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
+                                <!-- 發文列表 -->
+                                <div id="projectofficial">
+                                    <table id="officialdocument" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
+                                <!-- 收文列表 -->
+                                <div id="receive">
+                                    <table id="projectreceiveofficial" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -530,5 +546,24 @@
 <script src="static/js/perfect-scrollbar.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<script>
+    var test = 1 
+    $(document).on('click','#changeofficelist',function(e){
+        if (test == 1) {
+            $('#projectofficial').hide();
+            $('.allofficialtitle').hide();
+            $('#receive').show();
+            $('.receivetitle').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('#receive').hide();
+            $('.receivetitle').hide();
+            $('#projectofficial').show();
+            $('.allofficialtitle').show()
+            test = 1
+        }
+    })
+</script>
 </body>
 </html>

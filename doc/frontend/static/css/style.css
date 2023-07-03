@@ -94,7 +94,7 @@ color: #57e3e8;
 }
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
-#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead{
+#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead{
     background: #F6F6F6;
 }
 #expiring_tasks thead{
@@ -106,7 +106,7 @@ color: #57e3e8;
     color: #fff;
 }
 #project-meeting thead,#project-checklist thead,#project-official thead,#project-personnel thead,#project-loglist thead,#project-logrecord thead,
-#project-checkrecord thead,#project-photos thead{
+#project-checkrecord thead,#project-photos thead,#downloads thead{
     background: #00B9BF;
     color: #fff;
 }
@@ -115,12 +115,12 @@ color: #57e3e8;
     color: #fff;
 }
 #project-meeting tbody,#project-checklist tbody,#signature tbody,#project-official tbody,#project-personnel tbody,#project-loglist tbody,#project-logrecord tbody,
-#project-checkrecord tbody{
+#project-checkrecord tbody,#downloads tbody{
     background: #F8F8F8;
 }
 #project-meeting th,#project-meeting td,#project-checklist th,#project-checklist td,#signature th,#signature td,#project-official th,#project-official td,
 #project-personnel th,#project-personnel td,#project-loglist th,#project-loglist td,#project-logrecord th,#project-logrecord td,#project-checkrecord th,
-#project-checkrecord td,#project-photos th,#project-photos td{
+#project-checkrecord td,#project-photos th,#project-photos td,#downloads th,#downloads td{
     border-right: 5px solid #fff;
 }
 .edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel,.participantview,.helmet-safety{
@@ -610,4 +610,17 @@ button.btn-489b6c:hover{
     padding: 20px;
     margin-top: 1rem!important;
     margin-bottom: 1rem!important;
+}
+.receive{
+    padding: 5px 10px;
+}
+.chip{
+    margin: 0;
+    border-radius: 0;
+}
+.chip:first-child{
+    margin-left: 20px;
+}
+#receive,.receivetitle{
+    display: none;
 }

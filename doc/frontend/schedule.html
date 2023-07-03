@@ -395,13 +395,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -508,6 +508,55 @@
                             <div class="tab-pane fade" id="calendar" role="tabpanel">
                                 <div class="main">
                                     <div id="calendar"></div>
+                                </div>
+                                <div class="modal fade" id="eventFormModal" tabindex="-1" role="dialog" aria-labelledby="eventFormModal" data-backdrop="static">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="eventFormModalTitle"></h4>
+                                            </div>
+                            
+                                            <div class="modal-body">
+                                                <form id="eventForm">
+                                                    <div class="form-group">
+                                                        <label for="dateInput" class="control-label">事件日期</label>
+                                                        <input type="text" class="form-control" id="dateInput" name="dateInput" readonly>
+                                                    </div>
+                            
+                                                    <div class="form-group">
+                                                        <label for="eventInput" class="control-label">事件名稱</label>
+                                                        <input type="text" class="form-control" id="eventInput" name="eventInput">
+                                                    </div>
+                            
+                                                    <div class="form-group">
+                                                        <label for="eventItemInput" class="control-label">事件類型</label>
+                                                        <select class="form-control" id="eventItemInput" name="eventItemInput">
+                                                            <option>請選擇</option>
+                                                            <option value="工作">工作</option>
+                                                            <option value="家庭">家庭</option>
+                                                            <option value="朋友">朋友</option>
+                                                            <option value="家人">家人</option>
+                                                        </select>
+                                                    </div>
+                            
+                                                    <div class="form-group">
+                                                        <label for="contentInput" class="control-label">事件內容</label>
+                                                        <textarea class="form-control" id="contentInput" name="contentInput" rows="4" cols="25"></textarea>
+                                                    </div>
+                                                </form>
+                                            </div>
+                            
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                <button type="button" class="btn btn-primary" id="eventFormOkButton">確定</button>
+                                                <button type="button" class="btn btn-danger" id="eventFormDelButton">刪除</button>
+                                            </div>
+                            
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- 項目列表 -->
@@ -788,7 +837,7 @@
     function manyLineChart( chartId, xAxisData, yAxisData, xAxisData2){
         var myChart = echarts.init(document.getElementById( chartId ));
         var option = {
-            backgroundColor: '#0A1934',
+            // backgroundColor: '#0A1934',
             title: [{
                 text: '95%',
                 textStyle: {
@@ -803,7 +852,7 @@
             {
                 text: '總體完成度',
                 textStyle: {
-                    color: '#fff',
+                    color: '#000',
                     fontSize: 20,
                     fontWeight:'normal'
                 },
@@ -864,7 +913,7 @@
                 axisLabel: {
                     show: false,
                     textStyle: {
-                        color: '#fff'
+                        color: '#000'
                     },
                 },
                 splitLine: {
@@ -886,7 +935,7 @@
                 show: true,
                 axisLabel: {
                     textStyle: {
-                        color: '#fff',
+                        color: '#000',
                         fontSize: '12'
                     },
                     formatter: function(value) {
@@ -902,7 +951,7 @@
                 silent:false,
                 label: {
                     normal: {
-                        color: '#fff',
+                        color: '#000',
                         show: true,
                         position: [0, '-24px'],
                         textStyle: {

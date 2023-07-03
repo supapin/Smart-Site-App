@@ -386,13 +386,13 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a></li>
+                            <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
                             <li><div class="dropdown-divider mb-0"></div></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -480,7 +480,7 @@
     // 儀錶板
     var project_dashboard = echarts.init(document.getElementById( 'project_dashboard' ));
     project_dashboard.setOption({
-        backgroundColor: '#040c33',
+        // backgroundColor: '#040c33',
         title: [
             {
                 text:'XXXX專案項目完成度',
@@ -488,7 +488,7 @@
                 top:'6%',
                 textStyle:{
                     fontSize: 16,
-                    color:'#fff',
+                    color:'#aaa',
                     fontWeight: 'bold',
                 },
             },
@@ -511,7 +511,7 @@
             type: 'none' 
           },
           textStyle: {
-            color: '#cdd3ee' // 文字颜色
+            color: '#000' // 文字颜色
           },
           // 提示框浮层内容格式器，支持字符串模板和回调函数两种形式 折线（区域）图、柱状（条形）图、K线图
           // {a}（系列名称），{b}（类目值），{c}（数值）, {d}（无）
@@ -521,7 +521,7 @@
         legend: {
           textStyle: { // 文本样式
             fontSize: 16,
-            color: '#cdd3ee'
+            color: '#000'
           },
           right: 80,
           top: 40, // 定位
@@ -572,7 +572,7 @@
             axisLabel: {
               show: true, // 是否显示刻度标签 默认显示
               fontSize: 16, // 文字的字体大小
-              color: '#cdd3ee', // 刻度标签文字的颜色
+              color: '#000', // 刻度标签文字的颜色
               // 使用字符串模板，模板变量为刻度默认标签 {value}
               formatter: '{value}'
             },
