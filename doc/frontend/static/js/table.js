@@ -1494,7 +1494,16 @@ $(document).ready(function() {
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
             { data: 'number',title: "序號"},
-            { data: 'name',title: "專案名稱" },
+            { data: 'name',
+                title: "專案名稱",
+                "render": function (data, type, row) {
+                    if (data.length > 15) {
+                        return "<span title='" + data + "' style='text-decoration: none;'>" + data.trim().substr(0, 30) + "..." + "</span>";
+                    } else {
+                        return data;
+                    }
+                },
+            },
             { data:'type' ,title:"專案類型"},
             { data:'constructiondate' ,title:"工期"},
             { data:'budget' ,title:"預算"},
@@ -1503,7 +1512,7 @@ $(document).ready(function() {
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="edit_company" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_company" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    return data = '<a type="button" class="editmeeting edit btn-sm me-2" href="editproject.html" role="button" data-id="editproject" title="編輯"><i class="fas fa-pencil-alt"></i></a>'
                     + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },

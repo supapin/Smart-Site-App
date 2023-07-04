@@ -628,14 +628,15 @@
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
             $('.projectfolder').hide();
-            $('.finishproject').show();
+            $('.finishproject').addClass("showfinishproject")
             test = 2
         }
         else if (test == 2) {
-            $('.finishproject').hide();
+            $('.finishproject').removeClass("showfinishproject");
             $('.projectfolder').show();
             test = 1
         }
     })
+    
 </script>
 </html>
