@@ -631,8 +631,28 @@ button.btn-489b6c:hover{
     position: absolute;
     right: 30px;
     top: 30px;
-    z-index: 999;
+    z-index: 10;
 }
 table.dataTable tbody th, table.dataTable tbody td{
     height: 30px;
+}
+#projectfunction{
+    display: none;
+}
+#editpermissionbody .managebtn,#editpermissionbody .projectbtn{
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+#editpermissionbody .managebtn:hover,#editpermissionbody .projectbtn:hover{
+    color: #fff;
+    background-color: #4f71a2;
+    border-color: #4f71a2;
+}
+#editpermissionbody #managefunction .nav-pills-success.nav-pills .nav-link.active,#editpermissionbody #projectfunction .nav-pills-success.nav-pills .nav-link.active{
+    background-color: #aaa;
+}
+#editpermissionbody #managefunction .form-check-input:checked,#editpermissionbody #projectfunction .form-check-input:checked{
+    background-color: #6c757d;
+    border-color: #6c757d;
 }

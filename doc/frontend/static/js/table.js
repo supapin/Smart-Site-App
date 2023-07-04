@@ -175,20 +175,12 @@ $(document).ready(function() {
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
             { data:'name',title: "名稱" },
-            { data:'project',title: "專案" },
-            { data:'meeting' ,title:"會議"},
-            { data:'photo' ,title:"照片"},
-            { data:'form' ,title:"表單"},
-            { data:'schedule' ,title:"進度"},
-            { data:'valuation' ,title:"計價"},
-            { data:'official' ,title:"公文"},
-            { data:'check' ,title:"簽到"},
-            { data:'system' ,title:"系統"},
             { data: null ,
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    
+                    return data = '<a class="view btn-sm me-2" href="editpermissions.html" role="button" data-id="view_details" title="檢視編輯"><i class="fa-solid fa-eye me-2"></i>檢視編輯</a>'
                     + '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                 },"className": "all"
             },
@@ -896,7 +888,7 @@ $(document).ready(function() {
                 title: "操作",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="edit_permissions" class="edit btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit_permissions" title="編輯"><i class="fas fa-pencil-alt"></i></button>'
+                    return data = '<a type="button" class="edit editmeeting btn-sm me-2" href="editform.html" role="button" data-id="edit_meeting" title="編輯"><i class="fas fa-pencil-alt"></i></a>'
                     + '<button class="del btn-sm me-2" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
                     + '<button class="download btn-sm" data-id="download" title="下載"><i class="fa-solid fa-file-arrow-down"></i></button>'
                 },"className": "all"

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--favicon-->
+  <link rel="icon" href="static/image/金硯科技工程資訊.ico" type="image/png" />
+  <!--plugins-->
+  <link href="static/css/simplebar.css" rel="stylesheet" />
+  <link href="static/css/select2.min.css" rel="stylesheet">
+  <link href="static/css/select2-bootstrap4.css" rel="stylesheet">
+  <link href="static/css/perfect-scrollbar.css" rel="stylesheet" />
+  <link href="static/css/metisMenu.min.css" rel="stylesheet" />
+  <!-- loader-->
+  <link href="static/css/pace.min.css" rel="stylesheet" />
+  <script src="static/js/pace.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="static/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+  <link href="static/css/css2.css" rel="stylesheet" />
+  <link href="static/css/app.css" rel="stylesheet" />
+  <link href="static/css/icons.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="static/css/all.css" rel="stylesheet" />
+  <link href="static/css/brands.min.css" rel="stylesheet" />
+  <link href="static/css/solid.min.css" rel="stylesheet" />
+  <!-- Datatables CSS-->
+  <!-- <link rel="stylesheet" href="static/css/jquery.dataTables.min.css"> -->
+  <!-- Theme Style CSS -->
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/sp.css" media="screen and (max-width: 992px)">
+  <!-- daterangepicker -->
+  <link rel="stylesheet" href="static/css/daterangepicker.css" />
+  <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+  <!-- Treeselect -->
+  <link rel="stylesheet" href="static/dist/selectindex.css" />
+  <script type="module" src="static/dist/select.js"></script>
+  <script type="module" src="static/dist/select2.js"></script>
+  <title>編輯權限</title>
+</head>
+
+<body id="editpermissionbody">
+  <!--wrapper-->
+  <div class="wrapper">
+    <!--sidebar wrapper -->
+    <div class="sidebar-wrapper" data-simplebar="true">
+      <div class="sidebar-header">
+        <div><i class="fa-solid fa-helmet-safety"></i></div>
+        <div><h4 class="logo-text">智慧工程管理系統</h4></div>
+        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i></div>
+      </div>
+      <!--navigation-->
+      <ul class="metismenu" id="menu">
+        <li>
+          <a href="index.html" class="has-arrow">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">首頁</div>
+          </a>
+        </li>
+        <li>
+          <a href="project.html" class="has-arrow">
+            <div class="parent-icon"><i class="lni lni-folder"></i></div>
+            <div class="menu-title">專案管理</div>
+          </a>
+        <li>
+          <a href="meeting.html">
+            <div class="parent-icon"><i class="lni lni-clipboard"></i></div>
+            <div class="menu-title">會議管理</div>
+          </a>
+        </li>
+        <li>
+          <a href="photomanage.html" class="has-arrow">
+            <div class="parent-icon"><i class="fa-regular fa-images"></i></div>
+            <div class="menu-title">照片管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="form-manage.html">
+            <div class="parent-icon"><i class="lni lni-remove-file"></i></div>
+            <div class="menu-title">表單管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="schedule.html">
+            <div class="parent-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div class="menu-title">進度管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="valuation.html">
+            <div class="parent-icon"><i class="fa-solid fa-file-invoice-dollar ms-1 me-1"></i></div>
+            <div class="menu-title">計價管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="official.html">
+            <div class="parent-icon"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="menu-title">公文管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="punch.html">
+            <div class="parent-icon"><i class="fa-solid fa-user-check"></i></div>
+            <div class="menu-title">簽到管理</div>
+          </a>
+        </li>
+        <li>
+          <a class="has-arrow" href="system-user.html">
+            <div class="parent-icon"><i class="fa-solid fa-gear"></i></div>
+            <div class="menu-title ms-3">系統管理</div>
+          </a>
+        </li>
+        <li>
+          <a href="backstage-company.html">
+            <div class="parent-icon"><i class="fa-solid fa-gears"></i></div>
+            <div class="menu-title">後臺管理</div>
+          </a>
+        </li>
+      </ul>
+      <!--end navigation-->
+    </div>
+    <!--end sidebar wrapper -->
+    <!--start header -->
+    <header>
+      <div class="topbar d-flex align-items-center">
+        <nav class="navbar navbar-expand">
+          <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
+          <div class="search-bar flex-grow-1">
+            <div class="position-relative search-bar-box">
+              <input type="text" class="form-control search-control" placeholder="Type to search...">
+              <span class="position-absolute top-50 search-show translate-middle-y">
+                <i class='bx bx-search'></i>
+              </span>
+              <span class="position-absolute top-50 search-close translate-middle-y">
+                <i class='bx bx-x'></i>
+              </span>
+            </div>
+          </div>
+          <div class="top-menu ms-auto">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item mobile-search-icon">
+                <a class="nav-link" href="#"><i class='bx bx-search'></i></a>
+              </li>
+              <li class="nav-item dropdown dropdown-large">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bx-category'></i></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div class="row row-cols-3 g-3 p-3">
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-cosmic text-white"><i class='bx bx-group'></i></div>
+                      <div class="app-title">Teams</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-burning text-white"><i class='bx bx-atom'></i></div>
+                      <div class="app-title">Projects</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-lush text-white"><i class='bx bx-shield'></i></div>
+                      <div class="app-title">Tasks</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-kyoto text-dark"><i class='bx bx-notification'></i></div>
+                      <div class="app-title">Feeds</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-blues text-dark"><i class='bx bx-file'></i></div>
+                      <div class="app-title">Files</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="app-box mx-auto bg-gradient-moonlit text-white"><i class='bx bx-filter-alt'></i></div>
+                      <div class="app-title">Alerts</div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-large">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="alert-count">7</span><i class='bx bx-bell'></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a href="javascript:;">
+                    <div class="msg-header">
+                      <p class="msg-header-title">Notifications</p>
+                      <p class="msg-header-clear ms-auto">Marks all as read</p>
+                    </div>
+                  </a>
+                  <div class="header-notifications-list">
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec ago</span></h6>
+                          <p class="msg-info">5 new user registered</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min ago</span></h6>
+                          <p class="msg-info">You have recived new orders</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-success text-success"><i class="bx bx-file"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min ago</span></h6>
+                          <p class="msg-info">The pdf files generated</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Time Response <span class="msg-time float-end">28 min ago</span></h6>
+                          <p class="msg-info">5.1 min avarage time response</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">New Product Approved <span class="msg-time float-end">2 hrs ago</span></h6>
+                          <p class="msg-info">Your new product has approved</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs ago</span></h6>
+                          <p class="msg-info">New customer comments recived</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs ago</span></h6>
+                          <p class="msg-info">Successfully shipped your item</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-primary text-primary"><i class='bx bx-user-pin'></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day ago</span></h6>
+                          <p class="msg-info">24 new authors joined last week</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="notify bg-light-warning text-warning"><i class='bx bx-door-open'></i></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks ago</span></h6>
+                          <p class="msg-info">45% less alerts last 4 weeks</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <a href="javascript:;"><div class="text-center msg-footer">View All Notifications</div></a>
+                </div>
+              </li>
+              <li class="nav-item dropdown dropdown-large">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="alert-count">8</span><i class='bx bx-comment'></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a href="javascript:;">
+                    <div class="msg-header">
+                      <p class="msg-header-title">Messages</p>
+                      <p class="msg-header-clear ms-auto">Marks all as read</p>
+                    </div>
+                  </a>
+                  <div class="header-message-list">
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-1.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec ago</span></h6>
+                          <p class="msg-info">The standard chunk of lorem</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-2.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14 sec ago</span></h6>
+                          <p class="msg-info">Many desktop publishing packages</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-3.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Oscar Garner <span class="msg-time float-end">8 min ago</span></h6>
+                          <p class="msg-info">Various versions have evolved over</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-4.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Katherine Pechon <span class="msg-time float-end">15 min ago</span></h6>
+                          <p class="msg-info">Making this the first true generator</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-5.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Amelia Doe <span class="msg-time float-end">22 min ago</span></h6>
+                          <p class="msg-info">Duis aute irure dolor in reprehenderit</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-6.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Cristina Jhons <span class="msg-time float-end">2 hrs ago</span></h6>
+                          <p class="msg-info">The passage is attributed to an unknown</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-7.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">James Caviness <span class="msg-time float-end">4 hrs ago</span></h6>
+                          <p class="msg-info">The point of using Lorem</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-8.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs ago</span></h6>
+                          <p class="msg-info">It was popularised in the 1960s</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-9.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">David Buckley <span class="msg-time float-end">2 hrs ago</span></h6>
+                          <p class="msg-info">Various versions have evolved over</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-10.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Thomas Wheeler <span class="msg-time float-end">2 days ago</span></h6>
+                          <p class="msg-info">If you are going to use a passage</p>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="javascript:;">
+                      <div class="d-flex align-items-center">
+                        <div class="user-online"><img src="static/picture/avatar-11.png" class="msg-avatar" alt="user avatar"></div>
+                        <div class="flex-grow-1">
+                          <h6 class="msg-name">Johnny Seitz <span class="msg-time float-end">5 days ago</span></h6>
+                          <p class="msg-info">All the Lorem Ipsum generators</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <a href="javascript:;"><div class="text-center msg-footer">View All Messages</div></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="user-box dropdown">
+            <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="static/image/user-login.svg" class="user-img" alt="user avatar">
+              <div class="user-info ps-3">
+                <p class="user-name mb-0">使用者帳號名稱</p>
+                <p class="designattion mb-0">權限或其他</p>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
+              <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
+              <li><div class="dropdown-divider mb-0"></div></li>
+              <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>登出</span></a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!--end header --><!--start page wrapper -->
+    <div class="page-wrapper">
+      <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+          <div class="breadcrumb-title pe-3"><a href="system-user.html" class="brtitle">系統管理</a></div>
+          <div class="ps-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item"><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">編輯權限</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="card">
+          <div class="card-body row gy-3">
+            <form mehod="POST" name="form-permission" id="form-permission" class="form-permission" action="php/formprocess.php">
+              <div class="col-12">
+                <label class="form-label">權限名稱</label>
+                <input type="text" id="permissionsname" name="permissionsname" class="form-control" value="最高權限" minlength="2" required>
+              </div>
+              <p class="mt-3">
+                <button class="btn managebtn" id="managebtn" type="button">
+                  管理功能
+                </button>
+                <button class="btn projectbtn" id="projectbtn" type="button">
+                  專案功能
+                </button>
+              </p>
+              <div id="managefunction">
+                <div class="card card-body border shadow-none">
+                    <ul class="nav nav-pills nav-pills-success mb-3" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" data-bs-toggle="pill" href="#project" role="tab" aria-selected="true">
+                                <div class="tab-title">專案</div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="pill" href="#meeting" role="tab" aria-selected="false">
+                                <div class="tab-title">會議</div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="pill" href="#photomanage" role="tab" aria-selected="false">
+                                <div class="tab-title">照片</div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="pill" href="#form-manage" role="tab" aria-selected="false">
+                                <div class="tab-title">表單</div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="pill" href="#schedule" role="tab" aria-selected="false">
+                                <div class="tab-title">進度</div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#valuation" role="tab" aria-selected="false">
+                              <div class="tab-title">計價</div>
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#official" role="tab" aria-selected="false">
+                              <div class="tab-title">公文</div>
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#punch" role="tab" aria-selected="false">
+                              <div class="tab-title">簽到</div>
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#system-use" role="tab" aria-selected="false">
+                              <div class="tab-title">系統</div>
+                          </a>
+                        </li>
+                    </ul>
+                    <!-- 選項內容 -->
+                    <div class="tab-content nav-detail">
+                        <!-- 專案管理 -->
+                        <div class="tab-pane fade show active project" id="project" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox1" value="option1" checked="">
+                                  <label class="form-check-label fw-bold" for="inlineCheckbox1">全選</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox2" value="option2" checked="">
+                                  <label class="form-check-label" for="inlineCheckbox2">檢視</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox3" value="option3" checked="">
+                                  <label class="form-check-label" for="inlineCheckbox3">新增</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox4" value="option4" checked="">
+                                  <label class="form-check-label" for="inlineCheckbox4">編輯</label>
+                              </div>
+                          </div>
+                        </div>
+                        <!-- 會議 -->
+                        <div class="tab-pane fade" id="meeting" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox5" value="option5" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox5">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox6" value="option6" checked="">
+                                <label class="form-check-label" for="inlineCheckbox6">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox7" value="option7" checked="">
+                                <label class="form-check-label" for="inlineCheckbox7">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox8" value="option8" checked="">
+                                <label class="form-check-label" for="inlineCheckbox8">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox9" value="option9" checked="">
+                              <label class="form-check-label" for="inlineCheckbox9">下載</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 照片 -->
+                        <div class="tab-pane fade" id="photomanage" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox10" value="option10" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox10">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox11" value="option11" checked="">
+                                <label class="form-check-label" for="inlineCheckbox11">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox12" value="option12" checked="">
+                                <label class="form-check-label" for="inlineCheckbox12">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox13" value="option13" checked="">
+                                <label class="form-check-label" for="inlineCheckbox13">歸檔</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox14" value="option14" checked="">
+                              <label class="form-check-label" for="inlineCheckbox14">刪除</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 表單 -->
+                        <div class="tab-pane fade" id="form-manage" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox15" value="option15" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox15">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox16" value="option16" checked="">
+                                <label class="form-check-label" for="inlineCheckbox16">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox17" value="option17" checked="">
+                                <label class="form-check-label" for="inlineCheckbox17">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox18" value="option18" checked="">
+                                <label class="form-check-label" for="inlineCheckbox18">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox19" value="option19" checked="">
+                              <label class="form-check-label" for="inlineCheckbox19">下載</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 進度 -->
+                        <div class="tab-pane fade" id="schedule" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox20" value="option20" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox20">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox21" value="option21" checked="">
+                                <label class="form-check-label" for="inlineCheckbox21">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox22" value="option22" checked="">
+                                <label class="form-check-label" for="inlineCheckbox22">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox23" value="option23" checked="">
+                                <label class="form-check-label" for="inlineCheckbox23">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox24" value="option24" checked="">
+                              <label class="form-check-label" for="inlineCheckbox24">刪除</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 計價 -->
+                        <div class="tab-pane fade" id="valuation" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox25" value="option25" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox25">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox26" value="option26" checked="">
+                                <label class="form-check-label" for="inlineCheckbox26">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox27" value="option27" checked="">
+                                <label class="form-check-label" for="inlineCheckbox27">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox28" value="option28" checked="">
+                                <label class="form-check-label" for="inlineCheckbox28">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox29" value="option29" checked="">
+                              <label class="form-check-label" for="inlineCheckbox29">刪除</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 公文 -->
+                        <div class="tab-pane fade" id="official" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox30" value="option30" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox30">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox31" value="option31" checked="">
+                                <label class="form-check-label" for="inlineCheckbox31">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox32" value="option32" checked="">
+                                <label class="form-check-label" for="inlineCheckbox32">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox33" value="option33" checked="">
+                                <label class="form-check-label" for="inlineCheckbox33">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox34" value="option34" checked="">
+                              <label class="form-check-label" for="inlineCheckbox34">刪除</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox35" value="option35" checked="">
+                              <label class="form-check-label" for="inlineCheckbox35">下載</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 簽到 -->
+                        <div class="tab-pane fade" id="punch" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox36" value="option36" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox36">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox37" value="option37" checked="">
+                                <label class="form-check-label" for="inlineCheckbox37">檢視</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox38" value="option38" checked="">
+                                <label class="form-check-label" for="inlineCheckbox38">新增</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox39" value="option39" checked="">
+                                <label class="form-check-label" for="inlineCheckbox39">編輯</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox40" value="option40" checked="">
+                              <label class="form-check-label" for="inlineCheckbox40">刪除</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox41" value="option41" checked="">
+                              <label class="form-check-label" for="inlineCheckbox41">簽核</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox42" value="option42" checked="">
+                              <label class="form-check-label" for="inlineCheckbox42">下載</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 系統 -->
+                        <div class="tab-pane fade" id="system-use" role="tabpanel">
+                          <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox43" value="option43" checked="">
+                                <label class="form-check-label fw-bold" for="inlineCheckbox43">全選</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox44" value="option44" checked="">
+                                <label class="form-check-label" for="inlineCheckbox44">人員管理</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox45" value="option45" checked="">
+                                <label class="form-check-label" for="inlineCheckbox45">權限管理</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div id="projectfunction">
+                <div class="card card-body border shadow-none">
+                  <ul class="nav nav-pills nav-pills-success mb-3" role="tablist">
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link active" data-bs-toggle="pill" href="#project1" role="tab" aria-selected="true">
+                              <div class="tab-title">專案</div>
+                          </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#meeting1" role="tab" aria-selected="false">
+                              <div class="tab-title">會議</div>
+                          </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#photomanage1" role="tab" aria-selected="false">
+                              <div class="tab-title">照片</div>
+                          </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#form-manage1" role="tab" aria-selected="false">
+                              <div class="tab-title">表單</div>
+                          </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="pill" href="#schedule1" role="tab" aria-selected="false">
+                              <div class="tab-title">進度</div>
+                          </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#valuation1" role="tab" aria-selected="false">
+                            <div class="tab-title">計價</div>
+                        </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#official1" role="tab" aria-selected="false">
+                            <div class="tab-title">公文</div>
+                        </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#project-personnel" role="tab" aria-selected="false">
+                            <div class="tab-title">人員</div>
+                        </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#contract" role="tab" aria-selected="false">
+                            <div class="tab-title">契約</div>
+                        </a>
+                      </li>
+                  </ul>
+                  <!-- 選項內容 -->
+                  <div class="tab-content nav-detail">
+                    <!-- 專案儀錶板 -->
+                    <div class="tab-pane fade show active project" id="project1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox46" value="option46" checked="">
+                              <label class="form-check-label fw-bold" for="inlineCheckbox46">檢視</label>
+                          </div>
+                      </div>
+                    </div>
+                    <!-- 會議 -->
+                    <div class="tab-pane fade" id="meeting1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox47" value="option47" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox47">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox48" value="option48" checked="">
+                            <label class="form-check-label" for="inlineCheckbox48">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox49" value="option49" checked="">
+                            <label class="form-check-label" for="inlineCheckbox49">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox50" value="option50" checked="">
+                            <label class="form-check-label" for="inlineCheckbox50">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox51" value="option51" checked="">
+                          <label class="form-check-label" for="inlineCheckbox51">刪除</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox52" value="option52" checked="">
+                          <label class="form-check-label" for="inlineCheckbox52">下載</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 照片 -->
+                    <div class="tab-pane fade" id="photomanage1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox53" value="option53" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox53">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox54" value="option54" checked="">
+                            <label class="form-check-label" for="inlineCheckbox54">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox55" value="option55" checked="">
+                            <label class="form-check-label" for="inlineCheckbox55">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox56" value="option56" checked="">
+                            <label class="form-check-label" for="inlineCheckbox56">歸檔</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox57" value="option57" checked="">
+                          <label class="form-check-label" for="inlineCheckbox57">刪除</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 表單 -->
+                    <div class="tab-pane fade" id="form-manage1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox58" value="option58" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox58">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox59" value="option59" checked="">
+                            <label class="form-check-label" for="inlineCheckbox59">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox60" value="option60" checked="">
+                            <label class="form-check-label" for="inlineCheckbox60">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox61" value="option61" checked="">
+                            <label class="form-check-label" for="inlineCheckbox61">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox62" value="option62" checked="">
+                          <label class="form-check-label" for="inlineCheckbox62">刪除</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox63" value="option63" checked="">
+                          <label class="form-check-label" for="inlineCheckbox63">下載</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 進度 -->
+                    <div class="tab-pane fade" id="schedule1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox64" value="option64" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox64">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox65" value="option65" checked="">
+                            <label class="form-check-label" for="inlineCheckbox65">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox66" value="option66" checked="">
+                            <label class="form-check-label" for="inlineCheckbox66">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox67" value="option67" checked="">
+                            <label class="form-check-label" for="inlineCheckbox67">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox68" value="option68" checked="">
+                          <label class="form-check-label" for="inlineCheckbox68">刪除</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 計價 -->
+                    <div class="tab-pane fade" id="valuation1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox69" value="option69" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox69">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox70" value="option70" checked="">
+                            <label class="form-check-label" for="inlineCheckbox70">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox71" value="option71" checked="">
+                            <label class="form-check-label" for="inlineCheckbox71">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox72" value="option72" checked="">
+                            <label class="form-check-label" for="inlineCheckbox72">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox73" value="option73" checked="">
+                          <label class="form-check-label" for="inlineCheckbox73">刪除</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 公文 -->
+                    <div class="tab-pane fade" id="official1" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox74" value="option74" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox30">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox75" value="option75" checked="">
+                            <label class="form-check-label" for="inlineCheckbox75">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox76" value="option76" checked="">
+                            <label class="form-check-label" for="inlineCheckbox76">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox77" value="option77" checked="">
+                            <label class="form-check-label" for="inlineCheckbox77">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox78" value="option78" checked="">
+                          <label class="form-check-label" for="inlineCheckbox78">刪除</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox79" value="option79" checked="">
+                          <label class="form-check-label" for="inlineCheckbox79">下載</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 專案 -->
+                    <div class="tab-pane fade" id="project-personnel" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox80" value="option80" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox80">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox81" value="option81" checked="">
+                            <label class="form-check-label" for="inlineCheckbox81">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox82" value="option82" checked="">
+                            <label class="form-check-label" for="inlineCheckbox82">新增</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox83" value="option83" checked="">
+                            <label class="form-check-label" for="inlineCheckbox83">編輯</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox84" value="option84" checked="">
+                          <label class="form-check-label" for="inlineCheckbox84">刪除</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 契約 -->
+                    <div class="tab-pane fade" id="contract" role="tabpanel">
+                      <div class="" style="font-size: 18px;background: #f9fafb;padding: 20px;">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox85" value="option85" checked="">
+                            <label class="form-check-label fw-bold" for="inlineCheckbox85">全選</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox86" value="option86" checked="">
+                            <label class="form-check-label" for="inlineCheckbox86">檢視</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input me-2" type="checkbox" id="inlineCheckbox87" value="option87" checked="">
+                            <label class="form-check-label" for="inlineCheckbox87">編輯</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mt-4 mb-2 text-end">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-83c7cf" title="修改">修改</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end page wrapper -->
+    <!--start overlay-->
+    <div class="overlay toggle-icon"></div>
+    <!--end overlay-->
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+    <footer class="page-footer">
+      <p class="mb-0">Copyright © 金硯科技工程資訊 2023.</p>
+    </footer>
+  </div>
+  <!--end wrapper-->
+
+<!-- Bootstrap JS -->
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="static/js/jquery.min.js"></script>
+<!-- <script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.responsive.min.js"></script> -->
+<script src="static/js/responsive.bootstrap4.min.js"></script>
+<!-- <script src="static/js/dataTables.rowReorder.min.js"></script> -->
+<!-- <script src="static/js/table.js"></script> -->
+<script src="static/js/simplebar.min.js"></script>
+<script src="static/js/metisMenu.min.js"></script>
+<script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/select2.min.js"></script>
+<!--app JS-->
+<script src="static/js/app.js"></script>
+<script>
+  $("#managebtn").click(function(){
+    $('#projectfunction').hide();
+    $('#managefunction').show();
+  })
+  $("#projectbtn").click(function(){
+    $('#managefunction').hide();
+    $('#projectfunction').show();
+  })
+</script>
+</body>
+</html>
