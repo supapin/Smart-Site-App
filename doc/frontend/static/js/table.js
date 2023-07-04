@@ -2002,7 +2002,7 @@ $(document).ready(function() {
         },
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
-            { data:'project',title: "專案" },
+            { data:'uploader',title: "上傳人" },
             { data:'photoname',
                 title: "照片",
                 render: function (data, type, row) {

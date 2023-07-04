@@ -662,3 +662,23 @@ table.dataTable tbody th, table.dataTable tbody td{
     background-color: #6c757d;
     border-color: #6c757d;
 }
+#addprojectphoto_form>.input-images>.image-uploader {
+    border: 1px solid #dee2e6;
+    border-style: dashed;
+    border-radius: 0.25rem;
+    background: #f8f9fa;
+    min-height: 235px;
+}
+#addprojectphoto_form>.input-images>.image-uploader>.upload-text{
+    color: #C0C4C6;
+}
+.imageitem img{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+#projectphoto_body .page-link,#photomanagebody .page-link{
+    color: #585858;
+}
+.photolist{
+    display: none;
+}

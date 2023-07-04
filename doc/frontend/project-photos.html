@@ -33,10 +33,12 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+    <!-- image-uploader -->
+    <link rel="stylesheet" type="text/css" href="static/css/image-uploader.min.css">
     <title>施工照片</title>
 </head>
 
-<body>
+<body id="projectphoto_body">
     <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
@@ -443,8 +445,102 @@
                                         </select>
                                     </div>
                                 </form>
-                                <!-- 施工照片 -->
-                                <table id="project-photos" class="display nowrap mt-5" style="width: 100%;"></table>
+                                <div class="d-flex my-3 justify-content-between">
+                                    <button type="button" class="addbtn btn" data-bs-toggle="modal" data-bs-target="#addprojectphoto"><i class="fa-solid fa-circle-plus"></i>上傳照片</button>
+                                    <div class="col-2 d-flex justify-content-end">
+                                        <button type="button" class="btn listaction" title="切換顯示"><i class="fas fa-list"></i></button>
+                                    </div>
+                                </div>
+                                <!-- 上傳照片modal -->
+                                <div class="modal fade" id="addprojectphoto" tabindex="-1" aria-labelledby="addprojectphotoLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">上傳照片</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="addprojectphoto_form" name="addprojectphoto" class="row gy-3" method="post" action="">
+                                                    <div class="col-6">
+                                                        <label class="form-label">表單類型</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option value="1">日誌表</option>
+                                                            <option value="2">檢查表</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label class="form-label">表單</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option value="1">派⼯單119國際路⼆段(中⼭路⾄國強⼀街)</option>
+                                                            <option value="2">派⼯單120⼤興⻄路三段(國際路⾄永安路)</option>
+                                                            <option value="3">派⼯單119國際路⼆段(中⼭路⾄國強⼀街)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-images"></div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer mt-4">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="button" class="btn btn-04CAE1">新增</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 上傳照片modal END-->
+                                <!-- 照片顯示 -->
+                                <div class="showphoto">
+                                    <div class="imageitem row row-cols-6">
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                    </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-end">
+                                            <li class="page-item"><a class="page-link" href="javascript:;">上一頁</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">下一頁</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- 列表顯示 -->
+                                <div class="photolist">
+                                    <table id="project-photos" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -476,7 +572,26 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/image-uploader.min.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<script>
+    // 上傳
+    $('.input-images').imageUploader();
+
+    var test = 1 
+    $(document).on('click','.listaction',function(e){
+        if (test == 1) {
+            $('.showphoto').hide();
+            $('.photolist').show();
+            test = 2
+        }
+        else if (test == 2) {
+            $('.photolist').hide();
+            $('.showphoto').show();
+            test = 1
+        }
+    })
+</script>
 </body>
 </html>
