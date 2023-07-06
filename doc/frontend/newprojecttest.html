@@ -425,8 +425,8 @@
                             <div class="col-12">
                                 <h5 class="fw-bold">新增專案</h5>
                                 <hr class="mt-0">
-                                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate=""
-                      id="signin-tab" name="loginform" method="post">
+                                <form class="needs-validation tab-pane fade show active needs-validation " autocomplete="off" novalidate=""
+                      id="signin-tab" name="loginform" method="post" novalidate>
                     <div class="form-group">
                         <label for="id_uname">账号</label>
                         <input class="form-control" name="uname" id="id_uname" type="text"
@@ -535,25 +535,25 @@
             });
     });
 
-//     // 驗證
-//     (function () {
-//         'use strict'
+    // 驗證
+    (function () {
+        'use strict'
 
-//         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//         var forms = document.querySelectorAll('.needs-validation')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-//         // Loop over them and prevent submission
-//         Array.prototype.slice.call(forms)
-//             .forEach(function (form) {
-//                 form.addEventListener('submit', function (event) {
-//                     if (!form.checkValidity()) {
-//                         event.preventDefault()
-//                         event.stopPropagation()
-//                     }
-//                     form.classList.add('was-validated')
-//                 }, false)
-//             })
-// })()
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+})()
 </script>
 
 <script>

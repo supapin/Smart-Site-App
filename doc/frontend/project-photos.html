@@ -481,7 +481,7 @@
                                             </div>
                                             <div class="modal-footer mt-4">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                                <button type="button" class="btn btn-04CAE1">新增</button>
+                                                <button type="submit" class="btn btn-04CAE1">新增</button>
                                             </div>
                                         </div>
                                     </div>
@@ -489,7 +489,7 @@
                                 <!-- 上傳照片modal END-->
                                 <!-- 照片顯示 -->
                                 <div class="showphoto">
-                                    <div class="imageitem row row-cols-6">
+                                    <div class="imageitem row row-cols-2 row-cols-md-4 row-cols-lg-6">
                                         <div class="col">
                                             <img src="static/image/DJI_0085.jpg" alt="" class="">
                                         </div>
@@ -583,11 +583,11 @@
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
             $('.showphoto').hide();
-            $('.photolist').show();
+            $('.photolist').addClass("showphotolist")
             test = 2
         }
         else if (test == 2) {
-            $('.photolist').hide();
+            $('.photolist').removeClass("showphotolist");
             $('.showphoto').show();
             test = 1
         }

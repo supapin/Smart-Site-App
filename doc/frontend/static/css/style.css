@@ -304,7 +304,8 @@ color: #57e3e8;
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    padding: 10px 15px;
+    padding: 10px 18px;
+    font-size: 16px;
 }
 .export:hover{
     color: #fff;
