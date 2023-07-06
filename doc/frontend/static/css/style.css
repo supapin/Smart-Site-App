@@ -689,4 +689,13 @@ td {
     text-overflow:ellipsis;
     max-width: 200px;
 }
-
+#sppercentage{
+    display: none;
+}
+.border-none, .border-none:focus{
+    border: none;
+    outline:none
+}
+.form-select.is-valid, .was-validated .form-select:valid, .was-validated .form-control:valid{
+    border-color: #dee2e6;
+}

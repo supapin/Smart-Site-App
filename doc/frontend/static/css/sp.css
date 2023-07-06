@@ -1,3 +1,23 @@
+
+@media (max-width: 1149px){
+    .analysis-item{
+        padding: 10px;
+        flex-direction: column;
+    }
+    .details h5{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 743px){
+    #percentage{
+        display: none;
+    }
+    #sppercentage{
+        display: block;
+    }
+}
+
 @media (max-width: 624px){
     .addmanage{
         margin: .8rem;

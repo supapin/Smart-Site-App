@@ -463,11 +463,11 @@
                         <div class="tab-content nav-detail">
                             <!-- 專案詳情 -->
                             <div class="tab-pane fade show active details" id="details" role="tabpanel">
-                                <div class="row row-cols-md-4">
+                                <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 gy-2">
                                     <div class="col">
                                         <div class="d-flex align-items-center analysis-item">
                                             <i class="fa-solid fa-check"></i>
-                                            <div class="flex-grow-1 ms-3">
+                                            <div class="flex-grow-1 ms-0 ms-lg-3 mt-2 mt-lg-0">
                                                 <p class="mb-0 smalltext font-gary">在過去7 天內</p>
                                                 <h5 class="mt-0">完成了5項</h5>
                                             </div>
@@ -476,7 +476,7 @@
                                     <div class="col">
                                         <div class="d-flex align-items-center analysis-item">
                                             <i class="fa-solid fa-pencil"></i>
-                                            <div class="flex-grow-1 ms-3">
+                                            <div class="flex-grow-1 ms-0 ms-lg-3 mt-2 mt-lg-0">
                                                 <p class="mb-0 smalltext font-gary">在過去7 天內</p>
                                                 <h5 class="mt-0">更新了3項</h5>
                                             </div>
@@ -485,7 +485,7 @@
                                     <div class="col">
                                         <div class="d-flex align-items-center analysis-item">
                                             <i class="fa-solid fa-plus"></i>
-                                            <div class="flex-grow-1 ms-3">
+                                            <div class="flex-grow-1 ms-0 ms-lg-3 mt-2 mt-lg-0">
                                                 <p class="mb-0 smalltext font-gary">在過去7 天內</p>
                                                 <h5 class="mt-0">建⽴了5項</h5>
                                             </div>
@@ -494,7 +494,7 @@
                                     <div class="col">
                                         <div class="d-flex align-items-center analysis-item">
                                             <i class="fa-solid fa-calendar-day"></i>
-                                            <div class="flex-grow-1 ms-3">
+                                            <div class="flex-grow-1 ms-0 ms-lg-3 mt-2 mt-lg-0">
                                                 <p class="mb-0 smalltext font-gary">接下來7 天內</p>
                                                 <h5 class="mt-0">2項到期</h5>
                                             </div>
@@ -503,6 +503,7 @@
                                 </div>
                                 <!-- 儀錶板 -->
                                 <div id="percentage" class="my-3" style="width:100%;height:400px;"></div>
+                                <div id="sppercentage" class="my-3" style="width:100%;height:400px;"></div>
                             </div>
                             <!-- 行事曆 -->
                             <div class="tab-pane fade" id="calendar" role="tabpanel">
@@ -795,6 +796,21 @@
         language: "zh-Hant"
     });
 
+    
+    var triggerTabList = [].slice.call(document.querySelectorAll('a[data-bs-toggle="pill"]'))
+        triggerTabList.forEach(function (triggerEl) {
+            var tabTrigger = new bootstrap.Tab(triggerEl)
+            triggerEl.addEventListener('hidden.bs.tab', function (event) {
+            var calendar = document.getElementById('calendar')
+
+            function updateSize(delay) {
+	            setTimeout(() => calendar.value.getApi().updateSize(), delay)
+            }
+            calendar.updateSize();
+
+            })
+    })
+
     $('.multiple-select').select2({
 			theme: 'bootstrap4',
 			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
@@ -819,7 +835,7 @@
     })
 </script>
 <script>
-    function gradient(url,chartId){
+    function gradient(url,chartId, center, top, left, top1, left1, gridtop, gridleft, barWidth, fontSize){
         $.ajax({
             url: url,
             type: 'post',
@@ -827,14 +843,15 @@
             dataType : 'json',
             data : { },
             success: function(data) {
-            manyLineChart(chartId, data.xAxisData, data.yAxisData, data.xAxisData2);
+            manyLineChart(chartId, center, data.xAxisData, data.yAxisData, data.xAxisData2, top, left, top1, left1, gridtop, gridleft, barWidth, fontSize);
             },
             error : function() {
             alert('伺服器異常！')
             }
         });
     }
-    function manyLineChart( chartId, xAxisData, yAxisData, xAxisData2){
+    
+    function manyLineChart( chartId, center, xAxisData, yAxisData, xAxisData2, top, left, top1, left1, gridtop, gridleft, barWidth, fontSize){
         var myChart = echarts.init(document.getElementById( chartId ));
         var option = {
             // backgroundColor: '#0A1934',
@@ -846,25 +863,25 @@
                 },
                 itemGap: 20,
                 textAlign: 'center',
-                left: '24.5%',
-                top: '40%'
+                left: left,
+                top: top
             },
             {
                 text: '總體完成度',
                 textStyle: {
                     color: '#000',
-                    fontSize: 20,
+                    fontSize: fontSize,
                     fontWeight:'normal'
                 },
                 itemGap: 20,
                 textAlign: 'center',
-                left: '24.5%',
-                top: '50%'
+                left: left1,
+                top: top1
             }],
             grid: [{
-                top: '20%',
+                top: gridtop,
                 width: '50%',
-                left: '40%',
+                left: gridleft,
                 containLabel: true
             }],
             angleAxis: {
@@ -889,7 +906,7 @@
                 },
             },
             polar: [{
-                center: ['25%', '50%'], //中心點位置
+                center: [center, '50%'], //中心點位置
                 radius: '80%' //圖刑大小
             }],
             tooltip: {
@@ -1002,7 +1019,7 @@
                 },
                 coordinateSystem: 'polar',
                 roundCap: true,
-                barWidth: 35, //大的占比環
+                barWidth: barWidth, //大的占比環
                 itemStyle: {
                     normal: {
                         opacity: 1,
@@ -1014,7 +1031,7 @@
                 type: 'pie',
                 name: '內層細圓環',
                 radius: ['46%', '34%'],
-                center: ['25%', '50%'], //中心點位置
+                center: [center, '50%'], //中心點位置
                 startAngle: 90,
                 hoverAnimation: false,
                 clockWise: true,
@@ -1045,7 +1062,8 @@
             myChart.resize();
         });
     };  
-    gradient( 'static/json/percentage.json', 'percentage');
+    gradient( 'static/json/percentage.json', 'percentage','25%', '43%','24.8%', '52%', '24.8%', '20%', '40%', '30', '20');
+    gradient( 'static/json/percentage.json', 'sppercentage', '25%', '43%','24.8%', '52%', '24.8%', '20%', '48.5%', '20', '15');
 </script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
