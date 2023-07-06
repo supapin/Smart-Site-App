@@ -425,7 +425,7 @@
                             <div class="col-12">
                                 <h5 class="fw-bold">新增專案</h5>
                                 <hr class="mt-0">
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3">
                                     <div class="col-12">
                                         <label class="form-label">專案名稱</label>
                                         <input type="text" class="form-control" required>
@@ -448,7 +448,7 @@
                                     </div>
                                     <div class="mt-5 my-3 d-flex justify-content-end">
                                         <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="取消">取消</button>
-                                        <button type="submit" class="submit border-none">保存</button>
+                                        <button type="submit" class="btn submit border-none">保存</button>
                                     </div>
                                 </form>
                             </div>
@@ -529,26 +529,6 @@
             $(this).val("");
             });
     });
-
-    // 驗證
-    (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            })
-})()
 </script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
