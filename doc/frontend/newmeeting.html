@@ -124,10 +124,12 @@
                     <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
                     <div class="search-bar flex-grow-1">
                         <div class="position-relative search-bar-box">
-                            <input type="text" class="form-control search-control" placeholder="Type to search...">
-                            <span class="position-absolute top-50 search-show translate-middle-y">
-                                <i class='bx bx-search'></i>
-                            </span>
+                            <select id="projectname" class="form-select" aria-label="Default select example">
+                                <option selected>「桃園市政府⼯務局管轄道路路平專案改善預約式⼯程」(第⼀⼯區) </option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                             <span class="position-absolute top-50 search-close translate-middle-y">
                                 <i class='bx bx-x'></i>
                             </span>
@@ -136,7 +138,7 @@
                     <div class="top-menu ms-auto">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item mobile-search-icon">
-                                <a class="nav-link" href="#"><i class='bx bx-search'></i></a>
+                                <a class="nav-link" href="#"><i class="fa-solid fa-folder-open"></i></a>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bx-category'></i></a>
@@ -408,7 +410,7 @@
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
-                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="page-breadcrumb d-flex align-items-center mb-3">
                     <div class="breadcrumb-title pe-3"><a href="meeting.html" class="brtitle">會議管理</a></div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">

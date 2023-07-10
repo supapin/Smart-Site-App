@@ -1933,7 +1933,7 @@ input.search-control-2::placeholder {
 
 .search-close {
 	font-size: 24px;
-    right: 10px;
+    right: -35px;
 	cursor: pointer;
 	display: none
 }
@@ -2313,7 +2313,7 @@ input.search-control-2::placeholder {
 		padding: 0 1.4rem
 	}
 	.search-bar-box {
-		width: 100%
+		width: 90%
 	}
 	.search-close {
 		display: block

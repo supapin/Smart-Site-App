@@ -30,7 +30,7 @@
 }
 @media (max-width: 576px){
     .manage{
-        margin: 0 1rem;
+        margin: 0 .6rem;
     }
     .addmanage{
         margin: 0 1.5rem;
@@ -48,6 +48,12 @@
     .logingform{
         padding: 0.8rem 1.5rem;
     }
+    .breadcrumb-title{
+        font-size: 1.1rem;
+    }
+    .listname{
+        max-width: 250px;
+    }
 }
 @media (max-width: 497px){
     .manage a{
@@ -62,5 +68,27 @@
     }
     .checkboxdet{
         padding: 10px;
+    }
+    .spcard-body{
+        padding: 0;
+    }
+    .crecle-bg{
+        display: inherit;
+        padding: 0;
+    }
+    .crecle-bg i{
+        font-size: 1.5rem;
+    }
+    .spcard-body h6{
+        font-size: .8rem;
+    }
+    .d-grid .btn{
+        padding: 0;
+    }
+    .spcard-body .font-gary{
+        font-size: .6rem;
+    }
+    .punchbody .manage span:last-child{
+        width: 30px;
     }
 }
