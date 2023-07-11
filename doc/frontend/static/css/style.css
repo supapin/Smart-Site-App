@@ -684,8 +684,11 @@ table.dataTable tbody th, table.dataTable tbody td{
     width: 100%;
     margin-bottom: 1rem;
 }
-#projectphoto_body .page-link,#photomanagebody .page-link{
+#projectphoto_body .page-link,#photomanagebody .page-link,#officialbody .page-link{
     color: #585858;
+}
+#officialbody .navpage{
+    margin-top: 30px;
 }
 /* datatable 隱藏過長內容 */
 td {
