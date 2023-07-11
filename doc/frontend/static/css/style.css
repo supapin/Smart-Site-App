@@ -94,7 +94,7 @@ color: #57e3e8;
 }
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
-#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead{
+#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead,#allformtable thead{
     background: #F6F6F6;
 }
 #expiring_tasks thead{

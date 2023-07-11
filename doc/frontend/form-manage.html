@@ -419,60 +419,37 @@
                             </ol>
                         </nav>
                     </div>
+                    <div class="ms-auto">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="javascript:window.location.href='allform.html'; return false;">
+                            <label class="btn btn-outline-00B9BF" for="btnradio1">檢視所有</label>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+                            <label class="btn btn-outline-00B9BF" for="btnradio2">專案檢視</label>
+                        </div>
+                    </div>
                 </div>
                 <!--end breadcrumb-->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="row border-bottom mb-4">
-                                    <div class="col-4">
-                                        <div class="card radius-10 show-n">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <div class="widgets-icons rounded-circle mx-auto bg-light-info text-info mb-3">
-                                                        <i class="fa-solid fa-paste"></i>
-                                                    </div>
-                                                    <h6 class="my-1 formtitle">日誌表</h6>
-                                                    <p class="mb-0 text-secondary">51個文件</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card radius-10 show-n">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <div class="widgets-icons rounded-circle mx-auto bg-light-success text-success mb-3">
-                                                        <i class="fa-solid fa-paste"></i>
-                                                    </div>
-                                                    <h6 class="my-1 formtitle">檢查表</h6>
-                                                    <p class="mb-0 text-secondary">35個文件</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card radius-10 show-n">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <div class="widgets-icons rounded-circle mx-auto bg-light-warning text-warning mb-3">
-                                                        <i class="fa-solid fa-paste"></i>
-                                                    </div>
-                                                    <h6 class="my-1 formtitle">其他</h6>
-                                                    <p class="mb-0 text-secondary">1個文件</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-12 col-lg-3 border-end">
+                                <h5 class="fw-bold">專案檢視</h5>
+                                <ul class="list-group project">
+                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">14</span></li></a>
+                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">2</span></li></a>
+                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">8</span></li></a>
+                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">10</span></li></a>
+                                    <a href="http://"><li class="list-group-item d-flex justify-content-between align-items-center">「桃園市政府工務局管轄道路路平專案改善預約式工程」(第一工區)<span class="badge B9BF rounded-pill">22</span></li></a>
+                                </ul>
                             </div>
-                            <div class="col">
-                                <a href="newform.html" title="添加公文">
+                            <div class="col-12 col-lg-9 my-3 my-lg-0">
+                                <h5 class="allofficialtitle fw-bold mt-2 m-0">表單列表</h5>
+                                <hr class="border border-secondary border-2">
+                                <a href="newform.html" title="添加表單">
                                     <button type="button" class="addbtn btn"><i class="fa-solid fa-circle-plus"></i>添加表單</button>
                                 </a>
-                                <div class="row flex-row align-items-center justify-content-between">
-                                    <div class="selectstate col col-md-10">
+                                <div class="selectstate d-flex justify-content-between">
+                                    <div>
                                         <div class="btn-group" role="group">
                                             <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">匯出</button>
                                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -482,10 +459,10 @@
                                         </div>
                                         <a href="#" class="checkboxdet">刪除選項</a>
                                     </div>
-                                    <div class="col-auto">
-                                        <select id="formchose" class="form-select" aria-label="Default select example">
-                                            <option selected>全部</option>
-                                            <option value="1">日誌表</option>
+                                    <div class="">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>所有</option>
+                                            <option value="1">日誌</option>
                                             <option value="2">檢查表</option>
                                             <option value="3">其他</option>
                                         </select>
