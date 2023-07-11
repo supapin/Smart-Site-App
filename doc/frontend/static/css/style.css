@@ -684,7 +684,7 @@ table.dataTable tbody th, table.dataTable tbody td{
     width: 100%;
     margin-bottom: 1rem;
 }
-#projectphoto_body .page-link,#photomanagebody .page-link,#officialbody .page-link{
+#projectphoto_body .page-link,#photomanagebody .page-link,#officialbody .page-link,#form-managebody .page-link{
     color: #585858;
 }
 #officialbody .navpage{
