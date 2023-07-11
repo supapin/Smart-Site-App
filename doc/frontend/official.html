@@ -442,7 +442,6 @@
                                         <h5 class="receivetitle fw-bold m-0">收文列表</h5>
                                         <button id="changeofficelist" type="button" class="ms-2 receivebtn unselected text-light" title="切換列表"><i class="fa-solid fa-right-left"></i></button>
                                     </div>
-                                    <!-- <h6 class="fw-bold gray mt-3 mt-lg-0">公文列表</h6> -->
                                     <div class="">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#headnumber" title="字號">
                                             <button type="button" class="btn headnumber">字號</button>
@@ -548,12 +547,12 @@
         if (test == 1) {
             $('#projectofficial').hide();
             $('.allofficialtitle').hide();
+            $('#receive').show();
             $('.receivetitle').show();
-            $('.receive').addClass("receiveshow")
             test = 2
         }
         else if (test == 2) {
-            $('.receive').removeClass("receiveshow");
+            $('#receive').hide();
             $('.receivetitle').hide();
             $('#projectofficial').show();
             $('.allofficialtitle').show()

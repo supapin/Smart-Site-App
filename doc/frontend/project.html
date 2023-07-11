@@ -614,11 +614,11 @@
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
             $('.projectfolder').hide();
-            $('.finishproject').addClass("showfinishproject")
+            $('.finishproject').show();
             test = 2
         }
         else if (test == 2) {
-            $('.finishproject').removeClass("showfinishproject");
+            $('.finishproject').hide();
             $('.projectfolder').show();
             test = 1
         }

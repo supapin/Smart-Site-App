@@ -46,7 +46,7 @@
                 <div><h4 class="logo-text">智慧工程管理系統</h4></div>
                 <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i></div>
             </div>
-<!--navigation-->
+            <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
                     <a href="index.html" class="has-arrow">
@@ -738,13 +738,18 @@
     var test = 1 
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
-            $('.project-showfolder').hide();
-            $('.project-showlist').show();
+            $('#projectofficial').hide();
+            $('.allofficialtitle').hide();
+            $('#receive').show();
+            $('.receivetitle').show();
+
             test = 2
         }
         else if (test == 2) {
-            $('.project-showlist').hide();
-            $('.project-showfolder').show();
+            $('#receive').hide();
+            $('.receivetitle').hide();
+            $('#projectofficial').show();
+            $('.allofficialtitle').show()
             test = 1
         }
     })

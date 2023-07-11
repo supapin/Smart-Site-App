@@ -525,12 +525,12 @@
         if (test == 1) {
             $('#allofficial').hide();
             $('.allofficialtitle').hide();
+            $('#receive').show();
             $('.receivetitle').show();
-            $('.receive').addClass("receiveshow")
             test = 2
         }
         else if (test == 2) {
-            $('.receive').removeClass("receiveshow");
+            $('#receive').hide();
             $('.receivetitle').hide();
             $('#allofficial').show();
             $('.allofficialtitle').show()

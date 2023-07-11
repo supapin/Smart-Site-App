@@ -583,11 +583,11 @@
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
             $('.showphoto').hide();
-            $('.photolist').addClass("showphotolist")
+            $('.photolist').show();
             test = 2
         }
         else if (test == 2) {
-            $('.photolist').removeClass("showphotolist");
+            $('.photolist').hide();
             $('.showphoto').show();
             test = 1
         }

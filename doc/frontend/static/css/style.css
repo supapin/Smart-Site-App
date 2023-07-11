@@ -430,14 +430,13 @@ a.view{
 }
 .finishproject,.photolist,.checkfloderlist,.checktablelist,.checktablelist,.receive,.logtablelistnone,
 .logfloderlistnone{
-    visibility: hidden;
-    height: 0px;
+    display: none;
 }
-.showfinishproject,.showphotolist,.receiveshow,.logfloderlistshow,.logtablelistshow,.checktablelistshow,
+/* .showfinishproject,.showphotolist,.receiveshow,.logfloderlistshow,.logtablelistshow,.checktablelistshow,
 .checkfloderlistshow{
     visibility: inherit;
     height: inherit;
-}
+} */
 .projectfolder a,.logfloderlist a,.checkfloderlist a{
     color: #000;
 }
