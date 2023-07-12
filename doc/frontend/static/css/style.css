@@ -94,7 +94,8 @@ color: #57e3e8;
 }
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
-#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead,#allformtable thead{
+#project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead,
+#allformtable thead,#approvaltable thead{
     background: #F6F6F6;
 }
 #expiring_tasks thead{
@@ -123,7 +124,7 @@ color: #57e3e8;
 #project-checkrecord td,#project-photos th,#project-photos td,#downloads th,#downloads td{
     border-right: 5px solid #fff;
 }
-.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel,.participantview,.helmet-safety{
+.edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel,.participantview,.helmet-safety,.location,.leave,.leavemain{
     border: none;
 }
 .participantview{
@@ -133,7 +134,7 @@ color: #57e3e8;
 .eye,.download{
     min-width: 30px;
 }
-.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover,.eye:hover,.helmet-safety:hover{
+.edit:hover,.del:hover,.userhistory:hover,.amend:hover,.view:hover,.download:hover,.eye:hover,.helmet-safety:hover,.location:hover,.leave:hover,.leavemain:hover{
     background: #04CAE1;
     color: #fff;
     transition: 200ms;
@@ -431,11 +432,6 @@ a.view{
 .finishproject,.photolist,.checkfloderlist,.checktablelist,.checktablelist,.receive{
     display: none;
 }
-/* .showfinishproject,.showphotolist,.receiveshow,.logfloderlistshow,.logtablelistshow,.checktablelistshow,
-.checkfloderlistshow{
-    visibility: inherit;
-    height: inherit;
-} */
 .projectfolder a,.logfloderlist a,.checkfloderlist a{
     color: #000;
 }
@@ -668,14 +664,14 @@ table.dataTable tbody th, table.dataTable tbody td{
     background-color: #6c757d;
     border-color: #6c757d;
 }
-#addprojectphoto_form>.input-images>.image-uploader {
+#addprojectphoto_form>.input-images>.image-uploader,#addleave_form>.input-images>.image-uploader{
     border: 1px solid #dee2e6;
     border-style: dashed;
     border-radius: 0.25rem;
     background: #f8f9fa;
     min-height: 235px;
 }
-#addprojectphoto_form>.input-images>.image-uploader>.upload-text{
+#addprojectphoto_form>.input-images>.image-uploader>.upload-text,#addleave_form>.input-images>.image-uploader>.upload-text{
     color: #C0C4C6;
 }
 .imageitem img{
@@ -707,4 +703,11 @@ td {
 }
 #addcheckrecordtable{
     table-layout: fixed;
+}
+#map{
+    width: 100%;
+    height: 400px;
+}
+#gettime{
+    font-size: 1.5rem;
 }

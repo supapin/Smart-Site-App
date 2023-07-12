@@ -4,19 +4,19 @@
             "date": "2023-06-01",
             "punchin":  "08:29:11",
             "punchout": "15:30:23",
-            "leave": ""
+            "leave": false
         },
         {   
             "date": "2023-06-02",
             "punchin":  "09:27:47",
             "punchout": "18:30:58",
-            "leave": ""
+            "leave": true
         },
         {   
             "date": "2023-06-03",
             "punchin":  "14:11:33",
             "punchout": "20:57:17",
-            "leave": ""
+            "leave": false
         }
     ]
 }

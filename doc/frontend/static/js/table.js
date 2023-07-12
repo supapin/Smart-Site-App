@@ -314,15 +314,24 @@ $(document).ready(function() {
                 width: "35px",
                 orderable: false  //進用排序否則其他分頁點擊拳選會跳到分頁1.
             },
+            { data:'user',title: "名稱" },
             { data:'date',title: "日期" },
-            { data:'punchin',title: "上班" },
-            { data:'punchout' ,title:"下班"},
-            { data:'leave', title: "假單"},
+            { data:'datepunchin',title: "上班",
+                "render": function (data, type, full, meta) {
+                    return data = data+ '<button class="ms-2 location btn-sm" data-id="location" data-bs-toggle="modal" data-bs-target="#locationmain" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
+                }
+            },
+            { data:'datepunchout' ,title:"下班",
+                "render": function (data, type, full, meta) {
+                    return data = data+ '<button class="ms-2 location btn-sm" data-id="location" data-bs-toggle="modal" data-bs-target="#locationmain" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
+                }
+            },
+            { data:'state',title: "狀態" },
             { data: null ,
-                title: "操作",
+                title: "補卡",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button class="amend btn-sm me-2" data-id="amend" title="補卡"><i class="fa-solid fa-stopwatch"></i></button>'
+                    return data = '<button class="amend btn-sm me-2" data-id="amend" data-bs-toggle="modal" data-bs-target="#amend" title="補卡"><i class="fa-solid fa-stopwatch"></i></button>'
                 },"className": "all"
             },
         ],
@@ -408,7 +417,16 @@ $(document).ready(function() {
             { data:'date',title: "日期" },
             { data:'punchin',title: "上班" },
             { data:'punchout',title:"下班"},
-            { data: 'leave', title:"假單"}
+            { data: 'leave' , title: "假單",
+                "render": function (data, type, full, meta) {
+                    if (data == true){
+                        return data = '<a class="view leavemain btn-sm"  target="_blank" href="leavemain.html" role="button" data-id="leavemain" title="假單"><i class="fa-solid fa-note-sticky"></i></a>'
+                    }
+                    else {
+                        return data = ""
+                    }  
+                },
+            },
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
@@ -2420,4 +2438,48 @@ $(document).ready(function() {
         ],
         "language": {url: "static/json/zh_Hant.json"},
     });
+
+    // 待簽核列表
+    $('#approvaltable').dataTable( {
+        "ajax": {
+            "url": "static/json/approvaltable.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data: 'number',title: "表單編號"},
+            { data: 'user',title: "申請人"},
+            { data: 'date',title: "申請日期" },
+            { data: 'type' , title: "類型",
+                "render": function (data, type, full, meta) {
+                    if (data == '假單'){
+                        return data = '<button class="leavemain btn-sm me-2" data-id="leavemain" data-bs-toggle="modal" data-bs-target="#leavemain" title="假單"><i class="fa-solid fa-note-sticky"></i></button>'
+                    }
+                    else {
+                        return data = '<button class="amend btn-sm me-2" data-id="amend" data-bs-toggle="modal" data-bs-target="#amend" title="補卡"><i class="fa-solid fa-stopwatch"></i></button>'
+                    }  
+                },
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                },"className": "all"
+            },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
 });

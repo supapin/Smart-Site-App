@@ -33,6 +33,11 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.3/dist/leaflet.draw.css" />
+  <script src="https://unpkg.com/leaflet-draw@1.0.3/dist/leaflet.draw.js"></script>
   <title>打卡資料</title>
 </head>
 
@@ -410,12 +415,134 @@
             <div class="row">
               <div class="col-12 col-md-8 col-xxl-9 d-flex justify-content-evenly justify-content-md-start">
                 <div class="manage">
-                  <a href="javascript:;" id="punchin" class="manage-item"><i class="fa-solid fa-business-time"></i></a>
+                  <a href="javascript:;" id="punchin" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" title="上班打卡"><i class="fa-solid fa-business-time"></i></a>
                   <span>上班</span>
+                  <!-- 上班打卡modal -->
+                  <div class="modal fade" id="punchmain" tabindex="-1" aria-labelledby="punchmainLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="punchmainLabel">上班打卡</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <script type="text/javascript"> 
+                            var nowTime ;
+                            function play(){
+                            var time = new Date();
+                            nowTime = time.getFullYear()+"年"+time.getMonth()+"月"+time.getDate()+"日"+time.getHours()+"時"+time.getMinutes()+"分"+time.getSeconds()+"秒";
+                            document.getElementById("gettime").innerHTML = nowTime;
+                            }
+                            setInterval(play,1000);//每秒執行一次
+                          </script> 
+                          <span id="gettime"></span>   
+                          <div id="map"></div>
+                          <!-- googleapis -->
+                          <script>
+                            function initMap() {
+                              var uluru = {lat: 24.9768571, lng: 121.1741704};
+                              var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 16,
+                                mapTypeControl: false,
+                                streetViewControl: false,
+                                fullscreenControl: false,
+                                center: uluru
+                              });
+                              const contentString =
+                                '<div id="content">' +
+                                  '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
+                                  '<div id="bodyContent">' +
+                                    '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
+                                  "</div>" +
+                                "</div>";
+                              const infowindow = new google.maps.InfoWindow({
+                                content: contentString,
+                                ariaLabel: "Uluru",
+                              });
+                              var marker = new google.maps.Marker({
+                                  position: uluru,
+                                  map
+                              });
+                              marker.addListener("click", () => {
+                                infowindow.open({
+                                  anchor: marker,
+                                  map,
+                                });
+                              });
+                            }
+                          </script>
+                          <script async defer
+                          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
+                          </script>
+                        </div>
+                        <div class="modal-footer mt-4">
+                          <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
+                          <button type="button" class="btn bg-dark text-white" data-bs-dismiss="modal">夜班</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 上班打卡modall END-->
                 </div>
                 <div class="manage">
-                    <a href="javascript:;" id="punchout" class="manage-item"><i class="fa-solid fa-clock"></i></a>
+                    <a href="javascript:;" id="punchout" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchoutmain" title="下班打卡"><i class="fa-solid fa-clock"></i></a>
                     <span>下班</span>
+                    <!-- 下班打卡modal -->
+                    <div class="modal fade" id="punchoutmain" tabindex="-1" aria-labelledby="punchoutmainLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="punchoutmainLabel">下班打卡</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div id="map"></div>
+                            <!-- googleapis -->
+                            <script>
+                              function initMap() {
+                                var uluru = {lat: 24.9768571, lng: 121.1741704};
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                  zoom: 16,
+                                  mapTypeControl: false,
+                                  streetViewControl: false,
+                                  fullscreenControl: false,
+                                  center: uluru
+                                });
+                                const contentString =
+                                  '<div id="content">' +
+                                    '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
+                                    '<div id="bodyContent">' +
+                                      '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
+                                    "</div>" +
+                                  "</div>";
+                                const infowindow = new google.maps.InfoWindow({
+                                  content: contentString,
+                                  ariaLabel: "Uluru",
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map
+                                });
+                                marker.addListener("click", () => {
+                                  infowindow.open({
+                                    anchor: marker,
+                                    map,
+                                  });
+                                });
+                              }
+                            </script>
+                            <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
+                            </script>
+                          </div>
+                          <div class="modal-footer mt-4">
+                            <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
+                            <button type="button" class="btn bg-dark text-white" data-bs-dismiss="modal">夜班</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 下班打卡modall END-->
                 </div>
                 <div class="manage">
                   <a href="leave.html" id="leave" class="manage-item"><i class="fa-solid fa-file-signature"></i></a>
@@ -441,12 +568,19 @@
           <div class="card-body">
               <h5 class="fw-bold">打卡資料</h5>
               <form name="select_acc_form" id="select_acc_form" class="row gy-2" method="post" action="">
-                <div class="col-12 col-md-6 mb-2 mb-md-0">
+                <div class="col-12 col-md-4 mb-2 mb-md-0">
                   <select class="form-select" aria-label="Default select example">
-                    <option selected>所有</option>
+                    <option selected>不限人員</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-2 mb-2 mb-md-0">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>不限狀態</option>
+                    <option value="1">正常</option>
+                    <option value="2">異常</option>
                   </select>
                 </div>
                 <div class="col-12 col-md-6 d-flex justify-content-between align-items-center">
@@ -469,18 +603,55 @@
                 </div>
                 <a href="#" class="checkboxdet">刪除選項</a>
               </div>
-              <!-- 人員紀錄 -->
+              <!-- 打卡資料 -->
               <table id="punchrecordtable" class="display nowrap mt-5" style="width: 100%;"></table>
-              <!-- 人員記錄modal -->
-              <div class="modal fade" id="userhistory" tabindex="-1" aria-labelledby="userhistoryLabel" aria-hidden="true">
+              <!-- 位置訊息modal -->
+              <div class="modal fade" id="locationmain" tabindex="-1" aria-labelledby="locationmainLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header editmodal">
-                      <h5 class="modal-title" id="userhistoryLabel">User 1 簽到記錄</h5>
+                      <h5 class="modal-title" id="locationmainLabel">打卡定位記錄</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <!-- <table id="userpunch_history" class="display nowrap mt-5" style="width: 100%;"></table> -->
+                      <div id="map"></div>
+                      <!-- googleapis -->
+                      <script>
+                        function initMap() {
+                          var uluru = {lat: 24.9768571, lng: 121.1741704};
+                          var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 16,
+                            mapTypeControl: false,
+                            streetViewControl: false,
+                            fullscreenControl: false,
+                            center: uluru
+                          });
+                          const contentString =
+                            '<div id="content">' +
+                              '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
+                              '<div id="bodyContent">' +
+                                '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
+                              "</div>" +
+                            "</div>";
+                          const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                            ariaLabel: "Uluru",
+                          });
+                          var marker = new google.maps.Marker({
+                              position: uluru,
+                              map
+                          });
+                          marker.addListener("click", () => {
+                            infowindow.open({
+                              anchor: marker,
+                              map,
+                            });
+                          });
+                        }
+                      </script>
+                      <script async defer
+                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
+                      </script>
                     </div>
                     <div class="modal-footer mt-4">
                       <button type="button" class="btn btn-83c7cf" data-bs-dismiss="modal">關閉</button>
@@ -488,7 +659,34 @@
                   </div>
                 </div>
               </div>
-              <!-- 人員記錄modall END-->
+              <!-- 位置訊息modall END-->
+              <!-- 補卡申請modal -->
+              <div class="modal fade" id="amend" tabindex="-1" aria-labelledby="amendLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header editmodal">
+                      <h5 class="modal-title" id="amendLabel">補卡申請</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" class="row g-3">
+                        <div class="col-12">
+                          <label class="form-label">上班</label>
+                          <input class="form-control" type="datetime-local" value="">
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">下班</label>
+                          <input class="form-control" type="datetime-local" value="">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer mt-4">
+                      <button type="button" class="btn btn-83c7cf" data-bs-dismiss="modal">送出</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 補卡申請modall END-->
           </div>
         </div>
       </div>

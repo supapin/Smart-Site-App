@@ -1,0 +1,28 @@
+{
+    "data": [
+        {   
+            "number": "A0001",
+            "user": "User1",
+            "date": "2023-06-01",
+            "type":     "補卡"
+        },
+        {   
+            "number": "A0002",
+            "user": "User2",
+            "date": "2023-06-01",
+            "type":     "假單"
+        },
+        {   
+            "number": "A0003",
+            "user": "User3",
+            "date": "2023-06-01",
+            "type":     "假單"
+        },
+        {   
+            "number": "A0004",
+            "user": "User4",
+            "date": "2023-06-01",
+            "type":     "假單"
+        }
+    ]
+}

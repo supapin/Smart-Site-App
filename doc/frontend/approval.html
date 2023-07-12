@@ -33,10 +33,15 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-  <title>人員記錄</title>
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.3/dist/leaflet.draw.css" />
+  <script src="https://unpkg.com/leaflet-draw@1.0.3/dist/leaflet.draw.js"></script>
+  <title>簽核</title>
 </head>
 
-<body class="punchbody">
+<body>
   <!--wrapper-->
   <div class="wrapper">
     <!--sidebar wrapper -->
@@ -90,7 +95,7 @@
           </a>
         </li>
         <li>
-          <a class="has-arrow" href="official.html">
+<a class="has-arrow" href="official.html">
             <div class="parent-icon"><i class="fa-solid fa-newspaper"></i></div>
             <div class="menu-title">公文管理</div>
           </a>
@@ -426,8 +431,8 @@
                   <span>簽核</span>
                 </div>
                 <div class="manage">
-                    <a href="punchrecord.html" class="manage-item"><i class="fa-solid fa-user-clock"></i></a>
-                    <span>打卡資料</span>
+                  <a href="punchrecord.html" id="punchrecord" class="manage-item"><i class="fa-solid fa-user-clock"></i></a>
+                  <span>打卡資料</span>
                 </div>
                 <div class="manage">
                   <a href="punch.html" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
@@ -437,55 +442,106 @@
             </div>
           </div>
         </div>
+        <div class="ms-auto">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-00B9BF" for="btnradio1">待簽核</label>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="javascript:window.location.href='finishapproval.html'; return false;">
+                <label class="btn btn-outline-00B9BF" for="btnradio2">已簽核</label>
+            </div>
+        </div>
         <div class="card">
-          <div class="card-body row gy-3">
-              <h5 class="fw-bold mb-0">人員記錄</h5>
-              <div class="selectstate mb-2">
-                <div class="btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 匯出</button>
-                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf me-2"></i>PDF</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-csv me-2"></i>EXCEL</a></li>
-                  </ul>
+          <div class="card-body">
+              <h5 class="fw-bold">簽核列表</h5>
+              <form class="row gy-2" method="post" action="">
+                <div class="col-12 mb-3">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>不限類型</option>
+                    <option value="1">補卡申請</option>
+                    <option value="2">假單申請</option>
+                  </select>
                 </div>
-                <a href="#" class="checkboxdet">刪除選項</a>
-              </div>
-              <!-- 人員列表 -->
-              <table id="punch_history" class="display nowrap mt-5" style="width: 100%;"></table>
-              <!-- 人員簽到記錄modal -->
-              <div class="modal fade" id="userhistory" tabindex="-1" aria-labelledby="userhistoryLabel" aria-hidden="true">
+              </form>
+              <!-- 待簽核列表 -->
+              <table id="approvaltable" class="display nowrap mt-5" style="width: 100%;"></table>
+              <!-- 補卡內容modal -->
+              <div class="modal fade" id="amend" tabindex="-1" aria-labelledby="amendLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header editmodal">
-                      <h5 class="modal-title" id="userhistoryLabel">User 1 簽到記錄</h5>
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="amendLabel">補卡申請</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div class="row mb-3">
-                        <div class="col-6">
-                          <select id="year" class="form-select" aria-label="Default select example">
-                            <option value="1">2023 年</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                      <form method="post" class="row g-3">
+                        <div class="col-12">
+                          <label class="form-label">上班</label>
+                          <input class="form-control" type="datetime-local" value="2023-06-02T18:30" disabled>
                         </div>
-                        <div class="col-6">
-                          <select id="month" class="form-select" aria-label="Default select example">
-                            <option value="1">6 月</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                        <div class="col-12">
+                          <label class="form-label">下班</label>
+                          <input class="form-control" type="datetime-local" value="2023-06-02T22:30" disabled>
                         </div>
-                      </div>
-                      <table id="userpunch_history" class="display nowrap mt-5" style="width: 100%;"></table>
+                      </form>
                     </div>
                     <div class="modal-footer mt-4">
-                      <button type="button" class="btn btn-83c7cf" data-bs-dismiss="modal">關閉</button>
-                    </div>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">駁回</button>
+                      <button type="submit" class="btn btn-04CAE1">核准</button>
+                  </div>
                   </div>
                 </div>
               </div>
-              <!-- 人員簽到記錄modall END-->
+              <!-- 補卡內容modall END-->
+              <!-- 假單內容modal -->
+              <div class="modal fade" id="leavemain" tabindex="-1" aria-labelledby="leavemainLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="leavemainLabel">假單申請</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">申請人</label>
+                            <input class="form-control" type="text" value="User1" disabled>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">假別</label>
+                            <select class="form-select" aria-label="Default select example" disabled>
+                                <option value="1">特休</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">開始時間</label>
+                            <input class="form-control" type="datetime-local" value="2023-06-02T18:30" disabled>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">結束時間</label>
+                            <input class="form-control" type="datetime-local" value="2023-06-02T22:30" disabled>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">原因</label>
+                            <textarea class="form-control" aria-label="With textarea" disabled>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</textarea>
+                        </div>
+                        <div class="d-flex flex-column mb-3">
+                            <label class="form-label">附件</label>
+                            <div class="row row-cols-md-4 gy-3">
+                                <img src="static/image/DJI_0085.jpg" alt="" class="col" style="width: 300px;">
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer mt-4">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">駁回</button>
+                      <button type="submit" class="btn btn-04CAE1">核准</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 假單內容modall END-->
           </div>
         </div>
       </div>

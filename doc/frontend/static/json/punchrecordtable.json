@@ -1,22 +1,25 @@
 {
     "data": [
         {   
+            "user": "User1",
             "date": "2023-06-01",
-            "punchin":  "08:29:11",
-            "punchout": "15:30:23",
-            "leave": ""
+            "datepunchin": "2023-06-01 08:29:11",
+            "datepunchout": "2023-06-01 15:30:23",
+            "state":    "正常"
         },
         {   
-            "date": "2023-06-02",
-            "punchin":  "09:27:47",
-            "punchout": "18:30:58",
-            "leave": ""
+            "user": "User2",
+            "date": "2023-06-01",
+            "datepunchin": "2023-06-01 09:27:47",
+            "datepunchout":  "2023-06-01 09:27:47",
+            "state":    "正常"
         },
         {   
-            "date": "2023-06-03",
-            "punchin":  "14:11:33",
-            "punchout": "20:57:17",
-            "leave": ""
+            "user": "User3",
+            "date": "2023-06-01",
+            "datepunchin": "2023-06-01 14:11:33",
+            "datepunchout": "2023-06-01 20:57:17",
+            "state":    "異常"
         }
     ]
 }
