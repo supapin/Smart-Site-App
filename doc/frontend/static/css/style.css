@@ -428,8 +428,7 @@ a.view{
     background: #04CAE1;
     color: #fff;
 }
-.finishproject,.photolist,.checkfloderlist,.checktablelist,.checktablelist,.receive,.logtablelistnone,
-.logfloderlistnone{
+.finishproject,.photolist,.checkfloderlist,.checktablelist,.checktablelist,.receive{
     display: none;
 }
 /* .showfinishproject,.showphotolist,.receiveshow,.logfloderlistshow,.logtablelistshow,.checktablelistshow,

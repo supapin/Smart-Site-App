@@ -33,7 +33,7 @@
   <!-- daterangepicker -->
   <link rel="stylesheet" href="static/css/daterangepicker.css" />
   <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-  <title>人員列表</title>
+  <title>人員記錄</title>
 </head>
 
 <body class="punchbody">
@@ -427,54 +427,11 @@
                 </div>
                 <div class="manage">
                     <a href="punchrecord.html" class="manage-item"><i class="fa-solid fa-user-clock"></i></a>
-                    <span>人員記錄</span>
+                    <span>打卡資料</span>
                 </div>
-              </div>
-              <div class="col-12 col-md-4 col-xxl-3 d-flex border-left align-items-center justify-content-center mt-3 mt-md-0">
-                <div class="addmanage">
-                  <a href="javascript:;" class="addmanage-item" data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i></a>
-                  <span>新增人員</span>
-                  <!-- 新增人員modal -->
-                  <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="adduserLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="adduserLabel">新增人員</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form name="add_user_form" id="add_user_form" class="row gy-3" method="post" action="">
-                            <div class="col-12">
-                              <label class="form-label">人員</label>
-                              <select id="username" class="form-select" aria-label="Default select example">
-                                <option selected>人員名稱</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                              </select>
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">帳號</label>
-                              <input type="text" id="useracc" name="useracc" class="form-control" value="Cqwsdf4985" readonly>
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">負責崗位</label>
-                              <input type="text" id="department" name="department" class="form-control" value="" minlength="2" required>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer mt-4">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="submit" class="btn btn-04CAE1">新增</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 新增人員modal END-->
-                </div>
-                <div class="addmanage">
-                  <a href="punch.html" id="userlist" class="addmanage-item"><i class="fa-solid fa-user-group"></i></a>
-                  <span>人員列表</span>
+                <div class="manage">
+                  <a href="punch.html" class="manage-item"><i class="fa-solid fa-user-group"></i></a>
+                  <span>人員記錄</span>
                 </div>
               </div>
             </div>
@@ -482,7 +439,7 @@
         </div>
         <div class="card">
           <div class="card-body row gy-3">
-              <h5 class="fw-bold mb-0">人員列表</h5>
+              <h5 class="fw-bold mb-0">人員記錄</h5>
               <div class="selectstate mb-2">
                 <div class="btn-group" role="group">
                   <button id="btnGroupDrop1" type="button" class="unselected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 匯出</button>
