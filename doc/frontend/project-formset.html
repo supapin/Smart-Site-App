@@ -722,34 +722,29 @@
 <script src="static/js/app.js"></script>
 </body>
 <script>
-    $(".checklistradio").click(function(){
-        $('.logtablelist').addClass("logtablelistnone");
-        $('.logfloderlist').addClass("logfloderlistnone");
-        $('.checktablelist').addClass("checktablelistshow");
-        $('.checkfloderlist').addClass("checkfloderlistshow");
-    })
     $(".loglistradio").click(function(){
-        $('.checktablelist').removeClass("checktablelistshow");
-        $('.checkfloderlist').removeClass("checkfloderlistshow");
-        $('.logtablelist').removeClass("logtablelistnone");
-        $('.logfloderlist').removeClass("logfloderlistnone");
+        $('.checktablelist').hide();
+        $('.checkfloderlist').hide();
+        $('.logtablelist').show();
+        $('.logfloderlist').show();
+    })
+    $(".checklistradio").click(function(){
+        $('.logtablelist').hide();
+        $('.logfloderlist').hide();
+        $('.checktablelist').show();
+        $('.checkfloderlist').show();
     })
 
     var test = 1 
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
-            $('#projectofficial').hide();
-            $('.allofficialtitle').hide();
-            $('#receive').show();
-            $('.receivetitle').show();
-
+            $('.project-showfolder').hide();
+            $('.project-showlist').show();
             test = 2
         }
         else if (test == 2) {
-            $('#receive').hide();
-            $('.receivetitle').hide();
-            $('#projectofficial').show();
-            $('.allofficialtitle').show()
+            $('.project-showlist').hide();
+            $('.project-showfolder').show();
             test = 1
         }
     })
