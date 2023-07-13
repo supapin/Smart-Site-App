@@ -417,12 +417,12 @@
                 <div class="manage">
                   <a href="javascript:;" id="punchin" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" title="上班打卡"><i class="fa-solid fa-business-time"></i></a>
                   <span>上班</span>
-                  <!-- 上班打卡modal -->
-                  <div class="modal fade" id="punchmain" tabindex="-1" aria-labelledby="punchmainLabel" aria-hidden="true">
+                  <!-- GPS modal -->
+                  <div class="modal fade" id="gpsmodal" tabindex="-1" aria-labelledby="punchmainLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="punchmainLabel">上班打卡</h5>
+                          <h5 class="modal-title" id="punchmainLabel">打卡資料</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -482,13 +482,13 @@
                       </div>
                     </div>
                   </div>
-                  <!-- 上班打卡modall END-->
+                  <!-- GPS modall END-->
                 </div>
                 <div class="manage">
                     <a href="javascript:;" id="punchout" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchoutmain" title="下班打卡"><i class="fa-solid fa-clock"></i></a>
                     <span>下班</span>
                     <!-- 下班打卡modal -->
-                    <div class="modal fade" id="punchoutmain" tabindex="-1" aria-labelledby="punchoutmainLabel" aria-hidden="true">
+                    <!-- <div class="modal fade" id="punchoutmain" tabindex="-1" aria-labelledby="punchoutmainLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -496,44 +496,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <div id="map"></div>
-                            <!-- googleapis -->
-                            <script>
-                              function initMap() {
-                                var uluru = {lat: 24.9768571, lng: 121.1741704};
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                  zoom: 16,
-                                  mapTypeControl: false,
-                                  streetViewControl: false,
-                                  fullscreenControl: false,
-                                  center: uluru
-                                });
-                                const contentString =
-                                  '<div id="content">' +
-                                    '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
-                                    '<div id="bodyContent">' +
-                                      '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
-                                    "</div>" +
-                                  "</div>";
-                                const infowindow = new google.maps.InfoWindow({
-                                  content: contentString,
-                                  ariaLabel: "Uluru",
-                                });
-                                var marker = new google.maps.Marker({
-                                    position: uluru,
-                                    map
-                                });
-                                marker.addListener("click", () => {
-                                  infowindow.open({
-                                    anchor: marker,
-                                    map,
-                                  });
-                                });
-                              }
-                            </script>
-                            <script async defer
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
-                            </script>
+                            <div id="map1"></div>
+                            
                           </div>
                           <div class="modal-footer mt-4">
                             <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
@@ -541,7 +505,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- 下班打卡modall END-->
                 </div>
                 <div class="manage">
@@ -553,7 +517,7 @@
                   <span>簽核</span>
                 </div>
                 <div class="manage">
-                  <a href="punchrecord.html" id="punchrecord" class="manage-item"><i class="fa-solid fa-user-clock"></i></a>
+                  <a href="punchrecord.html" id="punchrecord" class="manage-item active"><i class="fa-solid fa-user-clock"></i></a>
                   <span>打卡資料</span>
                 </div>
                 <div class="manage">
@@ -606,7 +570,7 @@
               <!-- 打卡資料 -->
               <table id="punchrecordtable" class="display nowrap mt-5" style="width: 100%;"></table>
               <!-- 位置訊息modal -->
-              <div class="modal fade" id="locationmain" tabindex="-1" aria-labelledby="locationmainLabel" aria-hidden="true">
+              <!-- <div class="modal fade" id="locationmain" tabindex="-1" aria-labelledby="locationmainLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header editmodal">
@@ -614,9 +578,9 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div id="map"></div>
+                      <div id="map"></div> -->
                       <!-- googleapis -->
-                      <script>
+                      <!-- <script>
                         function initMap() {
                           var uluru = {lat: 24.9768571, lng: 121.1741704};
                           var map = new google.maps.Map(document.getElementById('map'), {
@@ -648,8 +612,8 @@
                             });
                           });
                         }
-                      </script>
-                      <script async defer
+                      </script> -->
+                      <!-- <script async defer
                       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
                       </script>
                     </div>
@@ -658,7 +622,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- 位置訊息modall END-->
               <!-- 補卡申請modal -->
               <div class="modal fade" id="amend" tabindex="-1" aria-labelledby="amendLabel" aria-hidden="true">
