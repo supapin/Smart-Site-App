@@ -408,7 +408,7 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-12 col-md-8 col-xxl-9 d-flex justify-content-evenly justify-content-md-start">
+              <div class="d-flex flex-wrap justify-content-evenly justify-content-md-start">
                 <div class="manage">
                   <a href="javascript:;" id="punchin" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" title="上班打卡"><i class="fa-solid fa-business-time"></i></a>
                   <span>上班</span>
@@ -432,43 +432,6 @@
                           </script> 
                           <span id="gettime"></span>   
                           <div id="map"></div>
-                          <!-- googleapis -->
-                          <script>
-                            function initMap() {
-                              var uluru = {lat: 24.9768571, lng: 121.1741704};
-                              var map = new google.maps.Map(document.getElementById('map'), {
-                                zoom: 16,
-                                mapTypeControl: false,
-                                streetViewControl: false,
-                                fullscreenControl: false,
-                                center: uluru
-                              });
-                              const contentString =
-                                '<div id="content">' +
-                                  '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
-                                  '<div id="bodyContent">' +
-                                    '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
-                                  "</div>" +
-                                "</div>";
-                              const infowindow = new google.maps.InfoWindow({
-                                content: contentString,
-                                ariaLabel: "Uluru",
-                              });
-                              var marker = new google.maps.Marker({
-                                  position: uluru,
-                                  map
-                              });
-                              marker.addListener("click", () => {
-                                infowindow.open({
-                                  anchor: marker,
-                                  map,
-                                });
-                              });
-                            }
-                          </script>
-                          <script async defer
-                          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
-                          </script>
                         </div>
                         <div class="modal-footer mt-4">
                           <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
@@ -491,44 +454,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <div id="map"></div>
-                            <!-- googleapis -->
-                            <script>
-                              function initMap() {
-                                var uluru = {lat: 24.9768571, lng: 121.1741704};
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                  zoom: 16,
-                                  mapTypeControl: false,
-                                  streetViewControl: false,
-                                  fullscreenControl: false,
-                                  center: uluru
-                                });
-                                const contentString =
-                                  '<div id="content">' +
-                                    '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
-                                    '<div id="bodyContent">' +
-                                      '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
-                                    "</div>" +
-                                  "</div>";
-                                const infowindow = new google.maps.InfoWindow({
-                                  content: contentString,
-                                  ariaLabel: "Uluru",
-                                });
-                                var marker = new google.maps.Marker({
-                                    position: uluru,
-                                    map
-                                });
-                                marker.addListener("click", () => {
-                                  infowindow.open({
-                                    anchor: marker,
-                                    map,
-                                  });
-                                });
-                              }
-                            </script>
-                            <script async defer
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
-                            </script>
+                            <div id="map1"></div>
                           </div>
                           <div class="modal-footer mt-4">
                             <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
@@ -639,5 +565,42 @@
 <script src="static/js/perfect-scrollbar.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<!-- googleapis -->
+<script>
+  function initMap() {
+    var uluru = {lat: 24.9768571, lng: 121.1741704};
+    var map,map1 = new google.maps.Map(document.getElementById('map','map1'), {
+      zoom: 16,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      center: uluru
+    });
+    const contentString =
+      '<div id="content">' +
+        '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
+        '<div id="bodyContent">' +
+          '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
+        "</div>" +
+      "</div>";
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      ariaLabel: "Uluru",
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map,map1
+    });
+    marker.addListener("click", () => {
+      infowindow.open({
+        anchor: marker,
+        map,map1
+      });
+    });
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
+</script>
 </body>
 </html>

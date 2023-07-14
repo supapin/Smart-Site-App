@@ -318,12 +318,12 @@ $(document).ready(function() {
             { data:'date',title: "日期" },
             { data:'datepunchin',title: "上班",
                 "render": function (data, type, full, meta) {
-                    return data = data+ '<button class="ms-2 location btn-sm" data-id="gpsmodal" data-bs-toggle="modal" data-bs-target="#gpsmodal" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
+                    return data = data+ '<button class="ms-2 location btn-sm" data-id="gpsmodal" data-bs-toggle="modal" data-bs-target="#gpsmodal" data-bs-whatever="上班位置" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
                 }
             },
             { data:'datepunchout' ,title:"下班",
                 "render": function (data, type, full, meta) {
-                    return data = data+ '<button class="ms-2 location btn-sm" data-id="gpsmodal" data-bs-toggle="modal" data-bs-target="#gpsmodal" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
+                    return data = data+ '<button class="ms-2 location btn-sm" data-id="gpsmodal" data-bs-toggle="modal" data-bs-target="#gpsmodal" data-bs-whatever="下班位置" title="位置"><i class="fa-solid fa-location-dot"></i></button>'
                 }
             },
             { data:'state',title: "狀態" },

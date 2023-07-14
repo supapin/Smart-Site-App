@@ -395,7 +395,8 @@
         </nav>
       </div>
     </header>
-    <!--end header --><!--start page wrapper -->
+    <!--end header -->
+    <!--start page wrapper -->
     <div class="page-wrapper">
       <div class="page-content">
         <!--breadcrumb-->
@@ -413,12 +414,12 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-12 col-md-8 col-xxl-9 d-flex justify-content-evenly justify-content-md-start">
+              <div class="d-flex flex-wrap justify-content-evenly justify-content-md-start">
                 <div class="manage">
-                  <a href="javascript:;" id="punchin" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" title="上班打卡"><i class="fa-solid fa-business-time"></i></a>
+                  <a href="javascript:;" id="punchin" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" data-bs-whatever="上班打卡" title="上班打卡"><i class="fa-solid fa-business-time"></i></a>
                   <span>上班</span>
                   <!-- GPS modal -->
-                  <div class="modal fade" id="gpsmodal" tabindex="-1" aria-labelledby="punchmainLabel" aria-hidden="true">
+                  <div class="modal fade" id="punchmain" tabindex="-1" aria-labelledby="punchmainLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -429,55 +430,22 @@
                           <script type="text/javascript"> 
                             var nowTime ;
                             function play(){
-                            var time = new Date();
+                            const time = new Date();
                             nowTime = time.getFullYear()+"年"+time.getMonth()+"月"+time.getDate()+"日"+time.getHours()+"時"+time.getMinutes()+"分"+time.getSeconds()+"秒";
                             document.getElementById("gettime").innerHTML = nowTime;
                             }
                             setInterval(play,1000);//每秒執行一次
                           </script> 
-                          <span id="gettime"></span>   
-                          <div id="map"></div>
-                          <!-- googleapis -->
-                          <script>
-                            function initMap() {
-                              var uluru = {lat: 24.9768571, lng: 121.1741704};
-                              var map = new google.maps.Map(document.getElementById('map'), {
-                                zoom: 16,
-                                mapTypeControl: false,
-                                streetViewControl: false,
-                                fullscreenControl: false,
-                                center: uluru
-                              });
-                              const contentString =
-                                '<div id="content">' +
-                                  '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
-                                  '<div id="bodyContent">' +
-                                    '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
-                                  "</div>" +
-                                "</div>";
-                              const infowindow = new google.maps.InfoWindow({
-                                content: contentString,
-                                ariaLabel: "Uluru",
-                              });
-                              var marker = new google.maps.Marker({
-                                  position: uluru,
-                                  map
-                              });
-                              marker.addListener("click", () => {
-                                infowindow.open({
-                                  anchor: marker,
-                                  map,
-                                });
-                              });
-                            }
-                          </script>
-                          <script async defer
-                          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
-                          </script>
+                          <span id="gettime" class="gettime"></span>
+                          <div class="d-flex mt-2">
+                            <button onclick="getLocation()" type="button" class="btn bg-warning text-white col-6">日班打卡</button>
+                            <button onclick="getLocation()" type="button" class="btn bg-dark text-white col-6">夜班打卡</button>
+                          </div>
+                          <div id="mapholder">
+                          </div>
                         </div>
                         <div class="modal-footer mt-4">
-                          <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
-                          <button type="button" class="btn bg-dark text-white" data-bs-dismiss="modal">夜班</button>
+                          <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" title="關閉">關閉</button>
                         </div>
                       </div>
                     </div>
@@ -485,7 +453,7 @@
                   <!-- GPS modall END-->
                 </div>
                 <div class="manage">
-                    <a href="javascript:;" id="punchout" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchoutmain" title="下班打卡"><i class="fa-solid fa-clock"></i></a>
+                    <a href="javascript:;" id="punchout" class="manage-item" data-bs-toggle="modal" data-bs-target="#punchmain" data-bs-whatever="下班打卡" title="下班打卡"><i class="fa-solid fa-clock"></i></a>
                     <span>下班</span>
                     <!-- 下班打卡modal -->
                     <!-- <div class="modal fade" id="punchoutmain" tabindex="-1" aria-labelledby="punchoutmainLabel" aria-hidden="true">
@@ -496,8 +464,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <div id="map1"></div>
-                            
+                            <span id="gettime" class="gettime"></span>
+                            <div id="mapholder"></div>
                           </div>
                           <div class="modal-footer mt-4">
                             <button type="button" class="btn bg-warning text-white" data-bs-dismiss="modal">日班</button>
@@ -517,7 +485,7 @@
                   <span>簽核</span>
                 </div>
                 <div class="manage">
-                  <a href="punchrecord.html" id="punchrecord" class="manage-item active"><i class="fa-solid fa-user-clock"></i></a>
+                  <a href="punchrecord.html" id="punchrecord" class="manage-item"><i class="fa-solid fa-user-clock"></i></a>
                   <span>打卡資料</span>
                 </div>
                 <div class="manage">
@@ -570,59 +538,22 @@
               <!-- 打卡資料 -->
               <table id="punchrecordtable" class="display nowrap mt-5" style="width: 100%;"></table>
               <!-- 位置訊息modal -->
-              <!-- <div class="modal fade" id="locationmain" tabindex="-1" aria-labelledby="locationmainLabel" aria-hidden="true">
+              <div class="modal fade" id="gpsmodal" tabindex="-1" aria-labelledby="gpsmodalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header editmodal">
-                      <h5 class="modal-title" id="locationmainLabel">打卡定位記錄</h5>
+                      <h5 class="modal-title" id="gpsmodalLabel">打卡定位記錄</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div id="map"></div> -->
-                      <!-- googleapis -->
-                      <!-- <script>
-                        function initMap() {
-                          var uluru = {lat: 24.9768571, lng: 121.1741704};
-                          var map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 16,
-                            mapTypeControl: false,
-                            streetViewControl: false,
-                            fullscreenControl: false,
-                            center: uluru
-                          });
-                          const contentString =
-                            '<div id="content">' +
-                              '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
-                              '<div id="bodyContent">' +
-                                '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
-                              "</div>" +
-                            "</div>";
-                          const infowindow = new google.maps.InfoWindow({
-                            content: contentString,
-                            ariaLabel: "Uluru",
-                          });
-                          var marker = new google.maps.Marker({
-                              position: uluru,
-                              map
-                          });
-                          marker.addListener("click", () => {
-                            infowindow.open({
-                              anchor: marker,
-                              map,
-                            });
-                          });
-                        }
-                      </script> -->
-                      <!-- <script async defer
-                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback=initMap">
-                      </script>
+                      <div id="map"></div>
                     </div>
                     <div class="modal-footer mt-4">
                       <button type="button" class="btn btn-83c7cf" data-bs-dismiss="modal">關閉</button>
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
               <!-- 位置訊息modall END-->
               <!-- 補卡申請modal -->
               <div class="modal fade" id="amend" tabindex="-1" aria-labelledby="amendLabel" aria-hidden="true">
@@ -682,5 +613,121 @@
 <script src="static/js/perfect-scrollbar.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
+<script>
+var x=document.getElementById("mapholder");
+function getLocation()
+{
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.watchPosition(showPosition,showError); 
+        //getCurrentPosition() - 返回用戶當前位置
+        //watchPosition() - 返回用戶當前位置，並繼續返回用戶移動時更新的位置
+    }
+    else
+    {
+        x.innerHTML="該瀏覽器不支持抓取地理位置";
+    }
+}
+
+function showPosition(position)
+{
+  var locations = [
+          ['Location 1', position.coords.latitude, position.coords.longitude],
+        ];
+        console.log(locations);
+        var map = new google.maps.Map(document.getElementById('mapholder'), {
+          zoom: 16,
+          mapTypeControl: false,
+          streetViewControl: false,
+          fullscreenControl: false,
+          center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var contentString =
+          '<div id="content">' +
+            '<h5 id="firstHeading" class="firstHeading fw-bold">位置訊息</h5>' +
+            '<div id="bodyContent">' +
+              '<p style="word-break: break-all">334桃園市八德區金和路2-40號</p>' +
+            "</div>" +
+          "</div>";
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          ariaLabel: "Uluru",
+        });
+        var marker, i;
+        for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(contentString);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+}
+function showError(error)
+{
+    switch(error.code) 
+    {
+        case error.PERMISSION_DENIED:
+            x.innerHTML="用戶拒絕獲取地理位置的請求。"
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML="位置信息不可用。"
+            break;
+        case error.TIMEOUT:
+            x.innerHTML="請求用戶地理位置超時。"
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML="未知錯誤。"
+            break;
+    }
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6X1npD7QTWFsvv4TmwFPZUixMVpg0ss&callback">
+</script>
+<!-- 上下班位置訊息 -->
+<script>
+  var gpsmodal = document.getElementById('gpsmodal')
+  gpsmodal.addEventListener('show.bs.modal', function (event) {
+      // Button that triggered the modal
+      var button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      var recipient = button.getAttribute('data-bs-whatever')
+      // If necessary, you could initiate an AJAX request here
+      // and then do the updating in a callback.
+      //
+      // Update the modal's content.
+      var modalTitle = gpsmodal.querySelector('.modal-title')
+      var modalBodyInput = gpsmodal.querySelector('.modal-body input')
+    
+      modalTitle.textContent = recipient
+      modalBodyInput.value = recipient
+    })
+</script>
+<!-- 上下班打卡 -->
+<script>
+  var punchmain = document.getElementById('punchmain')
+  punchmain.addEventListener('show.bs.modal', function (event) {
+      // Button that triggered the modal
+      var button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      var recipient = button.getAttribute('data-bs-whatever')
+      // If necessary, you could initiate an AJAX request here
+      // and then do the updating in a callback.
+      //
+      // Update the modal's content.
+      var modalTitle = punchmain.querySelector('.modal-title')
+      var modalBodyInput = punchmain.querySelector('.modal-body input')
+    
+      modalTitle.textContent = recipient
+      modalBodyInput.value = recipient
+    })
+</script>
 </body>
+
 </html>
