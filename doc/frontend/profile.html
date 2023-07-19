@@ -423,19 +423,16 @@
                                 <input type="text" class="form-control" value="xxxx">
                             </div>
                             <div class="col-6">
-                                <label class="form-label">暱稱</label>
-                                <input type="text" class="form-control" value="xxx">
-                            </div>
-                            <div class="col-6">
                                 <label class="form-label">帳號</label>
                                 <input type="text" class="form-control" value="asdg879761" readonly>
                             </div>
                             <div class="col-6">
-                                <label class="form-label">密碼</label>
-                                <div class="input-group">
-                                    <input type="text" id="user_password2" class="form-control" aria-describedby="automatic2" value="YsXASHQ54asW2">
-                                    <button class="btn btn-outline-secondary" type="button" id="automatic2">修改</button>
-                                </div>
+                                <label class="form-label">更改密碼</label>
+                                <input type="text" id="user_password2" class="form-control" aria-describedby="automatic2" placeholder="如不修改請留空" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">確認密碼</label>
+                                <input id="editConfirmPassword" name="editConfirmPassword" type="password" class="form-control" placeholder="確認密碼" aria-label="editConfirmPassword" aria-describedby="basic-addon5" required="required" oninput="setCustomValidity('');" onchange="if(document.getElementById('user_password2').value != document.getElementById('editConfirmPassword').value){setCustomValidity('密碼不吻合');}">
                             </div>
                             <div class="col-6">
                                 <label for="exampleInputEmail1" class="form-label">電子信箱</label>
