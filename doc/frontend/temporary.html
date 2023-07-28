@@ -33,10 +33,12 @@
     <!-- daterangepicker -->
     <link rel="stylesheet" href="static/css/daterangepicker.css" />
     <link rel="stylesheet" href="static/js/jquery-3.5.1.js" />
-    <title>個人檔案</title>
+    <!-- image-uploader -->
+    <link rel="stylesheet" type="text/css" href="static/css/image-uploader.min.css">
+    <title>暫存照片</title>
 </head>
 
-<body>
+<body id="projectphoto_body">
     <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
@@ -50,7 +52,7 @@
             <ul class="metismenu" id="menu">
                 <li>
                     <a href="index.html" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-home-circle ms-1'></i></div>
+                        <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
                         <div class="menu-title">回首頁</div>
                     </a>
                 </li>
@@ -116,24 +118,8 @@
             <div class="topbar d-flex align-items-center">
                 <nav class="navbar navbar-expand">
                     <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
-                    <div class="search-bar flex-grow-1">
-                        <div class="position-relative search-bar-box">
-                            <select id="projectname" class="form-select" aria-label="Default select example">
-                                <option selected>「桃園市政府⼯務局管轄道路路平專案改善預約式⼯程」(第⼀⼯區) </option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <span class="position-absolute top-50 search-close translate-middle-y">
-                                <i class='bx bx-x'></i>
-                            </span>
-                        </div>
-                    </div>
                     <div class="top-menu ms-auto">
                         <ul class="navbar-nav align-items-center">
-                            <li class="nav-item mobile-search-icon">
-                                <a class="nav-link" href="#"><i class="fa-solid fa-folder-open"></i></a>
-                            </li>
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class='bx bx-category'></i></a>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -405,7 +391,7 @@
             <div class="page-content">
                 <!--breadcrumb-->
                 <div class="page-breadcrumb d-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">個人檔案</div>
+                    <div class="breadcrumb-title pe-3">暫存照片</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
@@ -417,31 +403,138 @@
                 <!--end breadcrumb-->
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" class="row g-3">
-                            <div class="col-6">
-                                <label class="form-label">名稱</label>
-                                <input type="text" class="form-control" value="xxxx">
+                        <div class="row">
+                            <form id="addtemporary_form" name="addtemporary_form" method="post" action="">
+                                <div class="input-images"></div>
+                            </form>
+                            <div class="col mt-3">
+                                <h5 class="fw-bold">暫存列表</h5>
+                                <form name="select_photo_form" id="select_photo_form" class="row gy-3 mb-3" method="post" action="">
+                                    <div class="col-4">
+                                        <select id="year" class="form-select" aria-label="Default select example">
+                                            <option selected>2023 年</option>
+                                            <option value="1">2022 年</option>
+                                            <option value="2">2021 年</option>
+                                            <option value="3">2020 年</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <select id="month" class="form-select" aria-label="Default select example">
+                                            <option selected>12 月</option>
+                                            <option value="1">11 月</option>
+                                            <option value="2">10 月</option>
+                                            <option value="3">9 月</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <select id="day" class="form-select" aria-label="Default select example">
+                                            <option selected>所有</option>
+                                            <option value="1">1 日</option>
+                                            <option value="2">2 日</option>
+                                            <option value="3">3 日</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <div class="d-flex my-3 justify-content-end">
+                                    <button type="button" class="btn listaction" title="切換顯示"><i class="fas fa-list"></i></button>
+                                </div>
+                                <!-- 照片顯示 -->
+                                <div class="showphoto">
+                                    <div class="imageitem row row-cols-2 row-cols-md-4 row-cols-lg-6">
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="static/image/DJI_0085.jpg" alt="" class="">
+                                        </div>
+                                    </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-end">
+                                            <li class="page-item"><a class="page-link" href="javascript:;">上一頁</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">下一頁</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- 列表顯示 -->
+                                <div class="photolist">
+                                    <table id="temporary" class="display nowrap mt-5" style="width: 100%;"></table>
+                                </div>
+                                <!-- 歸檔modal -->
+                                <div class="modal fade" id="pendingphoto" tabindex="-1" aria-labelledby="pendingphotoLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">照片歸檔</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="pendingphoto_form" name="pendingphoto" class="row gy-3" method="post" action="">
+                                                    <div class="col-12">
+                                                        <select id="projectname" class="form-select" aria-label="Default select example">
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label class="form-label">表單類型</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option value="1">日誌表</option>
+                                                            <option value="2">檢查表</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label class="form-label">表單</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option value="1">派⼯單119國際路⼆段(中⼭路⾄國強⼀街)</option>
+                                                            <option value="2">派⼯單120⼤興⻄路三段(國際路⾄永安路)</option>
+                                                            <option value="3">派⼯單119國際路⼆段(中⼭路⾄國強⼀街)</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer mt-4">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-04CAE1">歸檔</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 歸檔modal END-->
                             </div>
-                            <div class="col-6">
-                                <label class="form-label">帳號</label>
-                                <input type="text" class="form-control" value="asdg879761" readonly>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label">更改密碼</label>
-                                <input type="text" id="user_password2" class="form-control" aria-describedby="automatic2" placeholder="如不修改請留空" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');">
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label">確認密碼</label>
-                                <input id="editConfirmPassword" name="editConfirmPassword" type="password" class="form-control" placeholder="確認密碼" aria-label="editConfirmPassword" aria-describedby="basic-addon5" required="required" oninput="setCustomValidity('');" onchange="if(document.getElementById('user_password2').value != document.getElementById('editConfirmPassword').value){setCustomValidity('密碼不吻合');}">
-                            </div>
-                            <div class="col-6">
-                                <label for="exampleInputEmail1" class="form-label">電子信箱</label>
-                                <input name="email" type="email" class="form-control" placeholder="xxxxx@kingyan.com.tw" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-                            </div>
-                        </form>
-                        <div class="modal-footer mt-4">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-04CAE1">保存</button>
                         </div>
                     </div>
                 </div>
@@ -463,7 +556,6 @@
 <!-- Bootstrap JS -->
 <script src="static/js/bootstrap.bundle.min.js"></script>
 <!--plugins-->
-<script src="static/js/echarts.min.js"></script>
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/jquery.dataTables.min.js"></script>
 <script src="static/js/dataTables.responsive.min.js"></script>
@@ -473,189 +565,26 @@
 <script src="static/js/simplebar.min.js"></script>
 <script src="static/js/metisMenu.min.js"></script>
 <script src="static/js/perfect-scrollbar.js"></script>
+<script src="static/js/image-uploader.min.js"></script>
 <!--app JS-->
 <script src="static/js/app.js"></script>
-</body>
-
 <script>
+    // 上傳
+    $('.input-images').imageUploader();
+
     var test = 1 
     $(document).on('click','.listaction',function(e){
         if (test == 1) {
-            $('.projectfolder').hide();
-            $('.finishproject').show();
+            $('.showphoto').hide();
+            $('.photolist').show()
             test = 2
         }
         else if (test == 2) {
-            $('.finishproject').hide();
-            $('.projectfolder').show();
+            $('.photolist').hide();
+            $('.showphoto').show();
             test = 1
         }
     })
-
-
-    // 儀錶板
-    var project_dashboard = echarts.init(document.getElementById( 'project_dashboard' ));
-    project_dashboard.setOption({
-        backgroundColor: '#040c33',
-        title: [
-            {
-                text:'XXXX專案項目完成度',
-                left:'3%',
-                top:'6%',
-                textStyle:{
-                    fontSize: 16,
-                    color:'#fff',
-                    fontWeight: 'bold',
-                },
-            },
-        ],
-        color: ['#00ffb4', '#6f81da', '#49dff0'],
-        // 设置图表的位置
-        grid: {
-          x: 100, // 左间距
-          y: 100, // 上间距
-          x2: 80, // 右间距
-          y2: 60, // 下间距
-          containLabel: true // grid 区域是否包含坐标轴的刻度标签, 常用于『防止标签溢出』的场景
-        },
-        // 提示框组件
-        tooltip: {
-          trigger: 'axis', // 触发类型, axis: 坐标轴触发
-          axisPointer: {
-          	// 指示器类型  'line' 直线指示器 'shadow' 阴影指示器 'none' 无指示器
-          	// 'cross' 十字准星指示器 其实是种简写，表示启用两个正交的轴的 axisPointer 
-            type: 'none' 
-          },
-          textStyle: {
-            color: '#cdd3ee' // 文字颜色
-          },
-          // 提示框浮层内容格式器，支持字符串模板和回调函数两种形式 折线（区域）图、柱状（条形）图、K线图
-          // {a}（系列名称），{b}（类目值），{c}（数值）, {d}（无）
-          formatter: '{b}<br />{a0}: {c0}%<br />{a1}: {c1}%<br />{a2}: {c2}%'
-        },
-        // 图例组件
-        legend: {
-          textStyle: { // 文本样式
-            fontSize: 16,
-            color: '#cdd3ee'
-          },
-          right: 80,
-          top: 40, // 定位
-          data: [ '已完成', '進行中', '未完成' ] // 图例的数据数组
-        },
-        // X轴
-        xAxis: {
-          type: 'value', // 坐标轴类型,   'value' 数值轴，适用于连续数据
-          // 坐标轴刻度
-          axisTick: {
-            show: false // 是否显示坐标轴刻度 默认显示
-          },
-          // 坐标轴轴线
-          axisLine: { // 是否显示坐标轴轴线 默认显示
-            show: false // 是否显示坐标轴轴线 默认显示
-          },
-          // 坐标轴在图表区域中的分隔线
-          splitLine: {
-            show: false // 是否显示分隔线。默认数值轴显示
-          },
-          // 坐标轴刻度标签
-          axisLabel: {
-            show: false // 是否显示刻度标签 默认显示
-          }
-        },
-        yAxis: [
-          // 左侧Y轴
-          {
-            // 坐标轴类型,  'category' 类目轴，适用于离散的类目数据
-            // 为该类型时必须通过 data 设置类目数据
-            type: 'category', 
-            // 坐标轴刻度
-            axisTick: {
-              show: false // 是否显示坐标轴刻度 默认显示
-            },
-            // 坐标轴轴线
-            axisLine: { // 是否显示坐标轴轴线 默认显示
-              show: false, // 是否显示坐标轴轴线 默认显示
-              lineStyle: { // 坐标轴线线的颜色
-                color: '#cdd3ee'
-              }
-            },
-            // 坐标轴在图表区域中的分隔线
-            splitLine: {
-              show: false // 是否显示分隔线。默认数值轴显示
-            },
-            // 坐标轴刻度标签
-            axisLabel: {
-              show: true, // 是否显示刻度标签 默认显示
-              fontSize: 16, // 文字的字体大小
-              color: '#cdd3ee', // 刻度标签文字的颜色
-              // 使用字符串模板，模板变量为刻度默认标签 {value}
-              formatter: '{value}'
-            },
-            // 类目数据，在类目轴（type: 'category'）中有效
-            data: ['項目1', '項目2', '項目2', '項目4', '項目5', '項目6'] 
-          }
-        ],
-        // 系列列表
-        series: [
-          {
-            type: 'bar', // 系列类型
-            name: '已完成', // 系列名称, 用于tooltip的显示, legend 的图例筛选
-            // 数据堆叠，同个类目轴上系列配置相同的stack值后，后一个系列的值会在前一个系列的值上相加
-            stack: '總量',
-            barMaxWidth: 20, // 柱条的最大宽度，不设时自适应
-            // 图形上的文本标签
-            label: {
-              show: true,
-              // 标签的位置 left right bottom top inside  // 绝对的像素值 position: [10, 10] 
-              // 相对的百分比 position: ['50%', '50%']
-              position: 'inside' 
-            },
-            // 图形样式
-            itemStyle: {
-              barBorderRadius: [10, 0, 0, 10] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
-            },
-            data: [20, 30, 50, 60, 45, 40] // 系列中的数据内容数组
-          },
-          {
-            type: 'bar', // 系列类型
-            name: '進行中', // 系列名称, 用于tooltip的显示, legend 的图例筛选
-            // 数据堆叠，同个类目轴上系列配置相同的stack值后，后一个系列的值会在前一个系列的值上相加
-            stack: '總量',
-            barMaxWidth: 20, // 柱条的最大宽度，不设时自适应
-            // 图形上的文本标签
-            label: {
-              show: true,
-              // 标签的位置 left right bottom top inside  // 绝对的像素值 position: [10, 10] 
-              // 相对的百分比 position: ['50%', '50%']
-              position: 'inside' 
-            },
-            data: [60, 30, 20, 10, 45, 30] // 系列中的数据内容数组
-          },
-          {
-            type: 'bar', // 系列类型
-            name: '未完成', // 系列名称, 用于tooltip的显示, legend 的图例筛选
-            // 数据堆叠，同个类目轴上系列配置相同的stack值后，后一个系列的值会在前一个系列的值上相加
-            stack: '總量',
-            barMaxWidth: 20, // 柱条的最大宽度，不设时自适应
-            // 图形上的文本标签
-            label: {
-              show: true,
-              // 标签的位置 left right bottom top inside  // 绝对的像素值 position: [10, 10] 
-              // 相对的百分比 position: ['50%', '50%']
-              position: 'inside' 
-            },
-            // 图形样式
-            itemStyle: {
-              barBorderRadius: [0, 10, 10, 0] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
-            },
-            data: [20, 40, 30, 30, 10, 30] // 系列中的数据内容数组
-          }
-        ]
-      })
-    // 使用指定配置項和數據顯示圖表。
-    window.addEventListener("resize",function(){
-        project_dashboard.resize();
-    });
 </script>
+</body>
 </html>

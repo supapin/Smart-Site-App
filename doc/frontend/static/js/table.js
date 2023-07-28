@@ -1091,7 +1091,7 @@ $(document).ready(function() {
         }
     }
 
-    // 照片管理
+    // 照片管理-已歸
     $('#phototable').dataTable( {
         "ajax": {
             "url": "static/json/phototable.json",
@@ -1111,6 +1111,53 @@ $(document).ready(function() {
         "lengthMenu": [10, 50, 100, "全部"],
         "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
             { data:'project',title: "專案" },
+            { data:'uploader',title: "上傳人" },
+            { data:'photoname',
+                title: "照片",
+                render: function (data, type, row) {
+                    return '<a href="static/image/DJI_0085.jpg" class="photourl" target="_blank"><img src="static/image/DJI_0085.jpg" alt="" class="photo"></img> '+'</a>' // 這邊是加連結
+                    
+                }
+            },
+            { data:'update',title: "上傳日期" },
+            { data: null ,
+                title: "表單連結",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                },"className": "all"
+            },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 照片管理-未歸
+    $('#pendingphototable').dataTable( {
+        "ajax": {
+            "url": "static/json/pendingphototable.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data:'uploader',title: "上傳人" },
             { data:'photoname',
                 title: "照片",
                 render: function (data, type, row) {
@@ -1123,7 +1170,7 @@ $(document).ready(function() {
                 title: "歸檔",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="歸檔"><i class="fa-solid fa-file-import me-2"></i>歸檔</button>'
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" data-bs-toggle="modal" data-bs-target="#pendingphoto" title="歸檔"><i class="fa-solid fa-file-import me-2"></i>歸檔</button>'
                 },"className": "all"
             },
             { data: null ,
@@ -2158,10 +2205,55 @@ $(document).ready(function() {
             },
             { data:'update',title: "上傳日期" },
             { data: null ,
+                title: "表單連結",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="查看詳情"><i class="fa-solid fa-eye me-2"></i>查看詳情</button>'
+                },"className": "all"
+            },
+            { data: null ,
+                title: "操作",
+                orderable: false,
+                "render": function (data, type, full, meta) {
+                    return data = '<button class="del btn-sm" data-id="del" title="刪除"><i class="fas fa-trash"></i></button>'
+                },"className": "all"
+            },
+        ],
+        "language": {url: "static/json/zh_Hant.json"},
+    });
+
+    // 暫存照片
+    $('#temporary').dataTable( {
+        "ajax": {
+            "url": "static/json/temporary.json",
+            "type": "POST",
+            "deferRender": true
+        },
+        "responsive": {
+            breakpoints: [
+            { name: 'desktop',  width: Infinity },
+            { name: 'tablet',  width: 1280 },
+            { name: 'tablet-l', width: 1024 },
+            { name: 'tablet-p', width: 767 },//原本是768~1024不含768
+            { name: 'mobile-l', width: 480 },
+            { name: 'mobile-p', width: 320 }
+            ]
+        },
+        "lengthMenu": [10, 50, 100, "全部"],
+        "columns": [ //列的標題一般是從DOM中讀取（你還可以使用這個屬性為表格創建列標題)
+            { data:'photoname',
+                title: "照片",
+                render: function (data, type, row) {
+                    return '<a href="static/image/DJI_0085.jpg" class="photourl" target="_blank"><img src="static/image/DJI_0085.jpg" alt="" class="photo"></img> '+'</a>' // 這邊是加連結
+                    
+                }
+            },
+            { data:'update',title: "上傳日期" },
+            { data: null ,
                 title: "歸檔",
                 orderable: false,
                 "render": function (data, type, full, meta) {
-                    return data = '<button type="button" data-id="view_details" class="view btn-sm" title="歸檔"><i class="fa-solid fa-file-import me-2"></i>歸檔</button>'
+                    return data = '<button type="button" data-id="view_details" class="view btn-sm" data-bs-toggle="modal" data-bs-target="#pendingphoto" title="歸檔"><i class="fa-solid fa-file-import me-2"></i>歸檔</button>'
                 },"className": "all"
             },
             { data: null ,

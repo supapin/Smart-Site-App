@@ -101,7 +101,7 @@ color: #57e3e8;
 #backstage_account thead,#backstage_company thead,#log thead,#system_user thead,#system_permissions thead,#punch_history thead,#userpunch_history thead,
 #punchrecordtable thead,#officialdocument thead,#formtable thead,#phototable thead,#meeting thead,#finishproject thead,#allofficialdocument thead,
 #project-meetingfile thead,#success_task thead,#undone_task thead,#recent_tasks thead,#receiveofficial thead,#projectreceiveofficial thead,
-#allformtable thead,#approvaltable thead{
+#allformtable thead,#approvaltable thead,#pendingphototable thead{
     background: #F6F6F6;
 }
 #expiring_tasks thead{
@@ -113,7 +113,7 @@ color: #57e3e8;
     color: #fff;
 }
 #project-meeting thead,#project-checklist thead,#project-official thead,#project-personnel thead,#project-loglist thead,#project-logrecord thead,
-#project-checkrecord thead,#project-photos thead,#downloads thead{
+#project-checkrecord thead,#project-photos thead,#downloads thead,#temporary thead{
     background: #00B9BF;
     color: #fff;
 }
@@ -127,7 +127,7 @@ color: #57e3e8;
 }
 #project-meeting th,#project-meeting td,#project-checklist th,#project-checklist td,#signature th,#signature td,#project-official th,#project-official td,
 #project-personnel th,#project-personnel td,#project-loglist th,#project-loglist td,#project-logrecord th,#project-logrecord td,#project-checkrecord th,
-#project-checkrecord td,#project-photos th,#project-photos td,#downloads th,#downloads td{
+#project-checkrecord td,#project-photos th,#project-photos td,#downloads th,#downloads td,#temporary th,#temporary td{
     border-right: 5px solid #fff;
 }
 .edit,.del,.userhistory,.unselected,.amend,.view,.download,.export,.eye,.history,.projectdel,.participantview,.helmet-safety,.location,.leave,.leavemain{
@@ -670,14 +670,16 @@ table.dataTable tbody th, table.dataTable tbody td{
     background-color: #6c757d;
     border-color: #6c757d;
 }
-#addprojectphoto_form>.input-images>.image-uploader,#addleave_form>.input-images>.image-uploader{
+#addprojectphoto_form>.input-images>.image-uploader,#addleave_form>.input-images>.image-uploader,
+#addtemporary_form>.input-images>.image-uploader,#addtemporary_form>.input-images>.image-uploader{
     border: 1px solid #dee2e6;
     border-style: dashed;
     border-radius: 0.25rem;
     background: #f8f9fa;
     min-height: 235px;
 }
-#addprojectphoto_form>.input-images>.image-uploader>.upload-text,#addleave_form>.input-images>.image-uploader>.upload-text{
+#addprojectphoto_form>.input-images>.image-uploader>.upload-text,#addleave_form>.input-images>.image-uploader>.upload-text,
+#addtemporary_form>.input-images>.image-uploader>.upload-text{
     color: #C0C4C6;
 }
 .imageitem img{

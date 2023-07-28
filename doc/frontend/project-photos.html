@@ -391,7 +391,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="profile.html"><i class="bx bx-user"></i><span>個人檔案</span></a></li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a></li>
+                            <li><a class="dropdown-item" href="temporary.html"><i class="bx bx-cog"></i><span>暫存照片</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a></li>
                             <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a></li>
                             <li><a class="dropdown-item" href="downloads.html"><i class='bx bx-download'></i><span>我的下載</span></a></li>
@@ -415,14 +415,6 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-                            <label class="btn btn-outline-00B9BF" for="btnradio1">已歸檔</label>
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-                            <label class="btn btn-outline-00B9BF" for="btnradio2">未歸檔</label>
-                        </div>
-                    </div>
                 </div>
                 <!--end breadcrumb-->
                 <div class="card">
@@ -430,7 +422,15 @@
                         <div class="row">
                             <div class="col">
                                 <form name="select_photo_form" id="select_photo_form" class="row gy-3 mb-3" method="post" action="">
-                                    <div class="col-6">
+                                    <div class="col-4">
+                                        <select id="year" class="form-select" aria-label="Default select example">
+                                            <option selected>2023 年</option>
+                                            <option value="1">2022 年</option>
+                                            <option value="2">2021 年</option>
+                                            <option value="3">2020 年</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
                                         <select id="month" class="form-select" aria-label="Default select example">
                                             <option selected>12 月</option>
                                             <option value="1">11 月</option>
@@ -438,12 +438,12 @@
                                             <option value="3">9 月</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <select id="day" class="form-select" aria-label="Default select example">
-                                            <option selected>1 日</option>
-                                            <option value="1">2 日</option>
-                                            <option value="2">3 日</option>
-                                            <option value="3">4 日</option>
+                                            <option selected>所有</option>
+                                            <option value="1">1 日</option>
+                                            <option value="2">2 日</option>
+                                            <option value="3">3 日</option>
                                         </select>
                                     </div>
                                 </form>
