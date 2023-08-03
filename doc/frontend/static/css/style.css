@@ -326,7 +326,7 @@ color: #57e3e8;
     color: #fff;
     border-radius: 5px;
     font-weight: bold;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
 }
 .submit:hover{
     color: #fff;
@@ -486,13 +486,13 @@ a.view{
     background: #856750;
     color: #fff;
 }
-.headnumber{
+.headnumber,.label{
     font-weight: bold;
     border-radius: .25rem;
     background: #b7cfd5;
     color: #fff;
 }
-.headnumber:hover{
+.headnumber:hover,.label:hover{
     background: #7fb8c7;
     color: #fff;
 }
@@ -718,4 +718,53 @@ td {
 }
 #gettime{
     font-size: 1.5rem;
+}
+.tag_group {
+    display: flex;
+    margin: 0 0 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tag_group>.schip {
+    padding: 0 5px;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 28px;
+}
+.schip {
+    display: inline-block;
+    height: 32px;
+    padding: 0 12px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(0, 0, 0, .7);
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 16px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    box-shadow: none;
+}
+#editlabelgroup{
+    width: 280px;
+    height: 155px;
+    top: 55px;
+    background: #172026de;
+    padding: 0.75rem;
+    z-index: 2;
+    border: 1px solid #9a75b312;
+    display: none;
+}
+.export_cardbtn, .annotator_cardbtn {
+    background: #673ab7;
+    color: #fff;
+}
+.export_cardbtn:hover {
+    background: #8a2be2;
+    color: #fff;
+    height: 30px;
 }

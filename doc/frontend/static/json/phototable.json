@@ -2,18 +2,21 @@
     "data": [
         {   
             "project": "xxxxxxxxxxxxxxxx",
+            "lable": ["0K+000","1K+000"],
             "uploader":"xxx",
             "photoname": "xxxxxxxxxxxxxxxx",
             "update":       "2023-06-06"
         },
         {   
             "project": "xxxxxxxxxxxxxxxx",
+            "lable": "切刨",
             "uploader":"xxx",
             "photoname": "xxxxxxxxxxxxxxxx",
             "update":       "2023-06-06"
         },
         {   
             "project": "xxxxxxxxxxxxxxxx",
+            "lable": ["1K+500","鋪裝機"],
             "uploader":"xxx",
             "photoname": "xxxxxxxxxxxxxxxx",
             "update":       "2023-06-06"
